@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 操作系统/数据存储 | Python tutorial</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 操作系统/数据存储 | Python tutorial" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 操作系统/数据存储 | Python tutorial" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Lin Mi" />
+
+
+<meta name="date" content="2025-09-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="C3.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Python tutorial </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="01-intro.html"><a href="#python-%E5%BF%85%E5%AD%A6%E6%A8%A1%E5%9D%97%E6%B8%85%E5%8D%95"><i class="fa fa-check"></i><b>1</b> Python 必学模块清单</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="01-intro.html"><a href="#python-%E8%87%AA%E5%B8%A6%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1"><i class="fa fa-check"></i><b>1.1</b> Python 自带的标准库（必须掌握）</a></li>
+<li class="chapter" data-level="1.2" data-path="01-intro.html"><a href="#%E5%B8%B8%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%87%A0%E4%B9%8E%E5%BF%85%E5%AD%A6"><i class="fa fa-check"></i><b>1.2</b> 常用第三方库（几乎必学）</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="01-intro.html"><a href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%8E%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97"><i class="fa fa-check"></i><b>1.2.1</b> 数据处理与科学计算</a></li>
+<li class="chapter" data-level="1.2.2" data-path="01-intro.html"><a href="#%E7%BD%91%E7%BB%9C%E4%B8%8Eweb"><i class="fa fa-check"></i><b>1.2.2</b> 网络与Web</a></li>
+<li class="chapter" data-level="1.2.3" data-path="01-intro.html"><a href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E4%B8%8E%E8%84%9A%E6%9C%AC"><i class="fa fa-check"></i><b>1.2.3</b> 自动化与脚本</a></li>
+<li class="chapter" data-level="1.2.4" data-path="01-intro.html"><a href="#ai-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6"><i class="fa fa-check"></i><b>1.2.4</b> AI / 数据科学</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="01-intro.html"><a href="#%E5%B7%A5%E5%85%B7%E7%B1%BB%E9%A1%B9%E7%9B%AE%E5%BF%85%E5%A4%87"><i class="fa fa-check"></i><b>1.3</b> 工具类（项目必备）</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="C2.html"><a href="C2.html"><i class="fa fa-check"></i><b>2</b> 操作系统/数据存储</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="01-intro.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93os-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.1</b> Python 标准库：os 模块</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what"><i class="fa fa-check"></i><b>2.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.1.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension"><i class="fa fa-check"></i><b>2.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works"><i class="fa fa-check"></i><b>2.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.1.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage"><i class="fa fa-check"></i><b>2.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.1.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples"><i class="fa fa-check"></i><b>2.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.1.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding"><i class="fa fa-check"></i><b>2.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="01-intro.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93sys-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.2</b> Python 标准库：sys 模块</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-1"><i class="fa fa-check"></i><b>2.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.2.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-1"><i class="fa fa-check"></i><b>2.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-1"><i class="fa fa-check"></i><b>2.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.2.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-1"><i class="fa fa-check"></i><b>2.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.2.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-1"><i class="fa fa-check"></i><b>2.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.2.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-1"><i class="fa fa-check"></i><b>2.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="01-intro.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93pathlib-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.3</b> Python 标准库：pathlib 模块</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-2"><i class="fa fa-check"></i><b>2.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.3.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-2"><i class="fa fa-check"></i><b>2.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.3.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-2"><i class="fa fa-check"></i><b>2.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.3.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-2"><i class="fa fa-check"></i><b>2.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.3.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-2"><i class="fa fa-check"></i><b>2.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.3.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-2"><i class="fa fa-check"></i><b>2.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="01-intro.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93json-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.4</b> Python 标准库：json 模块</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-3"><i class="fa fa-check"></i><b>2.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.4.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-3"><i class="fa fa-check"></i><b>2.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.4.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-3"><i class="fa fa-check"></i><b>2.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.4.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-3"><i class="fa fa-check"></i><b>2.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.4.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-3"><i class="fa fa-check"></i><b>2.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.4.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-3"><i class="fa fa-check"></i><b>2.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="01-intro.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93csv-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.5</b> Python 标准库：csv 模块</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-4"><i class="fa fa-check"></i><b>2.5.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.5.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-4"><i class="fa fa-check"></i><b>2.5.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.5.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-4"><i class="fa fa-check"></i><b>2.5.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.5.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-4"><i class="fa fa-check"></i><b>2.5.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.5.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-4"><i class="fa fa-check"></i><b>2.5.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.5.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-4"><i class="fa fa-check"></i><b>2.5.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="01-intro.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93configparser-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.6</b> Python 标准库：configparser 模块</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-5"><i class="fa fa-check"></i><b>2.6.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.6.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-5"><i class="fa fa-check"></i><b>2.6.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.6.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-5"><i class="fa fa-check"></i><b>2.6.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.6.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-5"><i class="fa fa-check"></i><b>2.6.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.6.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-5"><i class="fa fa-check"></i><b>2.6.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.6.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-5"><i class="fa fa-check"></i><b>2.6.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="C3.html"><a href="C3.html"><i class="fa fa-check"></i><b>3</b> 时间与日期处理/日志系统/正则</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="01-intro.html"><a href="#datetime-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.1</b> datetime 模块</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-6"><i class="fa fa-check"></i><b>3.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.1.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-6"><i class="fa fa-check"></i><b>3.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-6"><i class="fa fa-check"></i><b>3.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.1.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-6"><i class="fa fa-check"></i><b>3.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.1.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-6"><i class="fa fa-check"></i><b>3.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.1.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-6"><i class="fa fa-check"></i><b>3.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="01-intro.html"><a href="#time-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.2</b> time 模块</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-7"><i class="fa fa-check"></i><b>3.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-7"><i class="fa fa-check"></i><b>3.2.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-7"><i class="fa fa-check"></i><b>3.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.2.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-7"><i class="fa fa-check"></i><b>3.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.2.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-7"><i class="fa fa-check"></i><b>3.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.2.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-7"><i class="fa fa-check"></i><b>3.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="01-intro.html"><a href="#calendar-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.3</b> calendar 模块</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-8"><i class="fa fa-check"></i><b>3.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-8"><i class="fa fa-check"></i><b>3.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.3.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-8"><i class="fa fa-check"></i><b>3.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.3.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-8"><i class="fa fa-check"></i><b>3.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.3.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-8"><i class="fa fa-check"></i><b>3.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.3.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-8"><i class="fa fa-check"></i><b>3.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="01-intro.html"><a href="#logging-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.4</b> logging 模块</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-9"><i class="fa fa-check"></i><b>3.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-9"><i class="fa fa-check"></i><b>3.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.4.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-9"><i class="fa fa-check"></i><b>3.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.4.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-9"><i class="fa fa-check"></i><b>3.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.4.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-9"><i class="fa fa-check"></i><b>3.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.4.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-9"><i class="fa fa-check"></i><b>3.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="01-intro.html"><a href="#re-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.5</b> re 模块</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-10"><i class="fa fa-check"></i><b>3.5.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.5.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-10"><i class="fa fa-check"></i><b>3.5.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.5.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-10"><i class="fa fa-check"></i><b>3.5.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.5.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-10"><i class="fa fa-check"></i><b>3.5.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.5.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-10"><i class="fa fa-check"></i><b>3.5.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.5.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-10"><i class="fa fa-check"></i><b>3.5.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="C4.html"><a href="C4.html"><i class="fa fa-check"></i><b>4</b> 命令行参数解析/执行系统命令</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="01-intro.html"><a href="#argparse-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>4.1</b> argparse 模块</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-11"><i class="fa fa-check"></i><b>4.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="4.1.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-11"><i class="fa fa-check"></i><b>4.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="4.1.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-11"><i class="fa fa-check"></i><b>4.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="4.1.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-11"><i class="fa fa-check"></i><b>4.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="4.1.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-11"><i class="fa fa-check"></i><b>4.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="4.1.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-11"><i class="fa fa-check"></i><b>4.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="01-intro.html"><a href="#subprocess-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>4.2</b> subprocess 模块</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-12"><i class="fa fa-check"></i><b>4.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-12"><i class="fa fa-check"></i><b>4.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-12"><i class="fa fa-check"></i><b>4.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="4.2.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-12"><i class="fa fa-check"></i><b>4.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="4.2.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-12"><i class="fa fa-check"></i><b>4.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="4.2.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-12"><i class="fa fa-check"></i><b>4.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="C5.html"><a href="C5.html"><i class="fa fa-check"></i><b>5</b> 高级数据结构与工具</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="01-intro.html"><a href="#functools-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>5.1</b> functools 模块</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-13"><i class="fa fa-check"></i><b>5.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="5.1.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-13"><i class="fa fa-check"></i><b>5.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="5.1.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-13"><i class="fa fa-check"></i><b>5.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="5.1.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-13"><i class="fa fa-check"></i><b>5.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="5.1.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-13"><i class="fa fa-check"></i><b>5.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="5.1.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-13"><i class="fa fa-check"></i><b>5.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="01-intro.html"><a href="#itertools-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>5.2</b> itertools 模块</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-14"><i class="fa fa-check"></i><b>5.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="5.2.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-14"><i class="fa fa-check"></i><b>5.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="5.2.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-14"><i class="fa fa-check"></i><b>5.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="5.2.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-14"><i class="fa fa-check"></i><b>5.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="5.2.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-14"><i class="fa fa-check"></i><b>5.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="5.2.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-14"><i class="fa fa-check"></i><b>5.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="01-intro.html"><a href="#collections-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>5.3</b> collections 模块</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-15"><i class="fa fa-check"></i><b>5.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-15"><i class="fa fa-check"></i><b>5.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-15"><i class="fa fa-check"></i><b>5.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="5.3.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-15"><i class="fa fa-check"></i><b>5.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="5.3.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-15"><i class="fa fa-check"></i><b>5.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="5.3.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-15"><i class="fa fa-check"></i><b>5.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="C6.html"><a href="C6.html"><i class="fa fa-check"></i><b>6</b> 并发与并行/轻量数据库</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="01-intro.html"><a href="#threading-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.1</b> threading 模块</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-16"><i class="fa fa-check"></i><b>6.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="6.1.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-16"><i class="fa fa-check"></i><b>6.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-16"><i class="fa fa-check"></i><b>6.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.1.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-16"><i class="fa fa-check"></i><b>6.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.1.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-16"><i class="fa fa-check"></i><b>6.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.1.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-16"><i class="fa fa-check"></i><b>6.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="01-intro.html"><a href="#multiprocessing-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.2</b> multiprocessing 模块</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-17"><i class="fa fa-check"></i><b>6.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="6.2.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-17"><i class="fa fa-check"></i><b>6.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-17"><i class="fa fa-check"></i><b>6.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.2.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-17"><i class="fa fa-check"></i><b>6.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.2.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-17"><i class="fa fa-check"></i><b>6.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.2.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-17"><i class="fa fa-check"></i><b>6.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="01-intro.html"><a href="#concurrent.futures-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.3</b> concurrent.futures 模块</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-18"><i class="fa fa-check"></i><b>6.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="6.3.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-18"><i class="fa fa-check"></i><b>6.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.3.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-18"><i class="fa fa-check"></i><b>6.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.3.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-18"><i class="fa fa-check"></i><b>6.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.3.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-18"><i class="fa fa-check"></i><b>6.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.3.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-18"><i class="fa fa-check"></i><b>6.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="01-intro.html"><a href="#sqlite3-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.4</b> sqlite3 模块</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-19"><i class="fa fa-check"></i><b>6.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="6.4.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-19"><i class="fa fa-check"></i><b>6.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-19"><i class="fa fa-check"></i><b>6.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.4.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-19"><i class="fa fa-check"></i><b>6.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.4.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-19"><i class="fa fa-check"></i><b>6.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.4.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-19"><i class="fa fa-check"></i><b>6.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="01-intro.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93%E6%A8%A1%E5%9D%97%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E6%8C%87%E5%8D%97"><i class="fa fa-check"></i><b>6.5</b> Python 标准库模块应用场景指南</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="01-intro.html"><a href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3"><i class="fa fa-check"></i><b>6.5.1</b> 操作系统相关</a></li>
+<li class="chapter" data-level="6.5.2" data-path="01-intro.html"><a href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F"><i class="fa fa-check"></i><b>6.5.2</b> 数据存储格式</a></li>
+<li class="chapter" data-level="6.5.3" data-path="01-intro.html"><a href="#%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%A5%E6%9C%9F"><i class="fa fa-check"></i><b>6.5.3</b> 时间与日期</a></li>
+<li class="chapter" data-level="6.5.4" data-path="01-intro.html"><a href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F"><i class="fa fa-check"></i><b>6.5.4</b> 日志系统</a></li>
+<li class="chapter" data-level="6.5.5" data-path="01-intro.html"><a href="#%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86"><i class="fa fa-check"></i><b>6.5.5</b> 文本处理</a></li>
+<li class="chapter" data-level="6.5.6" data-path="01-intro.html"><a href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7"><i class="fa fa-check"></i><b>6.5.6</b> 命令行工具</a></li>
+<li class="chapter" data-level="6.5.7" data-path="01-intro.html"><a href="#%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><i class="fa fa-check"></i><b>6.5.7</b> 系统命令</a></li>
+<li class="chapter" data-level="6.5.8" data-path="01-intro.html"><a href="#%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E5%B7%A5%E5%85%B7"><i class="fa fa-check"></i><b>6.5.8</b> 高级数据结构与工具</a></li>
+<li class="chapter" data-level="6.5.9" data-path="01-intro.html"><a href="#%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C"><i class="fa fa-check"></i><b>6.5.9</b> 并发与并行</a></li>
+<li class="chapter" data-level="6.5.10" data-path="01-intro.html"><a href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8"><i class="fa fa-check"></i><b>6.5.10</b> 数据存储</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-processing.html"><a href="data-processing.html"><i class="fa fa-check"></i><b>7</b> 数据处理与计算</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="01-intro.html"><a href="#numpy-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>7.1</b> NumPy 模块</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-20"><i class="fa fa-check"></i><b>7.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="7.1.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-20"><i class="fa fa-check"></i><b>7.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="7.1.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-20"><i class="fa fa-check"></i><b>7.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="7.1.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-20"><i class="fa fa-check"></i><b>7.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="7.1.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-20"><i class="fa fa-check"></i><b>7.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="7.1.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-20"><i class="fa fa-check"></i><b>7.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="01-intro.html"><a href="#pandas-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>7.2</b> Pandas 模块</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-21"><i class="fa fa-check"></i><b>7.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="7.2.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-21"><i class="fa fa-check"></i><b>7.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="7.2.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-21"><i class="fa fa-check"></i><b>7.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="7.2.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-21"><i class="fa fa-check"></i><b>7.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-21"><i class="fa fa-check"></i><b>7.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="7.2.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-21"><i class="fa fa-check"></i><b>7.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="01-intro.html"><a href="#matplotlib-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>7.3</b> Matplotlib 模块</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-22"><i class="fa fa-check"></i><b>7.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="7.3.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-22"><i class="fa fa-check"></i><b>7.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="7.3.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-22"><i class="fa fa-check"></i><b>7.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="7.3.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-22"><i class="fa fa-check"></i><b>7.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="7.3.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-22"><i class="fa fa-check"></i><b>7.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="7.3.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-22"><i class="fa fa-check"></i><b>7.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="01-intro.html"><a href="#seaborn-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>7.4</b> Seaborn 模块</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-23"><i class="fa fa-check"></i><b>7.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="7.4.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-23"><i class="fa fa-check"></i><b>7.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="7.4.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-23"><i class="fa fa-check"></i><b>7.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="7.4.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-23"><i class="fa fa-check"></i><b>7.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="7.4.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-23"><i class="fa fa-check"></i><b>7.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="7.4.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-23"><i class="fa fa-check"></i><b>7.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="C8.html"><a href="C8.html"><i class="fa fa-check"></i><b>8</b> 网络与Web</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="01-intro.html"><a href="#requests-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>8.1</b> Requests 模块</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-24"><i class="fa fa-check"></i><b>8.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="8.1.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-24"><i class="fa fa-check"></i><b>8.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="8.1.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-24"><i class="fa fa-check"></i><b>8.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="8.1.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-24"><i class="fa fa-check"></i><b>8.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="8.1.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-24"><i class="fa fa-check"></i><b>8.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="8.1.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-24"><i class="fa fa-check"></i><b>8.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="01-intro.html"><a href="#flask-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>8.2</b> Flask 模块</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-25"><i class="fa fa-check"></i><b>8.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="8.2.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-25"><i class="fa fa-check"></i><b>8.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="8.2.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-25"><i class="fa fa-check"></i><b>8.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="8.2.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-25"><i class="fa fa-check"></i><b>8.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="8.2.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-example"><i class="fa fa-check"></i><b>8.2.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="8.2.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-25"><i class="fa fa-check"></i><b>8.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="01-intro.html"><a href="#fastapi-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>8.3</b> FastAPI 模块</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-26"><i class="fa fa-check"></i><b>8.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-26"><i class="fa fa-check"></i><b>8.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="8.3.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-26"><i class="fa fa-check"></i><b>8.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="8.3.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-26"><i class="fa fa-check"></i><b>8.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="8.3.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-example-1"><i class="fa fa-check"></i><b>8.3.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="8.3.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-26"><i class="fa fa-check"></i><b>8.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="01-intro.html"><a href="#django-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>8.4</b> Django 模块</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-27"><i class="fa fa-check"></i><b>8.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="8.4.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-27"><i class="fa fa-check"></i><b>8.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="8.4.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-27"><i class="fa fa-check"></i><b>8.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="8.4.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-27"><i class="fa fa-check"></i><b>8.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="8.4.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-example-2"><i class="fa fa-check"></i><b>8.4.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="8.4.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-27"><i class="fa fa-check"></i><b>8.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="C9.html"><a href="C9.html"><i class="fa fa-check"></i><b>9</b> 爬虫</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="01-intro.html"><a href="#beautifulsoup4-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>9.1</b> BeautifulSoup4 模块</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-28"><i class="fa fa-check"></i><b>9.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="9.1.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-28"><i class="fa fa-check"></i><b>9.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="9.1.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-28"><i class="fa fa-check"></i><b>9.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="9.1.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-28"><i class="fa fa-check"></i><b>9.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="9.1.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-example-3"><i class="fa fa-check"></i><b>9.1.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="9.1.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-28"><i class="fa fa-check"></i><b>9.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="01-intro.html"><a href="#lxml-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>9.2</b> lxml 模块</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-29"><i class="fa fa-check"></i><b>9.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="9.2.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-29"><i class="fa fa-check"></i><b>9.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="9.2.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-29"><i class="fa fa-check"></i><b>9.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="9.2.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-29"><i class="fa fa-check"></i><b>9.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="9.2.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-example-4"><i class="fa fa-check"></i><b>9.2.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="9.2.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-29"><i class="fa fa-check"></i><b>9.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="C10.html"><a href="C10.html"><i class="fa fa-check"></i><b>10</b> 数据科学</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="01-intro.html"><a href="#scikit-learn-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>10.1</b> scikit-learn 模块</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-30"><i class="fa fa-check"></i><b>10.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="10.1.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-30"><i class="fa fa-check"></i><b>10.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="10.1.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-30"><i class="fa fa-check"></i><b>10.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="10.1.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-30"><i class="fa fa-check"></i><b>10.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="10.1.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-25"><i class="fa fa-check"></i><b>10.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="10.1.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-30"><i class="fa fa-check"></i><b>10.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="01-intro.html"><a href="#pytorch-torch-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>10.2</b> PyTorch (torch) 模块</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-31"><i class="fa fa-check"></i><b>10.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="10.2.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-31"><i class="fa fa-check"></i><b>10.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="10.2.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-31"><i class="fa fa-check"></i><b>10.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="10.2.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-31"><i class="fa fa-check"></i><b>10.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="10.2.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-example-5"><i class="fa fa-check"></i><b>10.2.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="10.2.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-31"><i class="fa fa-check"></i><b>10.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="01-intro.html"><a href="#tensorflow-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>10.3</b> TensorFlow 模块</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-32"><i class="fa fa-check"></i><b>10.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="10.3.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-32"><i class="fa fa-check"></i><b>10.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="10.3.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-32"><i class="fa fa-check"></i><b>10.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="10.3.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-32"><i class="fa fa-check"></i><b>10.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="10.3.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-example-6"><i class="fa fa-check"></i><b>10.3.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="10.3.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-32"><i class="fa fa-check"></i><b>10.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="01-intro.html"><a href="#transformers-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>10.4</b> transformers 模块</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-33"><i class="fa fa-check"></i><b>10.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="10.4.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-33"><i class="fa fa-check"></i><b>10.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="10.4.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-33"><i class="fa fa-check"></i><b>10.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="10.4.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-33"><i class="fa fa-check"></i><b>10.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="10.4.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-26"><i class="fa fa-check"></i><b>10.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="10.4.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-33"><i class="fa fa-check"></i><b>10.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="C11.html"><a href="C11.html"><i class="fa fa-check"></i><b>11</b> 工具</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="01-intro.html"><a href="#pytest-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>11.1</b> pytest 模块</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-34"><i class="fa fa-check"></i><b>11.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.1.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-34"><i class="fa fa-check"></i><b>11.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.1.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-34"><i class="fa fa-check"></i><b>11.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.1.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-34"><i class="fa fa-check"></i><b>11.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.1.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-27"><i class="fa fa-check"></i><b>11.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="11.1.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-34"><i class="fa fa-check"></i><b>11.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="C11.html"><a href="C11.html#virtualenv"><i class="fa fa-check"></i><b>11.2</b> virtualenv</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-35"><i class="fa fa-check"></i><b>11.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.2.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-35"><i class="fa fa-check"></i><b>11.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.2.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-35"><i class="fa fa-check"></i><b>11.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.2.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-35"><i class="fa fa-check"></i><b>11.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.2.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-example-7"><i class="fa fa-check"></i><b>11.2.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.2.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-35"><i class="fa fa-check"></i><b>11.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="C11.html"><a href="C11.html#conda"><i class="fa fa-check"></i><b>11.3</b> conda</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-36"><i class="fa fa-check"></i><b>11.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.3.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-36"><i class="fa fa-check"></i><b>11.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.3.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-36"><i class="fa fa-check"></i><b>11.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.3.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-36"><i class="fa fa-check"></i><b>11.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.3.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-example-8"><i class="fa fa-check"></i><b>11.3.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.3.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-36"><i class="fa fa-check"></i><b>11.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="C11.html"><a href="C11.html#poetry"><i class="fa fa-check"></i><b>11.4</b> poetry</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-37"><i class="fa fa-check"></i><b>11.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.4.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-37"><i class="fa fa-check"></i><b>11.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.4.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-37"><i class="fa fa-check"></i><b>11.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.4.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-37"><i class="fa fa-check"></i><b>11.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.4.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-example-9"><i class="fa fa-check"></i><b>11.4.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.4.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-37"><i class="fa fa-check"></i><b>11.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="C11.html"><a href="C11.html#black"><i class="fa fa-check"></i><b>11.5</b> black</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-38"><i class="fa fa-check"></i><b>11.5.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.5.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-38"><i class="fa fa-check"></i><b>11.5.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.5.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-38"><i class="fa fa-check"></i><b>11.5.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.5.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-38"><i class="fa fa-check"></i><b>11.5.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.5.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-example-10"><i class="fa fa-check"></i><b>11.5.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.5.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-38"><i class="fa fa-check"></i><b>11.5.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="C11.html"><a href="C11.html#flake8"><i class="fa fa-check"></i><b>11.6</b> flake8</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-39"><i class="fa fa-check"></i><b>11.6.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.6.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-39"><i class="fa fa-check"></i><b>11.6.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.6.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-39"><i class="fa fa-check"></i><b>11.6.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.6.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-39"><i class="fa fa-check"></i><b>11.6.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.6.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-example-11"><i class="fa fa-check"></i><b>11.6.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.6.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-39"><i class="fa fa-check"></i><b>11.6.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="C11.html"><a href="C11.html#isort"><i class="fa fa-check"></i><b>11.7</b> isort</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-40"><i class="fa fa-check"></i><b>11.7.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.7.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-40"><i class="fa fa-check"></i><b>11.7.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.7.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-40"><i class="fa fa-check"></i><b>11.7.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.7.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-40"><i class="fa fa-check"></i><b>11.7.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.7.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-example-12"><i class="fa fa-check"></i><b>11.7.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.7.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-40"><i class="fa fa-check"></i><b>11.7.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="C12.html"><a href="C12.html"><i class="fa fa-check"></i><b>12</b> LLM</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="01-intro.html"><a href="#openai-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>12.1</b> openai 模块</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-41"><i class="fa fa-check"></i><b>12.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="12.1.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-41"><i class="fa fa-check"></i><b>12.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="12.1.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-41"><i class="fa fa-check"></i><b>12.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="12.1.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-41"><i class="fa fa-check"></i><b>12.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="12.1.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-28"><i class="fa fa-check"></i><b>12.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="12.1.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-41"><i class="fa fa-check"></i><b>12.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="01-intro.html"><a href="#faiss-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>12.2</b> faiss 模块</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-42"><i class="fa fa-check"></i><b>12.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="12.2.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-42"><i class="fa fa-check"></i><b>12.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="12.2.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-42"><i class="fa fa-check"></i><b>12.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="12.2.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-42"><i class="fa fa-check"></i><b>12.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="12.2.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-29"><i class="fa fa-check"></i><b>12.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="12.2.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-42"><i class="fa fa-check"></i><b>12.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="01-intro.html"><a href="#peft-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>12.3</b> peft 模块</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-what-43"><i class="fa fa-check"></i><b>12.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="12.3.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-43"><i class="fa fa-check"></i><b>12.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="12.3.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-43"><i class="fa fa-check"></i><b>12.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="12.3.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-usage-43"><i class="fa fa-check"></i><b>12.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="12.3.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-example-13"><i class="fa fa-check"></i><b>12.3.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="12.3.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-43"><i class="fa fa-check"></i><b>12.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="GUI.html"><a href="GUI.html"><i class="fa fa-check"></i><b>13</b> GUI</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="01-intro.html"><a href="#tkinter-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>13.1</b> tkinter 模块</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83"><i class="fa fa-check"></i><b>13.1.1</b> 核心</a></li>
+<li class="chapter" data-level="13.1.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84"><i class="fa fa-check"></i><b>13.1.2</b> 组成结构</a></li>
+<li class="chapter" data-level="13.1.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86"><i class="fa fa-check"></i><b>13.1.3</b> 原理</a></li>
+<li class="chapter" data-level="13.1.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8"><i class="fa fa-check"></i><b>13.1.4</b> 应用</a></li>
+<li class="chapter" data-level="13.1.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B"><i class="fa fa-check"></i><b>13.1.5</b> 举例</a></li>
+<li class="chapter" data-level="13.1.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90"><i class="fa fa-check"></i><b>13.1.6</b> 辨析</a></li>
+<li class="chapter" data-level="13.1.7" data-path="01-intro.html"><a href="#%E6%80%BB%E7%BB%93"><i class="fa fa-check"></i><b>13.1.7</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="01-intro.html"><a href="#pyqt-pyside-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>13.2</b> PyQt / PySide 模块</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-1"><i class="fa fa-check"></i><b>13.2.1</b> 核心</a></li>
+<li class="chapter" data-level="13.2.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-1"><i class="fa fa-check"></i><b>13.2.2</b> 组成结构</a></li>
+<li class="chapter" data-level="13.2.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-1"><i class="fa fa-check"></i><b>13.2.3</b> 原理</a></li>
+<li class="chapter" data-level="13.2.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-1"><i class="fa fa-check"></i><b>13.2.4</b> 应用</a></li>
+<li class="chapter" data-level="13.2.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-1"><i class="fa fa-check"></i><b>13.2.5</b> 举例</a></li>
+<li class="chapter" data-level="13.2.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-1"><i class="fa fa-check"></i><b>13.2.6</b> 辨析</a></li>
+<li class="chapter" data-level="13.2.7" data-path="01-intro.html"><a href="#%E6%80%BB%E7%BB%93-1"><i class="fa fa-check"></i><b>13.2.7</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="01-intro.html"><a href="#wxpython-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>13.3</b> wxPython 模块</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-2"><i class="fa fa-check"></i><b>13.3.1</b> 核心</a></li>
+<li class="chapter" data-level="13.3.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-2"><i class="fa fa-check"></i><b>13.3.2</b> 组成结构</a></li>
+<li class="chapter" data-level="13.3.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-2"><i class="fa fa-check"></i><b>13.3.3</b> 原理</a></li>
+<li class="chapter" data-level="13.3.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-2"><i class="fa fa-check"></i><b>13.3.4</b> 应用</a></li>
+<li class="chapter" data-level="13.3.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-2"><i class="fa fa-check"></i><b>13.3.5</b> 举例</a></li>
+<li class="chapter" data-level="13.3.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-2"><i class="fa fa-check"></i><b>13.3.6</b> 辨析</a></li>
+<li class="chapter" data-level="13.3.7" data-path="01-intro.html"><a href="#%E6%80%BB%E7%BB%93-2"><i class="fa fa-check"></i><b>13.3.7</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="GUI.html"><a href="GUI.html#wxpython"><i class="fa fa-check"></i><b>13.4</b> wxPython</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-3"><i class="fa fa-check"></i><b>13.4.1</b> 核心</a></li>
+<li class="chapter" data-level="13.4.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-3"><i class="fa fa-check"></i><b>13.4.2</b> 组成结构</a></li>
+<li class="chapter" data-level="13.4.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-3"><i class="fa fa-check"></i><b>13.4.3</b> 原理</a></li>
+<li class="chapter" data-level="13.4.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-3"><i class="fa fa-check"></i><b>13.4.4</b> 应用</a></li>
+<li class="chapter" data-level="13.4.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-3"><i class="fa fa-check"></i><b>13.4.5</b> 举例</a></li>
+<li class="chapter" data-level="13.4.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-3"><i class="fa fa-check"></i><b>13.4.6</b> 辨析</a></li>
+<li class="chapter" data-level="13.4.7" data-path="01-intro.html"><a href="#%E6%80%BB%E7%BB%93-3"><i class="fa fa-check"></i><b>13.4.7</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="GUI.html"><a href="GUI.html#kivy"><i class="fa fa-check"></i><b>13.5</b> Kivy</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-4"><i class="fa fa-check"></i><b>13.5.1</b> 核心</a></li>
+<li class="chapter" data-level="13.5.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-4"><i class="fa fa-check"></i><b>13.5.2</b> 组成结构</a></li>
+<li class="chapter" data-level="13.5.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-4"><i class="fa fa-check"></i><b>13.5.3</b> 原理</a></li>
+<li class="chapter" data-level="13.5.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-4"><i class="fa fa-check"></i><b>13.5.4</b> 应用</a></li>
+<li class="chapter" data-level="13.5.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-4"><i class="fa fa-check"></i><b>13.5.5</b> 举例</a></li>
+<li class="chapter" data-level="13.5.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-4"><i class="fa fa-check"></i><b>13.5.6</b> 辨析</a></li>
+<li class="chapter" data-level="13.5.7" data-path="01-intro.html"><a href="#%E6%80%BB%E7%BB%93-4"><i class="fa fa-check"></i><b>13.5.7</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="GUI.html"><a href="GUI.html#beeware-toga"><i class="fa fa-check"></i><b>13.6</b> BeeWare / Toga</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="01-intro.html"><a href="#%E6%A0%B8%E5%BF%83-5"><i class="fa fa-check"></i><b>13.6.1</b> 核心</a></li>
+<li class="chapter" data-level="13.6.2" data-path="01-intro.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-5"><i class="fa fa-check"></i><b>13.6.2</b> 组成结构</a></li>
+<li class="chapter" data-level="13.6.3" data-path="01-intro.html"><a href="#%E5%8E%9F%E7%90%86-5"><i class="fa fa-check"></i><b>13.6.3</b> 原理</a></li>
+<li class="chapter" data-level="13.6.4" data-path="01-intro.html"><a href="#%E5%BA%94%E7%94%A8-5"><i class="fa fa-check"></i><b>13.6.4</b> 应用</a></li>
+<li class="chapter" data-level="13.6.5" data-path="01-intro.html"><a href="#%E4%B8%BE%E4%BE%8B-5"><i class="fa fa-check"></i><b>13.6.5</b> 举例</a></li>
+<li class="chapter" data-level="13.6.6" data-path="01-intro.html"><a href="#%E8%BE%A8%E6%9E%90-5"><i class="fa fa-check"></i><b>13.6.6</b> 辨析</a></li>
+<li class="chapter" data-level="13.6.7" data-path="01-intro.html"><a href="#%E6%80%BB%E7%BB%93-5"><i class="fa fa-check"></i><b>13.6.7</b> 总结</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="project.html"><a href="project.html"><i class="fa fa-check"></i><b>14</b> 项目开发</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="01-intro.html"><a href="#%E4%B8%80-%E6%83%B3%E6%B3%95%E5%88%B0%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%B8%BF%E6%B2%9F%E5%9C%A8%E5%93%AA%E9%87%8C"><i class="fa fa-check"></i><b>14.1</b> 一 想法到项目的鸿沟在哪里</a></li>
+<li class="chapter" data-level="14.2" data-path="01-intro.html"><a href="#%E4%BA%8C-%E5%A6%82%E4%BD%95%E8%B7%A8%E8%B6%8A%E9%B8%BF%E6%B2%9F"><i class="fa fa-check"></i><b>14.2</b> 二 如何跨越鸿沟</a></li>
+<li class="chapter" data-level="14.3" data-path="01-intro.html"><a href="#%E4%B8%89-%E5%A6%82%E4%BD%95%E7%94%BB%E8%AE%BE%E8%AE%A1%E5%9B%BE"><i class="fa fa-check"></i><b>14.3</b> 三 如何画设计图</a></li>
+<li class="chapter" data-level="14.4" data-path="01-intro.html"><a href="#%E5%9B%9B-%E8%A1%8C%E5%8A%A8%E8%AE%A1%E5%88%92"><i class="fa fa-check"></i><b>14.4</b> 四 行动计划</a></li>
+<li class="chapter" data-level="14.5" data-path="01-intro.html"><a href="#%E4%B8%80-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E7%B1%BB"><i class="fa fa-check"></i><b>14.5</b> 一 环境搭建类</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="01-intro.html"><a href="#%E5%88%9B%E5%BB%BA-python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><i class="fa fa-check"></i><b>14.5.1</b> 1 创建 Python 虚拟环境</a></li>
+<li class="chapter" data-level="14.5.2" data-path="01-intro.html"><a href="#git-%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96"><i class="fa fa-check"></i><b>14.5.2</b> 2 Git 项目初始化</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="01-intro.html"><a href="#%E4%BA%8C-%E5%8A%9F%E8%83%BD%E5%BC%80%E5%8F%91%E7%B1%BB"><i class="fa fa-check"></i><b>14.6</b> 二 功能开发类</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="01-intro.html"><a href="#%E6%90%AD%E5%BB%BA%E6%9C%80%E5%B0%8F-api-%E6%9C%8D%E5%8A%A1flask"><i class="fa fa-check"></i><b>14.6.1</b> 3 搭建最小 API 服务（Flask）</a></li>
+<li class="chapter" data-level="14.6.2" data-path="01-intro.html"><a href="#%E5%86%99%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7argparse"><i class="fa fa-check"></i><b>14.6.2</b> 4 写一个命令行工具（argparse）</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="01-intro.html"><a href="#%E4%B8%89-%E6%96%87%E6%A1%A3%E5%86%99%E4%BD%9C%E7%B1%BB"><i class="fa fa-check"></i><b>14.7</b> 三 文档写作类</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="01-intro.html"><a href="#%E5%86%99%E9%A1%B9%E7%9B%AE%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3-readme"><i class="fa fa-check"></i><b>14.7.1</b> 5 写项目说明文档 README</a></li>
+<li class="chapter" data-level="14.7.2" data-path="01-intro.html"><a href="#%E7%94%BB%E6%9E%B6%E6%9E%84%E5%9B%BE"><i class="fa fa-check"></i><b>14.7.2</b> 6 画架构图</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="01-intro.html"><a href="#%E5%9B%9B-%E6%B5%8B%E8%AF%95%E7%B1%BB"><i class="fa fa-check"></i><b>14.8</b> 四 测试类</a>
+<ul>
+<li class="chapter" data-level="14.8.1" data-path="01-intro.html"><a href="#%E5%86%99%E4%B8%80%E4%B8%AA-pytest-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><i class="fa fa-check"></i><b>14.8.1</b> 7 写一个 pytest 单元测试</a></li>
+<li class="chapter" data-level="14.8.2" data-path="01-intro.html"><a href="#api-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95"><i class="fa fa-check"></i><b>14.8.2</b> 8 API 接口测试</a></li>
+</ul></li>
+<li class="chapter" data-level="14.9" data-path="01-intro.html"><a href="#%E4%BA%94-%E5%8F%91%E5%B8%83%E4%B8%8E%E8%BF%AD%E4%BB%A3%E7%B1%BB"><i class="fa fa-check"></i><b>14.9</b> 五 发布与迭代类</a>
+<ul>
+<li class="chapter" data-level="14.9.1" data-path="01-intro.html"><a href="#%E6%89%93%E5%8C%85-python-%E9%A1%B9%E7%9B%AE"><i class="fa fa-check"></i><b>14.9.1</b> 9 打包 Python 项目</a></li>
+<li class="chapter" data-level="14.9.2" data-path="01-intro.html"><a href="#%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><i class="fa fa-check"></i><b>14.9.2</b> 10 部署到服务器</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/liamamilin" target="blank">Lin Mi</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Python tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="C2" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> 操作系统/数据存储<a href="C2.html#C2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="python-标准库os-模块" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Python 标准库：os 模块<a href="#python-%E6%A0%87%E5%87%86%E5%BA%93os-%E6%A8%A1%E5%9D%97" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>os</code> 模块是 Python 内置的 <strong>操作系统接口</strong>，提供与文件系统、进程、环境变量等进行交互的功能。
+它的地位就像一座“桥梁”：让 Python 程序能在不同操作系统（Windows、Linux、macOS）上调用底层功能，同时保持一定的 <strong>跨平台统一性</strong>。</p>
+</div>
+<div id="组成结构-dimension" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>os</code> 模块可以从以下维度来划分：</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>路径与文件操作</strong></p>
+<ul>
+<li><code>os.path</code> 子模块：路径拼接、拆分、判断文件是否存在等。</li>
+<li>文件创建、删除：<code>os.mkdir()</code>、<code>os.remove()</code>。</li>
+</ul></li>
+<li><p><strong>目录操作</strong></p>
+<ul>
+<li><code>os.listdir()</code>：列出目录内容。</li>
+<li><code>os.chdir()</code>：切换工作目录。</li>
+<li><code>os.makedirs()</code> / <code>os.rmdir()</code>：递归创建 / 删除目录。</li>
+</ul></li>
+<li><p><strong>环境变量</strong></p>
+<ul>
+<li><code>os.environ</code>：读取和修改系统环境变量。</li>
+</ul></li>
+<li><p><strong>进程管理</strong></p>
+<ul>
+<li><code>os.system()</code>：运行系统命令。</li>
+<li><code>os.getpid()</code>：获取当前进程 ID。</li>
+<li><code>os.fork()</code>（仅 Unix）：创建子进程。</li>
+</ul></li>
+<li><p><strong>跨平台抽象</strong></p>
+<ul>
+<li><code>os.name</code>：当前系统 (<code>'posix'</code> / <code>'nt'</code>)。</li>
+<li><code>os.sep</code>：路径分隔符（Windows 是 <code>\</code>，Linux 是 <code>/</code>）。</li>
+</ul></li>
+</ol>
+</div>
+<div id="原理-how-it-works" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>os</code> 模块本质上是 <strong>Python 标准库对底层系统调用的封装</strong>。</li>
+<li>在 C 语言层面，Python 解释器通过调用 POSIX API（Unix）或 Win32 API（Windows）实现功能。</li>
+<li><code>os.path</code> 是纯 Python 实现的辅助工具，进一步简化了路径处理。</li>
+<li>因为不同操作系统接口不完全一致，<code>os</code> 提供统一 API，Python 程序员只需要调用同样的函数，而不用关心底层系统差异。</li>
+</ul>
+</div>
+<div id="应用-usage" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>常见应用场景：</p>
+<ul>
+<li><strong>文件管理脚本</strong>：批量重命名、删除文件。</li>
+<li><strong>自动化任务</strong>：运行系统命令，如调用 <code>ffmpeg</code> 转换视频。</li>
+<li><strong>跨平台开发</strong>：通过 <code>os.path.join()</code> 确保路径在 Windows / Linux 都能正常运行。</li>
+<li><strong>进程控制</strong>：获取当前 PID，用于守护进程或调试。</li>
+<li><strong>读取环境变量</strong>：在部署时读取 API Key，而不是写死在代码中。</li>
+</ul>
+</div>
+<div id="举例-examples" class="section level3 hasAnchor" number="2.1.5">
+<h3><span class="header-section-number">2.1.5</span> 举例 (Examples)<a href="#%E4%B8%BE%E4%BE%8B-examples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="路径与文件操作" class="section level4 hasAnchor" number="2.1.5.1">
+<h4><span class="header-section-number">2.1.5.1</span> 路径与文件操作<a href="#%E8%B7%AF%E5%BE%84%E4%B8%8E%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="C2.html#cb1-1" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="C2.html#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="C2.html#cb1-3" tabindex="-1"></a><span class="co"># 拼接路径</span></span>
+<span id="cb1-4"><a href="C2.html#cb1-4" tabindex="-1"></a>path <span class="op">=</span> os.path.join(<span class="st">&quot;folder&quot;</span>, <span class="st">&quot;file.txt&quot;</span>)</span>
+<span id="cb1-5"><a href="C2.html#cb1-5" tabindex="-1"></a><span class="bu">print</span>(path)  <span class="co"># Linux: folder/file.txt, Windows: folder\file.txt</span></span>
+<span id="cb1-6"><a href="C2.html#cb1-6" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="C2.html#cb1-7" tabindex="-1"></a><span class="co"># 判断文件是否存在</span></span>
+<span id="cb1-8"><a href="C2.html#cb1-8" tabindex="-1"></a><span class="bu">print</span>(os.path.exists(path))</span>
+<span id="cb1-9"><a href="C2.html#cb1-9" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="C2.html#cb1-10" tabindex="-1"></a><span class="co"># 获取绝对路径</span></span>
+<span id="cb1-11"><a href="C2.html#cb1-11" tabindex="-1"></a><span class="bu">print</span>(os.path.abspath(<span class="st">&quot;example.py&quot;</span>))</span></code></pre></div>
+</div>
+<div id="目录操作" class="section level4 hasAnchor" number="2.1.5.2">
+<h4><span class="header-section-number">2.1.5.2</span> 目录操作<a href="#%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="C2.html#cb2-1" tabindex="-1"></a><span class="co"># 创建目录</span></span>
+<span id="cb2-2"><a href="C2.html#cb2-2" tabindex="-1"></a>os.makedirs(<span class="st">&quot;test_dir&quot;</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-3"><a href="C2.html#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="C2.html#cb2-4" tabindex="-1"></a><span class="co"># 列出目录内容</span></span>
+<span id="cb2-5"><a href="C2.html#cb2-5" tabindex="-1"></a><span class="bu">print</span>(os.listdir(<span class="st">&quot;.&quot;</span>))</span>
+<span id="cb2-6"><a href="C2.html#cb2-6" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="C2.html#cb2-7" tabindex="-1"></a><span class="co"># 删除目录</span></span>
+<span id="cb2-8"><a href="C2.html#cb2-8" tabindex="-1"></a>os.rmdir(<span class="st">&quot;test_dir&quot;</span>)</span></code></pre></div>
+</div>
+<div id="环境变量" class="section level4 hasAnchor" number="2.1.5.3">
+<h4><span class="header-section-number">2.1.5.3</span> 环境变量<a href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="C2.html#cb3-1" tabindex="-1"></a><span class="co"># 获取环境变量</span></span>
+<span id="cb3-2"><a href="C2.html#cb3-2" tabindex="-1"></a><span class="bu">print</span>(os.environ.get(<span class="st">&quot;PATH&quot;</span>))</span>
+<span id="cb3-3"><a href="C2.html#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="C2.html#cb3-4" tabindex="-1"></a><span class="co"># 设置新的环境变量</span></span>
+<span id="cb3-5"><a href="C2.html#cb3-5" tabindex="-1"></a>os.environ[<span class="st">&quot;MY_VAR&quot;</span>] <span class="op">=</span> <span class="st">&quot;hello&quot;</span></span>
+<span id="cb3-6"><a href="C2.html#cb3-6" tabindex="-1"></a><span class="bu">print</span>(os.environ[<span class="st">&quot;MY_VAR&quot;</span>])</span></code></pre></div>
+</div>
+<div id="运行系统命令" class="section level4 hasAnchor" number="2.1.5.4">
+<h4><span class="header-section-number">2.1.5.4</span> 运行系统命令<a href="#%E8%BF%90%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="C2.html#cb4-1" tabindex="-1"></a><span class="co"># 执行系统命令（跨平台）</span></span>
+<span id="cb4-2"><a href="C2.html#cb4-2" tabindex="-1"></a>os.system(<span class="st">&quot;echo Hello OS&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="辨析-misunderstanding" class="section level3 hasAnchor" number="2.1.6">
+<h3><span class="header-section-number">2.1.6</span> 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>误解 1</strong>：<code>os</code> 模块和 <code>shutil</code> 一样。</p>
+<ul>
+<li>区别：<code>os</code> 提供底层接口（创建 / 删除 / 改名），<code>shutil</code> 提供更高层的文件操作（复制 / 移动）。</li>
+</ul></li>
+<li><p><strong>误解 2</strong>：路径拼接用字符串 <code>'/'</code> 就行。</p>
+<ul>
+<li>问题：跨平台时可能出错（Windows 不能直接用 <code>/</code>）。</li>
+<li>正确：用 <code>os.path.join()</code>。</li>
+</ul></li>
+<li><p><strong>误解 3</strong>：<code>os.system()</code> 返回命令的输出。</p>
+<ul>
+<li>实际：它返回的是命令的 <strong>退出状态码</strong>。</li>
+<li>如果想要输出，应该用 <code>subprocess</code> 模块。</li>
+</ul></li>
+<li><p><strong>误解 4</strong>：<code>os.remove()</code> 删除文件后不可恢复。</p>
+<ul>
+<li>实际：只是让文件系统释放引用，能否恢复取决于底层文件系统。</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="python-标准库sys-模块" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Python 标准库：sys 模块<a href="#python-%E6%A0%87%E5%87%86%E5%BA%93sys-%E6%A8%A1%E5%9D%97" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-1" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>sys</code> 模块是 Python 程序与 <strong>解释器交互的接口</strong>，它能获取或控制解释器的运行环境。
+它不是操作系统层面的接口（像 <code>os</code>），而是 <strong>解释器本身的工具箱</strong>。</p>
+<p>一句话总结：<code>sys</code> 模块让你窥探和操控 Python 解释器的内部。</p>
+</div>
+<div id="组成结构-dimension-1" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>常用功能可以分为以下几个维度：</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>解释器信息</strong></p>
+<ul>
+<li><code>sys.version</code>：Python 版本。</li>
+<li><code>sys.platform</code>：当前平台。</li>
+<li><code>sys.executable</code>：解释器路径。</li>
+</ul></li>
+<li><p><strong>模块与路径管理</strong></p>
+<ul>
+<li><code>sys.modules</code>：已加载模块字典。</li>
+<li><code>sys.path</code>：模块搜索路径。</li>
+</ul></li>
+<li><p><strong>输入输出</strong></p>
+<ul>
+<li><code>sys.stdin</code> / <code>sys.stdout</code> / <code>sys.stderr</code>：标准输入输出流。</li>
+</ul></li>
+<li><p><strong>运行时控制</strong></p>
+<ul>
+<li><code>sys.exit()</code>：退出程序。</li>
+<li><code>sys.setrecursionlimit()</code>：设置递归深度上限。</li>
+<li><code>sys.getrecursionlimit()</code>：获取递归限制。</li>
+</ul></li>
+<li><p><strong>内存与对象信息</strong></p>
+<ul>
+<li><code>sys.getsizeof(obj)</code>：对象所占字节数。</li>
+<li><code>sys.getrefcount(obj)</code>：引用计数（调试 GC）。</li>
+</ul></li>
+<li><p><strong>命令行参数</strong></p>
+<ul>
+<li><code>sys.argv</code>：运行 Python 脚本时的参数列表。</li>
+</ul></li>
+</ol>
+</div>
+<div id="原理-how-it-works-1" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p><code>sys</code> 模块是 Python 内置的 <strong>C 模块</strong>，在解释器启动时加载。</p></li>
+<li><p>它直接与 <strong>解释器的运行时状态</strong>挂钩（版本、路径、内存）。</p></li>
+<li><p>例如：</p>
+<ul>
+<li><code>sys.path</code> 来源于环境变量 <code>PYTHONPATH</code> + 内置路径。</li>
+<li><code>sys.argv</code> 来源于命令行启动参数。</li>
+<li><code>sys.stdin/stdout</code> 是对系统输入输出流的封装。</li>
+</ul></li>
+</ul>
+<p>换句话说：<code>sys</code> 模块是 <strong>解释器的控制面板</strong>。</p>
+</div>
+<div id="应用-usage-1" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>获取运行环境信息</strong>：判断 Python 版本，写兼容性代码。</li>
+<li><strong>命令行参数解析</strong>：脚本执行时获取用户输入。</li>
+<li><strong>调试内存与递归</strong>：查看对象内存大小、调整递归深度。</li>
+<li><strong>重定向输入输出</strong>：改变 <code>sys.stdout</code>，将输出写入文件。</li>
+<li><strong>提前退出程序</strong>：用 <code>sys.exit()</code> 优雅地结束脚本。</li>
+</ul>
+</div>
+<div id="举例-examples-1" class="section level3 hasAnchor" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> 举例 (Examples)<a href="#%E4%B8%BE%E4%BE%8B-examples-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="获取解释器信息" class="section level4 hasAnchor" number="2.2.5.1">
+<h4><span class="header-section-number">2.2.5.1</span> 获取解释器信息<a href="#%E8%8E%B7%E5%8F%96%E8%A7%A3%E9%87%8A%E5%99%A8%E4%BF%A1%E6%81%AF" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="C2.html#cb5-1" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb5-2"><a href="C2.html#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="C2.html#cb5-3" tabindex="-1"></a><span class="bu">print</span>(sys.version)       <span class="co"># Python 版本</span></span>
+<span id="cb5-4"><a href="C2.html#cb5-4" tabindex="-1"></a><span class="bu">print</span>(sys.platform)      <span class="co"># 平台信息</span></span>
+<span id="cb5-5"><a href="C2.html#cb5-5" tabindex="-1"></a><span class="bu">print</span>(sys.executable)    <span class="co"># Python 解释器路径</span></span></code></pre></div>
+</div>
+<div id="命令行参数" class="section level4 hasAnchor" number="2.2.5.2">
+<h4><span class="header-section-number">2.2.5.2</span> 命令行参数<a href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="C2.html#cb6-1" tabindex="-1"></a><span class="co"># 假设脚本名为 demo.py，运行：</span></span>
+<span id="cb6-2"><a href="C2.html#cb6-2" tabindex="-1"></a><span class="co"># python demo.py hello world</span></span>
+<span id="cb6-3"><a href="C2.html#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="C2.html#cb6-4" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb6-5"><a href="C2.html#cb6-5" tabindex="-1"></a><span class="bu">print</span>(sys.argv)  </span>
+<span id="cb6-6"><a href="C2.html#cb6-6" tabindex="-1"></a><span class="co"># 输出: [&#39;demo.py&#39;, &#39;hello&#39;, &#39;world&#39;]</span></span></code></pre></div>
+</div>
+<div id="控制程序退出" class="section level4 hasAnchor" number="2.2.5.3">
+<h4><span class="header-section-number">2.2.5.3</span> 控制程序退出<a href="#%E6%8E%A7%E5%88%B6%E7%A8%8B%E5%BA%8F%E9%80%80%E5%87%BA" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="C2.html#cb7-1" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb7-2"><a href="C2.html#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="C2.html#cb7-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Start&quot;</span>)</span>
+<span id="cb7-4"><a href="C2.html#cb7-4" tabindex="-1"></a>sys.exit(<span class="dv">0</span>)  <span class="co"># 0 表示正常退出</span></span>
+<span id="cb7-5"><a href="C2.html#cb7-5" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;这行不会被执行&quot;</span>)</span></code></pre></div>
+</div>
+<div id="修改递归深度" class="section level4 hasAnchor" number="2.2.5.4">
+<h4><span class="header-section-number">2.2.5.4</span> 修改递归深度<a href="#%E4%BF%AE%E6%94%B9%E9%80%92%E5%BD%92%E6%B7%B1%E5%BA%A6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="C2.html#cb8-1" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb8-2"><a href="C2.html#cb8-2" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="C2.html#cb8-3" tabindex="-1"></a><span class="bu">print</span>(sys.getrecursionlimit())  <span class="co"># 默认 1000</span></span>
+<span id="cb8-4"><a href="C2.html#cb8-4" tabindex="-1"></a>sys.setrecursionlimit(<span class="dv">2000</span>)     <span class="co"># 修改递归上限</span></span></code></pre></div>
+</div>
+<div id="重定向输出" class="section level4 hasAnchor" number="2.2.5.5">
+<h4><span class="header-section-number">2.2.5.5</span> 重定向输出<a href="#%E9%87%8D%E5%AE%9A%E5%90%91%E8%BE%93%E5%87%BA" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="C2.html#cb9-1" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb9-2"><a href="C2.html#cb9-2" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="C2.html#cb9-3" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;output.txt&quot;</span>, <span class="st">&quot;w&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb9-4"><a href="C2.html#cb9-4" tabindex="-1"></a>    sys.stdout <span class="op">=</span> f</span>
+<span id="cb9-5"><a href="C2.html#cb9-5" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;这行将写入文件，而不是控制台&quot;</span>)</span>
+<span id="cb9-6"><a href="C2.html#cb9-6" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="C2.html#cb9-7" tabindex="-1"></a><span class="co"># 恢复 stdout</span></span>
+<span id="cb9-8"><a href="C2.html#cb9-8" tabindex="-1"></a>sys.stdout <span class="op">=</span> sys.__stdout__</span>
+<span id="cb9-9"><a href="C2.html#cb9-9" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;恢复输出到控制台&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="辨析-misunderstanding-1" class="section level3 hasAnchor" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>误解 1</strong>：<code>sys</code> 模块和 <code>os</code> 模块作用一样。</p>
+<ul>
+<li>区别：<code>os</code> 主要是操作系统接口；<code>sys</code> 主要是解释器接口。</li>
+</ul></li>
+<li><p><strong>误解 2</strong>：<code>sys.exit()</code> 会强制杀死进程。</p>
+<ul>
+<li>实际：它抛出 <code>SystemExit</code> 异常，外层代码可以捕获并阻止退出。</li>
+</ul></li>
+<li><p><strong>误解 3</strong>：<code>sys.getsizeof(obj)</code> 就能得到对象占用的全部内存。</p>
+<ul>
+<li>实际：它返回对象头部大小，不包括嵌套引用对象。</li>
+</ul></li>
+<li><p><strong>误解 4</strong>：<code>sys.argv[0]</code> 永远是脚本名。</p>
+<ul>
+<li>实际：在交互模式下可能是空字符串，在某些环境（如 Jupyter）表现不同。</li>
+</ul></li>
+</ol>
+<p>✅ 总结：
+<code>sys</code> 模块是 <strong>Python 解释器的控制接口</strong>，主要用于获取运行环境信息、管理模块路径、处理输入输出、控制程序运行。
+它和 <code>os</code> 模块定位不同：</p>
+<ul>
+<li><code>os</code> = 与操作系统交互</li>
+<li><code>sys</code> = 与解释器交互</li>
+</ul>
+</div>
+</div>
+<div id="python-标准库pathlib-模块" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Python 标准库：pathlib 模块<a href="#python-%E6%A0%87%E5%87%86%E5%BA%93pathlib-%E6%A8%A1%E5%9D%97" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-2" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>pathlib</code> 模块是 Python 3.4 引入的 <strong>面向对象路径处理库</strong>，用 <code>Path</code> 类替代传统的 <code>os.path</code> 函数式调用。
+它的核心价值是：让路径操作更直观、更可读，并且跨平台。</p>
+<p>一句话总结：<code>pathlib</code> 让“文件路径”成为一个可以操作的对象，而不是单纯的字符串。</p>
+</div>
+<div id="组成结构-dimension-2" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>pathlib</code> 的主要结构：</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>核心类</strong></p>
+<ul>
+<li><code>Path</code>：自动根据当前操作系统选择合适的路径类。</li>
+<li><code>PurePath</code>：纯路径类，只处理路径字符串，不涉及实际文件系统。</li>
+<li><code>PosixPath</code> / <code>WindowsPath</code>：具体平台实现。</li>
+</ul></li>
+<li><p><strong>路径属性与方法</strong></p>
+<ul>
+<li><strong>属性</strong>：<code>.name</code>、<code>.stem</code>、<code>.suffix</code>、<code>.parent</code>、<code>.parts</code></li>
+<li><strong>方法</strong>：<code>.exists()</code>、<code>.is_file()</code>、<code>.is_dir()</code>、<code>.iterdir()</code></li>
+</ul></li>
+<li><p><strong>文件操作</strong></p>
+<ul>
+<li><code>.read_text()</code> / <code>.write_text()</code></li>
+<li><code>.read_bytes()</code> / <code>.write_bytes()</code></li>
+<li><code>.open()</code></li>
+</ul></li>
+<li><p><strong>路径运算</strong></p>
+<ul>
+<li><code>/</code> 运算符重载，用于拼接路径。</li>
+</ul></li>
+<li><p><strong>文件系统操作</strong></p>
+<ul>
+<li><code>.mkdir()</code>、<code>.rmdir()</code>、<code>.unlink()</code>（删除文件）</li>
+</ul></li>
+</ol>
+</div>
+<div id="原理-how-it-works-2" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p><code>pathlib</code> 基于 <strong>面向对象封装</strong>，将路径抽象为 <code>Path</code> 对象。</p></li>
+<li><p>传统的 <code>os.path</code> 基本是字符串拼接，容易出错；<code>pathlib</code> 则是对底层 <code>os</code> / <code>os.path</code> 的 <strong>高层包装</strong>。</p></li>
+<li><p><code>Path</code> 实例能自动识别系统：</p>
+<ul>
+<li>在 Windows 上 → <code>WindowsPath</code></li>
+<li>在 Linux / macOS 上 → <code>PosixPath</code></li>
+</ul></li>
+<li><p>方法调用时，最终还是会委托到底层 <code>os</code> 模块执行实际操作。</p></li>
+</ul>
+</div>
+<div id="应用-usage-2" class="section level3 hasAnchor" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>路径拼接</strong>：跨平台处理目录和文件。</li>
+<li><strong>文件检查</strong>：判断文件或目录是否存在。</li>
+<li><strong>目录遍历</strong>：批量操作文件。</li>
+<li><strong>文件读写</strong>：一行代码完成文本/二进制文件读写。</li>
+<li><strong>脚本开发</strong>：比 <code>os.path</code> 更简洁、可维护性更高。</li>
+</ul>
+</div>
+<div id="举例-examples-2" class="section level3 hasAnchor" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> 举例 (Examples)<a href="#%E4%B8%BE%E4%BE%8B-examples-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="基础路径操作" class="section level4 hasAnchor" number="2.3.5.1">
+<h4><span class="header-section-number">2.3.5.1</span> 基础路径操作<a href="#%E5%9F%BA%E7%A1%80%E8%B7%AF%E5%BE%84%E6%93%8D%E4%BD%9C" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="C2.html#cb10-1" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb10-2"><a href="C2.html#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="C2.html#cb10-3" tabindex="-1"></a>p <span class="op">=</span> Path(<span class="st">&quot;folder&quot;</span>) <span class="op">/</span> <span class="st">&quot;subfolder&quot;</span> <span class="op">/</span> <span class="st">&quot;file.txt&quot;</span></span>
+<span id="cb10-4"><a href="C2.html#cb10-4" tabindex="-1"></a><span class="bu">print</span>(p)              <span class="co"># folder/subfolder/file.txt (Linux/macOS)</span></span>
+<span id="cb10-5"><a href="C2.html#cb10-5" tabindex="-1"></a>                      <span class="co"># folder\subfolder\file.txt (Windows)</span></span>
+<span id="cb10-6"><a href="C2.html#cb10-6" tabindex="-1"></a><span class="bu">print</span>(p.name)         <span class="co"># file.txt</span></span>
+<span id="cb10-7"><a href="C2.html#cb10-7" tabindex="-1"></a><span class="bu">print</span>(p.stem)         <span class="co"># file</span></span>
+<span id="cb10-8"><a href="C2.html#cb10-8" tabindex="-1"></a><span class="bu">print</span>(p.suffix)       <span class="co"># .txt</span></span>
+<span id="cb10-9"><a href="C2.html#cb10-9" tabindex="-1"></a><span class="bu">print</span>(p.parent)       <span class="co"># folder/subfolder</span></span></code></pre></div>
+</div>
+<div id="文件系统操作" class="section level4 hasAnchor" number="2.3.5.2">
+<h4><span class="header-section-number">2.3.5.2</span> 文件系统操作<a href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="C2.html#cb11-1" tabindex="-1"></a>p <span class="op">=</span> Path(<span class="st">&quot;example.txt&quot;</span>)</span>
+<span id="cb11-2"><a href="C2.html#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="C2.html#cb11-3" tabindex="-1"></a><span class="co"># 写文件</span></span>
+<span id="cb11-4"><a href="C2.html#cb11-4" tabindex="-1"></a>p.write_text(<span class="st">&quot;Hello pathlib!&quot;</span>)</span>
+<span id="cb11-5"><a href="C2.html#cb11-5" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="C2.html#cb11-6" tabindex="-1"></a><span class="co"># 读文件</span></span>
+<span id="cb11-7"><a href="C2.html#cb11-7" tabindex="-1"></a><span class="bu">print</span>(p.read_text())</span>
+<span id="cb11-8"><a href="C2.html#cb11-8" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="C2.html#cb11-9" tabindex="-1"></a><span class="co"># 判断文件存在</span></span>
+<span id="cb11-10"><a href="C2.html#cb11-10" tabindex="-1"></a><span class="bu">print</span>(p.exists())      <span class="co"># True</span></span>
+<span id="cb11-11"><a href="C2.html#cb11-11" tabindex="-1"></a><span class="bu">print</span>(p.is_file())     <span class="co"># True</span></span></code></pre></div>
+</div>
+<div id="遍历目录" class="section level4 hasAnchor" number="2.3.5.3">
+<h4><span class="header-section-number">2.3.5.3</span> 遍历目录<a href="#%E9%81%8D%E5%8E%86%E7%9B%AE%E5%BD%95" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="C2.html#cb12-1" tabindex="-1"></a>p <span class="op">=</span> Path(<span class="st">&quot;.&quot;</span>)</span>
+<span id="cb12-2"><a href="C2.html#cb12-2" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="C2.html#cb12-3" tabindex="-1"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> p.iterdir():</span>
+<span id="cb12-4"><a href="C2.html#cb12-4" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">file</span>)</span></code></pre></div>
+</div>
+<div id="创建和删除目录" class="section level4 hasAnchor" number="2.3.5.4">
+<h4><span class="header-section-number">2.3.5.4</span> 创建和删除目录<a href="#%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="C2.html#cb13-1" tabindex="-1"></a>p <span class="op">=</span> Path(<span class="st">&quot;test_dir&quot;</span>)</span>
+<span id="cb13-2"><a href="C2.html#cb13-2" tabindex="-1"></a>p.mkdir(exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-3"><a href="C2.html#cb13-3" tabindex="-1"></a><span class="bu">print</span>(p.exists())  <span class="co"># True</span></span>
+<span id="cb13-4"><a href="C2.html#cb13-4" tabindex="-1"></a>p.rmdir()</span></code></pre></div>
+</div>
+</div>
+<div id="辨析-misunderstanding-2" class="section level3 hasAnchor" number="2.3.6">
+<h3><span class="header-section-number">2.3.6</span> 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>误解 1</strong>：<code>pathlib</code> 完全替代了 <code>os</code>。</p>
+<ul>
+<li>实际：多数情况下能替代 <code>os.path</code>，但某些系统功能（如进程、环境变量）仍需 <code>os</code>。</li>
+</ul></li>
+<li><p><strong>误解 2</strong>：路径拼接只能用字符串 <code>+</code>。</p>
+<ul>
+<li>正确：在 <code>pathlib</code> 中推荐用 <code>/</code> 运算符，更简洁安全。</li>
+</ul></li>
+<li><p><strong>误解 3</strong>：<code>Path</code> 方法操作文件一定存在。</p>
+<ul>
+<li>实际：某些方法（如 <code>.read_text()</code>）在文件不存在时会抛出异常，需要额外判断。</li>
+</ul></li>
+<li><p><strong>误解 4</strong>：<code>Path</code> 是跨语言通用标准。</p>
+<ul>
+<li>实际：它只是 Python 内部封装，不是 POSIX 或 Windows 官方标准。</li>
+</ul></li>
+</ol>
+<p>✅ 总结：
+<code>pathlib</code> 是 <strong>现代 Python 推荐的路径与文件操作方式</strong>，比 <code>os.path</code> 更直观、更可维护。
+写新项目时，应优先使用 <code>pathlib</code>，保留 <code>os</code> 仅用于系统级功能。</p>
+</div>
+</div>
+<div id="python-标准库json-模块" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Python 标准库：json 模块<a href="#python-%E6%A0%87%E5%87%86%E5%BA%93json-%E6%A8%A1%E5%9D%97" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-3" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>json</code> 模块是 Python 内置的 <strong>JSON 编解码工具</strong>，用于在 <strong>Python 对象</strong> 和 <strong>JSON 格式字符串</strong> 之间相互转换。
+JSON（JavaScript Object Notation）是一种轻量级数据交换格式，常用于网络通信和配置文件。</p>
+<p>一句话总结：<code>json</code> 模块让 Python 能“说” JSON 的语言。</p>
+</div>
+<div id="组成结构-dimension-3" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>常用功能主要分为两大类：</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>序列化（Python → JSON）</strong></p>
+<ul>
+<li><code>json.dumps(obj)</code>：Python 对象转 JSON 字符串。</li>
+<li><code>json.dump(obj, file)</code>：写入文件。</li>
+</ul></li>
+<li><p><strong>反序列化（JSON → Python）</strong></p>
+<ul>
+<li><code>json.loads(str)</code>：JSON 字符串转 Python 对象。</li>
+<li><code>json.load(file)</code>：从文件读取并解析。</li>
+</ul></li>
+<li><p><strong>参数与定制化</strong></p>
+<ul>
+<li><code>indent</code>：控制缩进，生成更易读的 JSON。</li>
+<li><code>separators</code>：控制分隔符。</li>
+<li><code>ensure_ascii</code>：是否只输出 ASCII。</li>
+<li><code>default</code>：自定义对象转 JSON 的方式。</li>
+</ul></li>
+</ol>
+</div>
+<div id="原理-how-it-works-3" class="section level3 hasAnchor" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>JSON 是一种 <strong>文本格式</strong>，和 Python 内存对象不同。</p></li>
+<li><p><code>json.dumps()</code> 会遍历 Python 对象，根据类型映射转换成字符串：</p>
+<ul>
+<li><code>dict</code> → JSON 对象 <code>{}</code></li>
+<li><code>list/tuple</code> → JSON 数组 <code>[]</code></li>
+<li><code>str</code> → JSON 字符串</li>
+<li><code>int/float/bool/None</code> → JSON 数字/布尔/null</li>
+</ul></li>
+<li><p><code>json.loads()</code> 会解析字符串，重建 Python 对象。</p></li>
+<li><p>本质上：<code>json</code> 模块是 <strong>解析器 + 格式化器</strong>，底层由 C 或 Python 实现。</p></li>
+</ul>
+</div>
+<div id="应用-usage-3" class="section level3 hasAnchor" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>数据交换</strong>：API 接口返回/提交 JSON 数据。</li>
+<li><strong>配置文件</strong>：保存程序配置，用 JSON 代替 INI/自定义格式。</li>
+<li><strong>日志存储</strong>：保存结构化日志，方便跨语言读取。</li>
+<li><strong>对象持久化</strong>：比 pickle 更通用（语言无关）。</li>
+</ul>
+</div>
+<div id="举例-examples-3" class="section level3 hasAnchor" number="2.4.5">
+<h3><span class="header-section-number">2.4.5</span> 举例 (Examples)<a href="#%E4%B8%BE%E4%BE%8B-examples-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="python-对象-json" class="section level4 hasAnchor" number="2.4.5.1">
+<h4><span class="header-section-number">2.4.5.1</span> Python 对象 → JSON<a href="#python-%E5%AF%B9%E8%B1%A1-json" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="C2.html#cb14-1" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb14-2"><a href="C2.html#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="C2.html#cb14-3" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Alice&quot;</span>, <span class="st">&quot;age&quot;</span>: <span class="dv">25</span>, <span class="st">&quot;is_student&quot;</span>: <span class="va">False</span>}</span>
+<span id="cb14-4"><a href="C2.html#cb14-4" tabindex="-1"></a>json_str <span class="op">=</span> json.dumps(data)</span>
+<span id="cb14-5"><a href="C2.html#cb14-5" tabindex="-1"></a><span class="bu">print</span>(json_str)  <span class="co"># {&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25, &quot;is_student&quot;: false}</span></span></code></pre></div>
+</div>
+<div id="json-python-对象" class="section level4 hasAnchor" number="2.4.5.2">
+<h4><span class="header-section-number">2.4.5.2</span> JSON → Python 对象<a href="#json-python-%E5%AF%B9%E8%B1%A1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="C2.html#cb15-1" tabindex="-1"></a>json_str <span class="op">=</span> <span class="st">&#39;{&quot;name&quot;: &quot;Bob&quot;, &quot;age&quot;: 30, &quot;is_student&quot;: true}&#39;</span></span>
+<span id="cb15-2"><a href="C2.html#cb15-2" tabindex="-1"></a>data <span class="op">=</span> json.loads(json_str)</span>
+<span id="cb15-3"><a href="C2.html#cb15-3" tabindex="-1"></a><span class="bu">print</span>(data)       <span class="co"># {&#39;name&#39;: &#39;Bob&#39;, &#39;age&#39;: 30, &#39;is_student&#39;: True}</span></span>
+<span id="cb15-4"><a href="C2.html#cb15-4" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">&quot;name&quot;</span>])</span></code></pre></div>
+</div>
+<div id="文件操作" class="section level4 hasAnchor" number="2.4.5.3">
+<h4><span class="header-section-number">2.4.5.3</span> 文件操作<a href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="C2.html#cb16-1" tabindex="-1"></a><span class="co"># 写入文件</span></span>
+<span id="cb16-2"><a href="C2.html#cb16-2" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;data.json&quot;</span>, <span class="st">&quot;w&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb16-3"><a href="C2.html#cb16-3" tabindex="-1"></a>    json.dump(data, f, indent<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb16-4"><a href="C2.html#cb16-4" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="C2.html#cb16-5" tabindex="-1"></a><span class="co"># 读取文件</span></span>
+<span id="cb16-6"><a href="C2.html#cb16-6" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;data.json&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb16-7"><a href="C2.html#cb16-7" tabindex="-1"></a>    loaded <span class="op">=</span> json.load(f)</span>
+<span id="cb16-8"><a href="C2.html#cb16-8" tabindex="-1"></a><span class="bu">print</span>(loaded)</span></code></pre></div>
+</div>
+<div id="自定义对象" class="section level4 hasAnchor" number="2.4.5.4">
+<h4><span class="header-section-number">2.4.5.4</span> 自定义对象<a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AF%B9%E8%B1%A1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="C2.html#cb17-1" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="cb17-2"><a href="C2.html#cb17-2" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age):</span>
+<span id="cb17-3"><a href="C2.html#cb17-3" tabindex="-1"></a>        <span class="va">self</span>.name, <span class="va">self</span>.age <span class="op">=</span> name, age</span>
+<span id="cb17-4"><a href="C2.html#cb17-4" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="C2.html#cb17-5" tabindex="-1"></a>p <span class="op">=</span> Person(<span class="st">&quot;Charlie&quot;</span>, <span class="dv">20</span>)</span>
+<span id="cb17-6"><a href="C2.html#cb17-6" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="C2.html#cb17-7" tabindex="-1"></a><span class="co"># 需要自定义转换函数</span></span>
+<span id="cb17-8"><a href="C2.html#cb17-8" tabindex="-1"></a>json_str <span class="op">=</span> json.dumps(p, default<span class="op">=</span><span class="kw">lambda</span> obj: obj.__dict__)</span>
+<span id="cb17-9"><a href="C2.html#cb17-9" tabindex="-1"></a><span class="bu">print</span>(json_str)  <span class="co"># {&quot;name&quot;: &quot;Charlie&quot;, &quot;age&quot;: 20}</span></span></code></pre></div>
+</div>
+</div>
+<div id="辨析-misunderstanding-3" class="section level3 hasAnchor" number="2.4.6">
+<h3><span class="header-section-number">2.4.6</span> 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>误解 1</strong>：JSON 和 Python 字典是一样的。</p>
+<ul>
+<li>实际：语法相似，但 JSON 是字符串格式，字典是内存对象。</li>
+</ul></li>
+<li><p><strong>误解 2</strong>：所有 Python 对象都能直接转 JSON。</p>
+<ul>
+<li>实际：只有基础类型（dict, list, str, int, float, bool, None）支持，其他需自定义转换。</li>
+</ul></li>
+<li><p><strong>误解 3</strong>：<code>json.dumps()</code> 默认输出就是可读格式。</p>
+<ul>
+<li>实际：默认紧凑无缩进，可读性差，需要加 <code>indent=4</code>。</li>
+</ul></li>
+<li><p><strong>误解 4</strong>：JSON 可以存储 Python 特有类型（如集合、日期）。</p>
+<ul>
+<li>实际：不支持，需要手动转换（如 set → list，datetime → str）。</li>
+</ul></li>
+</ol>
+<p>✅ 总结：
+<code>json</code> 模块是 <strong>Python 与外部世界交互的通用语言桥梁</strong>。</p>
+<ul>
+<li>网络通信 → JSON 传输</li>
+<li>配置文件 → JSON 存储</li>
+<li>对象序列化 → 需自定义 <code>default</code></li>
+</ul>
+<p>写新项目时，推荐优先用 <code>json</code>，而不是 <code>pickle</code>（后者不跨语言、不安全）。</p>
+</div>
+</div>
+<div id="python-标准库csv-模块" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Python 标准库：csv 模块<a href="#python-%E6%A0%87%E5%87%86%E5%BA%93csv-%E6%A8%A1%E5%9D%97" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-4" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>csv</code> 模块是 Python 内置的 <strong>CSV 文件读写工具</strong>，提供统一的接口来处理 <strong>逗号分隔值（Comma-Separated Values）</strong> 格式的数据。
+它能把 CSV 文件中的文本行解析为 Python 对象，也能把 Python 数据结构写回 CSV 文件。</p>
+<p>一句话总结：<code>csv</code> 模块是 Python 与表格数据之间的桥梁。</p>
+</div>
+<div id="组成结构-dimension-4" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>常用功能主要有：</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Reader 读取器</strong></p>
+<ul>
+<li><code>csv.reader(file)</code>：逐行读取 CSV，返回列表。</li>
+<li><code>csv.DictReader(file)</code>：把每行解析为字典（列名 → 值）。</li>
+</ul></li>
+<li><p><strong>Writer 写入器</strong></p>
+<ul>
+<li><code>csv.writer(file)</code>：写入列表。</li>
+<li><code>csv.DictWriter(file)</code>：写入字典（需指定字段名）。</li>
+</ul></li>
+<li><p><strong>参数控制</strong></p>
+<ul>
+<li><code>delimiter</code>：分隔符（默认<code>,</code>，也可用 <code>\t</code> 等）。</li>
+<li><code>quotechar</code>：引用字符（默认 <code>"</code>）。</li>
+<li><code>lineterminator</code>：换行符（默认 <code>\r\n</code>）。</li>
+<li><code>newline=""</code>：推荐在打开文件时设置，避免多余空行。</li>
+</ul></li>
+<li><p><strong>辅助类</strong></p>
+<ul>
+<li><code>csv.Sniffer</code>：自动检测分隔符、是否有表头。</li>
+</ul></li>
+</ol>
+</div>
+<div id="原理-how-it-works-4" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>CSV 文件本质上是 <strong>纯文本文件</strong>，以分隔符分割字段。</li>
+<li><code>csv.reader</code> 会逐行读取，自动根据分隔符拆分成 Python 列表。</li>
+<li><code>csv.writer</code> 会将列表拼接为字符串，再写入文件。</li>
+<li><code>DictReader/DictWriter</code> 在此基础上加了列名映射，更便于处理表格数据。</li>
+<li>底层依然是文本 I/O，<code>csv</code> 模块主要做了 <strong>分隔符与转义字符处理</strong>。</li>
+</ul>
+</div>
+<div id="应用-usage-4" class="section level3 hasAnchor" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>数据导入导出</strong>：读取/写入表格数据文件。</li>
+<li><strong>与 Excel 协作</strong>：CSV 是最常见的跨平台表格格式。</li>
+<li><strong>日志/报表处理</strong>：存储结构化数据（比纯 txt 更直观）。</li>
+<li><strong>ETL（Extract-Transform-Load）</strong>：作为数据流转的一种中间格式。</li>
+</ul>
+</div>
+<div id="举例-examples-4" class="section level3 hasAnchor" number="2.5.5">
+<h3><span class="header-section-number">2.5.5</span> 举例 (Examples)<a href="#%E4%B8%BE%E4%BE%8B-examples-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="读取-csv" class="section level4 hasAnchor" number="2.5.5.1">
+<h4><span class="header-section-number">2.5.5.1</span> 读取 CSV<a href="#%E8%AF%BB%E5%8F%96-csv" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="C2.html#cb18-1" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb18-2"><a href="C2.html#cb18-2" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="C2.html#cb18-3" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;data.csv&quot;</span>, newline<span class="op">=</span><span class="st">&quot;&quot;</span>, encoding<span class="op">=</span><span class="st">&quot;utf-8&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb18-4"><a href="C2.html#cb18-4" tabindex="-1"></a>    reader <span class="op">=</span> csv.reader(f)</span>
+<span id="cb18-5"><a href="C2.html#cb18-5" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
+<span id="cb18-6"><a href="C2.html#cb18-6" tabindex="-1"></a>        <span class="bu">print</span>(row)</span>
+<span id="cb18-7"><a href="C2.html#cb18-7" tabindex="-1"></a><span class="co"># 输出: [&#39;name&#39;, &#39;age&#39;]  [&#39;Alice&#39;, &#39;25&#39;] ...</span></span></code></pre></div>
+</div>
+<div id="使用-dictreader" class="section level4 hasAnchor" number="2.5.5.2">
+<h4><span class="header-section-number">2.5.5.2</span> 使用 DictReader<a href="#%E4%BD%BF%E7%94%A8-dictreader" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="C2.html#cb19-1" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;data.csv&quot;</span>, newline<span class="op">=</span><span class="st">&quot;&quot;</span>, encoding<span class="op">=</span><span class="st">&quot;utf-8&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb19-2"><a href="C2.html#cb19-2" tabindex="-1"></a>    reader <span class="op">=</span> csv.DictReader(f)</span>
+<span id="cb19-3"><a href="C2.html#cb19-3" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
+<span id="cb19-4"><a href="C2.html#cb19-4" tabindex="-1"></a>        <span class="bu">print</span>(row[<span class="st">&quot;name&quot;</span>], row[<span class="st">&quot;age&quot;</span>])</span></code></pre></div>
+</div>
+<div id="写入-csv" class="section level4 hasAnchor" number="2.5.5.3">
+<h4><span class="header-section-number">2.5.5.3</span> 写入 CSV<a href="#%E5%86%99%E5%85%A5-csv" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="C2.html#cb20-1" tabindex="-1"></a>data <span class="op">=</span> [</span>
+<span id="cb20-2"><a href="C2.html#cb20-2" tabindex="-1"></a>    [<span class="st">&quot;name&quot;</span>, <span class="st">&quot;age&quot;</span>],</span>
+<span id="cb20-3"><a href="C2.html#cb20-3" tabindex="-1"></a>    [<span class="st">&quot;Alice&quot;</span>, <span class="dv">25</span>],</span>
+<span id="cb20-4"><a href="C2.html#cb20-4" tabindex="-1"></a>    [<span class="st">&quot;Bob&quot;</span>, <span class="dv">30</span>]</span>
+<span id="cb20-5"><a href="C2.html#cb20-5" tabindex="-1"></a>]</span>
+<span id="cb20-6"><a href="C2.html#cb20-6" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="C2.html#cb20-7" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;output.csv&quot;</span>, <span class="st">&quot;w&quot;</span>, newline<span class="op">=</span><span class="st">&quot;&quot;</span>, encoding<span class="op">=</span><span class="st">&quot;utf-8&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb20-8"><a href="C2.html#cb20-8" tabindex="-1"></a>    writer <span class="op">=</span> csv.writer(f)</span>
+<span id="cb20-9"><a href="C2.html#cb20-9" tabindex="-1"></a>    writer.writerows(data)</span></code></pre></div>
+</div>
+<div id="使用-dictwriter" class="section level4 hasAnchor" number="2.5.5.4">
+<h4><span class="header-section-number">2.5.5.4</span> 使用 DictWriter<a href="#%E4%BD%BF%E7%94%A8-dictwriter" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="C2.html#cb21-1" tabindex="-1"></a>data <span class="op">=</span> [</span>
+<span id="cb21-2"><a href="C2.html#cb21-2" tabindex="-1"></a>    {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Alice&quot;</span>, <span class="st">&quot;age&quot;</span>: <span class="dv">25</span>},</span>
+<span id="cb21-3"><a href="C2.html#cb21-3" tabindex="-1"></a>    {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;age&quot;</span>: <span class="dv">30</span>}</span>
+<span id="cb21-4"><a href="C2.html#cb21-4" tabindex="-1"></a>]</span>
+<span id="cb21-5"><a href="C2.html#cb21-5" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="C2.html#cb21-6" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;output.csv&quot;</span>, <span class="st">&quot;w&quot;</span>, newline<span class="op">=</span><span class="st">&quot;&quot;</span>, encoding<span class="op">=</span><span class="st">&quot;utf-8&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb21-7"><a href="C2.html#cb21-7" tabindex="-1"></a>    fieldnames <span class="op">=</span> [<span class="st">&quot;name&quot;</span>, <span class="st">&quot;age&quot;</span>]</span>
+<span id="cb21-8"><a href="C2.html#cb21-8" tabindex="-1"></a>    writer <span class="op">=</span> csv.DictWriter(f, fieldnames<span class="op">=</span>fieldnames)</span>
+<span id="cb21-9"><a href="C2.html#cb21-9" tabindex="-1"></a>    writer.writeheader()</span>
+<span id="cb21-10"><a href="C2.html#cb21-10" tabindex="-1"></a>    writer.writerows(data)</span></code></pre></div>
+</div>
+<div id="自动检测文件格式" class="section level4 hasAnchor" number="2.5.5.5">
+<h4><span class="header-section-number">2.5.5.5</span> 自动检测文件格式<a href="#%E8%87%AA%E5%8A%A8%E6%A3%80%E6%B5%8B%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="C2.html#cb22-1" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;data.csv&quot;</span>, <span class="st">&quot;r&quot;</span>, encoding<span class="op">=</span><span class="st">&quot;utf-8&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb22-2"><a href="C2.html#cb22-2" tabindex="-1"></a>    dialect <span class="op">=</span> csv.Sniffer().sniff(f.read(<span class="dv">1024</span>))</span>
+<span id="cb22-3"><a href="C2.html#cb22-3" tabindex="-1"></a>    <span class="bu">print</span>(dialect.delimiter)</span></code></pre></div>
+</div>
+</div>
+<div id="辨析-misunderstanding-4" class="section level3 hasAnchor" number="2.5.6">
+<h3><span class="header-section-number">2.5.6</span> 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>误解 1</strong>：CSV 一定用逗号分隔。</p>
+<ul>
+<li>实际：CSV 可以用 <code>\t</code>（制表符）、<code>;</code> 等，只要指定 <code>delimiter</code>。</li>
+</ul></li>
+<li><p><strong>误解 2</strong>：直接用 <code>open("file.csv")</code> 读写就能正确处理所有情况。</p>
+<ul>
+<li>实际：换行符、编码（尤其是 Excel 的 GBK/UTF-8-BOM）可能导致问题，建议显式指定 <code>newline=""</code> 和 <code>encoding</code>。</li>
+</ul></li>
+<li><p><strong>误解 3</strong>：CSV 能替代数据库存储。</p>
+<ul>
+<li>实际：CSV 不支持索引、事务，仅适合小规模数据或交换数据。</li>
+</ul></li>
+<li><p><strong>误解 4</strong>：用 <code>pandas</code> 就不需要 <code>csv</code> 模块。</p>
+<ul>
+<li>实际：<code>pandas.read_csv()</code> 内部就是基于 <code>csv</code> 模块实现的，只是更高级。</li>
+</ul></li>
+</ol>
+<p>✅ 总结：
+<code>csv</code> 模块是 Python 处理 <strong>表格数据的基础工具</strong>，适合轻量级任务：</p>
+<ul>
+<li>快速读写表格 → <code>reader</code> / <code>writer</code></li>
+<li>带列名读写 → <code>DictReader</code> / <code>DictWriter</code></li>
+<li>更复杂分析（统计/清洗） → 建议配合 <code>pandas</code> 使用。</li>
+</ul>
+</div>
+</div>
+<div id="python-标准库configparser-模块" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Python 标准库：configparser 模块<a href="#python-%E6%A0%87%E5%87%86%E5%BA%93configparser-%E6%A8%A1%E5%9D%97" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-5" class="section level3 hasAnchor" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>configparser</code> 模块是 Python 内置的 <strong>INI 配置文件解析器</strong>，用于读写类似 Windows <code>.ini</code> 格式的配置文件。
+它的目标是让配置数据以 <strong>文本文件</strong> 的形式存储，便于人类编辑，程序也能方便地加载使用。</p>
+<p>一句话总结：<code>configparser</code> 让 Python 程序能直接读写 INI 风格的配置文件。</p>
+</div>
+<div id="组成结构-dimension-5" class="section level3 hasAnchor" number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>配置文件的基本结构由 <strong>节 (section)</strong>、<strong>键 (key)</strong>、<strong>值 (value)</strong> 组成：</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>配置文件格式</strong></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb23-1"><a href="C2.html#cb23-1" tabindex="-1"></a><span class="kw">[section1]</span></span>
+<span id="cb23-2"><a href="C2.html#cb23-2" tabindex="-1"></a><span class="dt">key1 </span><span class="ot">=</span><span class="st"> value1</span></span>
+<span id="cb23-3"><a href="C2.html#cb23-3" tabindex="-1"></a><span class="dt">key2 </span><span class="ot">=</span><span class="st"> value2</span></span>
+<span id="cb23-4"><a href="C2.html#cb23-4" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="C2.html#cb23-5" tabindex="-1"></a><span class="kw">[section2]</span></span>
+<span id="cb23-6"><a href="C2.html#cb23-6" tabindex="-1"></a><span class="dt">keyA </span><span class="ot">=</span><span class="st"> valueA</span></span></code></pre></div></li>
+<li><p><strong>核心类</strong></p>
+<ul>
+<li><code>ConfigParser</code>：读写配置文件的主要类。</li>
+<li><code>RawConfigParser</code>：不做变量插值的解析器。</li>
+<li><code>SafeConfigParser</code>：早期版本的安全解析类（已合并进 <code>ConfigParser</code>）。</li>
+</ul></li>
+<li><p><strong>常用方法</strong></p>
+<ul>
+<li><code>read(filename)</code>：读取文件。</li>
+<li><code>sections()</code>：获取所有节。</li>
+<li><code>options(section)</code>：获取节下的所有键。</li>
+<li><code>get(section, option)</code>：获取值（字符串）。</li>
+<li><code>getint()</code> / <code>getfloat()</code> / <code>getboolean()</code>：获取并转换类型。</li>
+<li><code>set(section, option, value)</code>：设置值。</li>
+<li><code>write(file)</code>：写入文件。</li>
+</ul></li>
+<li><p><strong>高级功能</strong></p>
+<ul>
+<li>变量插值：支持 <code>${key}</code> 占位符引用。</li>
+<li>默认值：可通过 <code>DEFAULT</code> 节定义全局默认。</li>
+</ul></li>
+</ol>
+</div>
+<div id="原理-how-it-works-5" class="section level3 hasAnchor" number="2.6.3">
+<h3><span class="header-section-number">2.6.3</span> 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>INI 文件本质是 <strong>键值对文本文件</strong>，通过 <code>[section]</code> 来分组。</p></li>
+<li><p><code>configparser</code> 将配置文件解析成类似字典的结构：</p>
+<ul>
+<li>最外层是 <code>{section: {key: value}}</code> 的映射。</li>
+</ul></li>
+<li><p>访问值时，支持自动类型转换与变量替换。</p></li>
+<li><p>写回文件时，会自动生成符合 INI 格式的文本。</p></li>
+</ul>
+</div>
+<div id="应用-usage-5" class="section level3 hasAnchor" number="2.6.4">
+<h3><span class="header-section-number">2.6.4</span> 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>程序配置</strong>：保存应用运行参数（如数据库连接、日志级别）。</li>
+<li><strong>用户偏好</strong>：存储个性化设置（如 GUI 软件配置）。</li>
+<li><strong>跨环境管理</strong>：同一代码在不同环境读取不同的配置文件。</li>
+<li><strong>快速替代 JSON/YAML</strong>：在轻量场景下更直观（适合简单配置）。</li>
+</ul>
+</div>
+<div id="举例-examples-5" class="section level3 hasAnchor" number="2.6.5">
+<h3><span class="header-section-number">2.6.5</span> 举例 (Examples)<a href="#%E4%B8%BE%E4%BE%8B-examples-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="读取配置文件" class="section level4 hasAnchor" number="2.6.5.1">
+<h4><span class="header-section-number">2.6.5.1</span> 读取配置文件<a href="#%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>假设 <code>config.ini</code> 内容如下：</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb24-1"><a href="C2.html#cb24-1" tabindex="-1"></a><span class="kw">[database]</span></span>
+<span id="cb24-2"><a href="C2.html#cb24-2" tabindex="-1"></a><span class="dt">host </span><span class="ot">=</span><span class="st"> </span><span class="kw">localhost</span></span>
+<span id="cb24-3"><a href="C2.html#cb24-3" tabindex="-1"></a><span class="dt">port </span><span class="ot">=</span><span class="st"> </span><span class="dv">3306</span></span>
+<span id="cb24-4"><a href="C2.html#cb24-4" tabindex="-1"></a><span class="dt">user </span><span class="ot">=</span><span class="st"> root</span></span>
+<span id="cb24-5"><a href="C2.html#cb24-5" tabindex="-1"></a><span class="dt">password </span><span class="ot">=</span><span class="st"> </span><span class="dv">1234</span></span>
+<span id="cb24-6"><a href="C2.html#cb24-6" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="C2.html#cb24-7" tabindex="-1"></a><span class="kw">[logging]</span></span>
+<span id="cb24-8"><a href="C2.html#cb24-8" tabindex="-1"></a><span class="dt">level </span><span class="ot">=</span><span class="st"> DEBUG</span></span></code></pre></div>
+<p>读取配置：</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="C2.html#cb25-1" tabindex="-1"></a><span class="im">import</span> configparser</span>
+<span id="cb25-2"><a href="C2.html#cb25-2" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="C2.html#cb25-3" tabindex="-1"></a>config <span class="op">=</span> configparser.ConfigParser()</span>
+<span id="cb25-4"><a href="C2.html#cb25-4" tabindex="-1"></a>config.read(<span class="st">&quot;config.ini&quot;</span>)</span>
+<span id="cb25-5"><a href="C2.html#cb25-5" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="C2.html#cb25-6" tabindex="-1"></a><span class="bu">print</span>(config.sections())           <span class="co"># [&#39;database&#39;, &#39;logging&#39;]</span></span>
+<span id="cb25-7"><a href="C2.html#cb25-7" tabindex="-1"></a><span class="bu">print</span>(config[<span class="st">&quot;database&quot;</span>][<span class="st">&quot;host&quot;</span>])  <span class="co"># localhost</span></span>
+<span id="cb25-8"><a href="C2.html#cb25-8" tabindex="-1"></a><span class="bu">print</span>(config.getint(<span class="st">&quot;database&quot;</span>, <span class="st">&quot;port&quot;</span>))  <span class="co"># 3306</span></span></code></pre></div>
+</div>
+<div id="使用默认值" class="section level4 hasAnchor" number="2.6.5.2">
+<h4><span class="header-section-number">2.6.5.2</span> 使用默认值<a href="#%E4%BD%BF%E7%94%A8%E9%BB%98%E8%AE%A4%E5%80%BC" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb26"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb26-1"><a href="C2.html#cb26-1" tabindex="-1"></a><span class="kw">[DEFAULT]</span></span>
+<span id="cb26-2"><a href="C2.html#cb26-2" tabindex="-1"></a><span class="dt">debug </span><span class="ot">=</span><span class="st"> </span><span class="kw">true</span></span>
+<span id="cb26-3"><a href="C2.html#cb26-3" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="C2.html#cb26-4" tabindex="-1"></a><span class="kw">[app]</span></span>
+<span id="cb26-5"><a href="C2.html#cb26-5" tabindex="-1"></a><span class="dt">name </span><span class="ot">=</span><span class="st"> MyApp</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="C2.html#cb27-1" tabindex="-1"></a><span class="bu">print</span>(config[<span class="st">&quot;app&quot;</span>][<span class="st">&quot;debug&quot;</span>])  <span class="co"># true （继承 DEFAULT）</span></span></code></pre></div>
+</div>
+<div id="修改并写入文件" class="section level4 hasAnchor" number="2.6.5.3">
+<h4><span class="header-section-number">2.6.5.3</span> 修改并写入文件<a href="#%E4%BF%AE%E6%94%B9%E5%B9%B6%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="C2.html#cb28-1" tabindex="-1"></a>config.<span class="bu">set</span>(<span class="st">&quot;database&quot;</span>, <span class="st">&quot;port&quot;</span>, <span class="st">&quot;5432&quot;</span>)</span>
+<span id="cb28-2"><a href="C2.html#cb28-2" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="C2.html#cb28-3" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;config.ini&quot;</span>, <span class="st">&quot;w&quot;</span>) <span class="im">as</span> f:</span>
+<span id="cb28-4"><a href="C2.html#cb28-4" tabindex="-1"></a>    config.write(f)</span></code></pre></div>
+</div>
+<div id="变量插值" class="section level4 hasAnchor" number="2.6.5.4">
+<h4><span class="header-section-number">2.6.5.4</span> 变量插值<a href="#%E5%8F%98%E9%87%8F%E6%8F%92%E5%80%BC" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb29"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb29-1"><a href="C2.html#cb29-1" tabindex="-1"></a><span class="kw">[paths]</span></span>
+<span id="cb29-2"><a href="C2.html#cb29-2" tabindex="-1"></a><span class="dt">home </span><span class="ot">=</span><span class="st"> /usr/local</span></span>
+<span id="cb29-3"><a href="C2.html#cb29-3" tabindex="-1"></a><span class="dt">bin </span><span class="ot">=</span><span class="st"> ${home}/bin</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="C2.html#cb30-1" tabindex="-1"></a><span class="bu">print</span>(config[<span class="st">&quot;paths&quot;</span>][<span class="st">&quot;bin&quot;</span>])  <span class="co"># /usr/local/bin</span></span></code></pre></div>
+</div>
+</div>
+<div id="辨析-misunderstanding-5" class="section level3 hasAnchor" number="2.6.6">
+<h3><span class="header-section-number">2.6.6</span> 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>误解 1</strong>：INI 文件能存储复杂数据结构。</p>
+<ul>
+<li>实际：<code>configparser</code> 只支持字符串和简单类型，复杂结构需手动编码（如 JSON 存储在 value 里）。</li>
+</ul></li>
+<li><p><strong>误解 2</strong>：读取时返回原始类型。</p>
+<ul>
+<li>实际：默认返回字符串，需用 <code>getint</code>/<code>getboolean</code> 等方法转换。</li>
+</ul></li>
+<li><p><strong>误解 3</strong>：配置修改后会自动保存。</p>
+<ul>
+<li>实际：必须调用 <code>write()</code> 显式写入文件。</li>
+</ul></li>
+<li><p><strong>误解 4</strong>：<code>configparser</code> 只支持 <code>.ini</code> 扩展名。</p>
+<ul>
+<li>实际：它只认格式，与扩展名无关。</li>
+</ul></li>
+</ol>
+<p>✅ 总结：
+<code>configparser</code> 模块是 Python 的 <strong>配置文件解析工具</strong>，优势是：</p>
+<ul>
+<li>直观易读，适合轻量级配置；</li>
+<li>支持默认值和变量插值；</li>
+<li>类似字典 API，学习成本低。</li>
+</ul>
+<p>但它不适合存储复杂嵌套结构（推荐用 <code>json</code> 或 <code>yaml</code>）。</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="C3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

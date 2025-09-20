@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Python 标准库-并发与并行 | Python tutorial</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Python 标准库-并发与并行 | Python tutorial" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Python 标准库-并发与并行 | Python tutorial" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Lin Mi" />
+
+
+<meta name="date" content="2025-09-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="python-标准库-高级数据结构与工具.html"/>
+<link rel="next" href="sharing-your-book.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Python tutorial </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="05-blocks.html"><a href="#python-%E8%87%AA%E5%B8%A6%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1"><i class="fa fa-check"></i><b>1.1</b> 1️⃣ Python 自带的标准库（必须掌握）</a></li>
+<li class="chapter" data-level="1.2" data-path="05-blocks.html"><a href="#%E5%B8%B8%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%87%A0%E4%B9%8E%E5%BF%85%E5%AD%A6"><i class="fa fa-check"></i><b>1.2</b> 2️⃣ 常用第三方库（几乎必学）</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="05-blocks.html"><a href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%8E%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97"><i class="fa fa-check"></i><b>1.2.1</b> 📊 数据处理与科学计算</a></li>
+<li class="chapter" data-level="1.2.2" data-path="05-blocks.html"><a href="#%E7%BD%91%E7%BB%9C%E4%B8%8Eweb"><i class="fa fa-check"></i><b>1.2.2</b> 🌐 网络与Web</a></li>
+<li class="chapter" data-level="1.2.3" data-path="05-blocks.html"><a href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E4%B8%8E%E8%84%9A%E6%9C%AC"><i class="fa fa-check"></i><b>1.2.3</b> 🔄 自动化与脚本</a></li>
+<li class="chapter" data-level="1.2.4" data-path="05-blocks.html"><a href="#ai-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6"><i class="fa fa-check"></i><b>1.2.4</b> 🤖 AI / 数据科学</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="05-blocks.html"><a href="#%E5%B7%A5%E5%85%B7%E7%B1%BB%E9%A1%B9%E7%9B%AE%E5%BF%85%E5%A4%87"><i class="fa fa-check"></i><b>1.3</b> 3️⃣ 工具类（项目必备）</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93---%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8"><i class="fa fa-check"></i><b>2</b> Python 标准库 - 操作系统/数据存储</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93os-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.1</b> 1 Python 标准库：os 模块</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what"><i class="fa fa-check"></i><b>2.1.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="2.1.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension"><i class="fa fa-check"></i><b>2.1.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works"><i class="fa fa-check"></i><b>2.1.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.1.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage"><i class="fa fa-check"></i><b>2.1.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.1.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples"><i class="fa fa-check"></i><b>2.1.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.1.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding"><i class="fa fa-check"></i><b>2.1.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93sys-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.2</b> 2 Python 标准库：sys 模块</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-1"><i class="fa fa-check"></i><b>2.2.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="2.2.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-1"><i class="fa fa-check"></i><b>2.2.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-1"><i class="fa fa-check"></i><b>2.2.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.2.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-1"><i class="fa fa-check"></i><b>2.2.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.2.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-1"><i class="fa fa-check"></i><b>2.2.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.2.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-1"><i class="fa fa-check"></i><b>2.2.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93pathlib-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.3</b> 3 Python 标准库：pathlib 模块</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-2"><i class="fa fa-check"></i><b>2.3.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="2.3.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-2"><i class="fa fa-check"></i><b>2.3.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.3.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-2"><i class="fa fa-check"></i><b>2.3.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.3.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-2"><i class="fa fa-check"></i><b>2.3.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.3.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-2"><i class="fa fa-check"></i><b>2.3.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.3.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-2"><i class="fa fa-check"></i><b>2.3.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93pathlib-%E6%A8%A1%E5%9D%97-1"><i class="fa fa-check"></i><b>2.4</b> 4 Python 标准库：pathlib 模块</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-3"><i class="fa fa-check"></i><b>2.4.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="2.4.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-3"><i class="fa fa-check"></i><b>2.4.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.4.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-3"><i class="fa fa-check"></i><b>2.4.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.4.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-3"><i class="fa fa-check"></i><b>2.4.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.4.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-3"><i class="fa fa-check"></i><b>2.4.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.4.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-3"><i class="fa fa-check"></i><b>2.4.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93json-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.5</b> 5 Python 标准库：json 模块</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-4"><i class="fa fa-check"></i><b>2.5.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="2.5.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-4"><i class="fa fa-check"></i><b>2.5.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.5.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-4"><i class="fa fa-check"></i><b>2.5.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.5.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-4"><i class="fa fa-check"></i><b>2.5.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.5.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-4"><i class="fa fa-check"></i><b>2.5.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.5.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-4"><i class="fa fa-check"></i><b>2.5.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93csv-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.6</b> 6 Python 标准库：csv 模块</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-5"><i class="fa fa-check"></i><b>2.6.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="2.6.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-5"><i class="fa fa-check"></i><b>2.6.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.6.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-5"><i class="fa fa-check"></i><b>2.6.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.6.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-5"><i class="fa fa-check"></i><b>2.6.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.6.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-5"><i class="fa fa-check"></i><b>2.6.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.6.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-5"><i class="fa fa-check"></i><b>2.6.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93configparser-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.7</b> 7 Python 标准库：configparser 模块</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-6"><i class="fa fa-check"></i><b>2.7.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="2.7.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-6"><i class="fa fa-check"></i><b>2.7.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.7.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-6"><i class="fa fa-check"></i><b>2.7.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.7.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-6"><i class="fa fa-check"></i><b>2.7.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.7.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-6"><i class="fa fa-check"></i><b>2.7.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.7.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-6"><i class="fa fa-check"></i><b>2.7.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E6%AD%A3%E5%88%99"><i class="fa fa-check"></i><b>3</b> Python 标准库-时间与日期处理/日志系统/正则</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93datetime-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.1</b> 1 Python 标准库：datetime 模块</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-7"><i class="fa fa-check"></i><b>3.1.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="3.1.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-7"><i class="fa fa-check"></i><b>3.1.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-7"><i class="fa fa-check"></i><b>3.1.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.1.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-7"><i class="fa fa-check"></i><b>3.1.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.1.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-7"><i class="fa fa-check"></i><b>3.1.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.1.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-7"><i class="fa fa-check"></i><b>3.1.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93time-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.2</b> 2 Python 标准库：time 模块</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-8"><i class="fa fa-check"></i><b>3.2.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-8"><i class="fa fa-check"></i><b>3.2.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-8"><i class="fa fa-check"></i><b>3.2.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.2.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-8"><i class="fa fa-check"></i><b>3.2.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.2.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-8"><i class="fa fa-check"></i><b>3.2.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.2.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-8"><i class="fa fa-check"></i><b>3.2.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93calendar-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.3</b> 3 Python 标准库：calendar 模块</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-9"><i class="fa fa-check"></i><b>3.3.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-9"><i class="fa fa-check"></i><b>3.3.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.3.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-9"><i class="fa fa-check"></i><b>3.3.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.3.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-9"><i class="fa fa-check"></i><b>3.3.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.3.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-9"><i class="fa fa-check"></i><b>3.3.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.3.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-9"><i class="fa fa-check"></i><b>3.3.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93logging-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.4</b> 4 Python 标准库：logging 模块</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-10"><i class="fa fa-check"></i><b>3.4.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-10"><i class="fa fa-check"></i><b>3.4.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.4.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-10"><i class="fa fa-check"></i><b>3.4.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.4.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-10"><i class="fa fa-check"></i><b>3.4.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.4.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-10"><i class="fa fa-check"></i><b>3.4.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.4.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-10"><i class="fa fa-check"></i><b>3.4.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93re-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.5</b> 5 Python 标准库：re 模块</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-11"><i class="fa fa-check"></i><b>3.5.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="3.5.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-11"><i class="fa fa-check"></i><b>3.5.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.5.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-11"><i class="fa fa-check"></i><b>3.5.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.5.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-11"><i class="fa fa-check"></i><b>3.5.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.5.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-11"><i class="fa fa-check"></i><b>3.5.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.5.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-11"><i class="fa fa-check"></i><b>3.5.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90%E6%89%A7%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><i class="fa fa-check"></i><b>4</b> Python 标准库-命令行参数解析/执行系统命令</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93argparse-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>4.1</b> 1 Python 标准库：argparse 模块</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-12"><i class="fa fa-check"></i><b>4.1.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="4.1.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-12"><i class="fa fa-check"></i><b>4.1.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="4.1.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-12"><i class="fa fa-check"></i><b>4.1.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="4.1.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-12"><i class="fa fa-check"></i><b>4.1.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="4.1.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-12"><i class="fa fa-check"></i><b>4.1.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="4.1.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-12"><i class="fa fa-check"></i><b>4.1.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93subprocess-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>4.2</b> 2 Python 标准库：subprocess 模块</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-13"><i class="fa fa-check"></i><b>4.2.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-13"><i class="fa fa-check"></i><b>4.2.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-13"><i class="fa fa-check"></i><b>4.2.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="4.2.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-13"><i class="fa fa-check"></i><b>4.2.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="4.2.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-13"><i class="fa fa-check"></i><b>4.2.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="4.2.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-13"><i class="fa fa-check"></i><b>4.2.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93-%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E5%B7%A5%E5%85%B7"><i class="fa fa-check"></i><b>5</b> Python 标准库-高级数据结构与工具</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93functools-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>5.1</b> 1 Python 标准库：functools 模块</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-14"><i class="fa fa-check"></i><b>5.1.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="5.1.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-14"><i class="fa fa-check"></i><b>5.1.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="5.1.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-14"><i class="fa fa-check"></i><b>5.1.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="5.1.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-14"><i class="fa fa-check"></i><b>5.1.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="5.1.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-14"><i class="fa fa-check"></i><b>5.1.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="5.1.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-14"><i class="fa fa-check"></i><b>5.1.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93itertools-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>5.2</b> 2 Python 标准库：itertools 模块</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-15"><i class="fa fa-check"></i><b>5.2.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="5.2.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-15"><i class="fa fa-check"></i><b>5.2.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="5.2.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-15"><i class="fa fa-check"></i><b>5.2.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="5.2.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-15"><i class="fa fa-check"></i><b>5.2.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="5.2.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-15"><i class="fa fa-check"></i><b>5.2.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="5.2.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-15"><i class="fa fa-check"></i><b>5.2.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93collections-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>5.3</b> 3 Python 标准库：collections 模块</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-16"><i class="fa fa-check"></i><b>5.3.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-16"><i class="fa fa-check"></i><b>5.3.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-16"><i class="fa fa-check"></i><b>5.3.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="5.3.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-16"><i class="fa fa-check"></i><b>5.3.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="5.3.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-16"><i class="fa fa-check"></i><b>5.3.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="5.3.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-16"><i class="fa fa-check"></i><b>5.3.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93-%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C"><i class="fa fa-check"></i><b>6</b> Python 标准库-并发与并行</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93threading-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.1</b> 1 Python 标准库：threading 模块</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-17"><i class="fa fa-check"></i><b>6.1.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="6.1.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-17"><i class="fa fa-check"></i><b>6.1.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-17"><i class="fa fa-check"></i><b>6.1.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.1.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-17"><i class="fa fa-check"></i><b>6.1.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.1.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-17"><i class="fa fa-check"></i><b>6.1.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.1.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-17"><i class="fa fa-check"></i><b>6.1.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93multiprocessing-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.2</b> 2 Python 标准库：multiprocessing 模块</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-18"><i class="fa fa-check"></i><b>6.2.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="6.2.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-18"><i class="fa fa-check"></i><b>6.2.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-18"><i class="fa fa-check"></i><b>6.2.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.2.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-18"><i class="fa fa-check"></i><b>6.2.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.2.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-18"><i class="fa fa-check"></i><b>6.2.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.2.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-18"><i class="fa fa-check"></i><b>6.2.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="05-blocks.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93concurrent.futures-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.3</b> 3 Python 标准库：concurrent.futures 模块</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="05-blocks.html"><a href="#%E6%A0%B8%E5%BF%83-what-19"><i class="fa fa-check"></i><b>6.3.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="6.3.2" data-path="05-blocks.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-19"><i class="fa fa-check"></i><b>6.3.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.3.3" data-path="05-blocks.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-19"><i class="fa fa-check"></i><b>6.3.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.3.4" data-path="05-blocks.html"><a href="#%E5%BA%94%E7%94%A8-usage-19"><i class="fa fa-check"></i><b>6.3.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.3.5" data-path="05-blocks.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-19"><i class="fa fa-check"></i><b>6.3.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.3.6" data-path="05-blocks.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-19"><i class="fa fa-check"></i><b>6.3.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>7</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>7.1</b> Publishing</a></li>
+<li class="chapter" data-level="7.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>7.2</b> 404 pages</a></li>
+<li class="chapter" data-level="7.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>7.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/liamamilin" target="blank">Lin Mi</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Python tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="python-标准库-并发与并行" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Python 标准库-并发与并行<a href="#python-%E6%A0%87%E5%87%86%E5%BA%93-%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="python-标准库threading-模块" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> 1 Python 标准库：threading 模块<a href="#python-%E6%A0%87%E5%87%86%E5%BA%93threading-%E6%A8%A1%E5%9D%97" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-17" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> 1️⃣ 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-17" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>threading</code> 模块是 Python 的 <strong>多线程编程接口</strong>，提供创建和管理线程的功能。
+它让你能在同一进程内运行多个任务（线程），共享内存空间。</p>
+<p>一句话总结：<code>threading</code> 模块让 Python 能并发执行多个任务（I/O 密集型最有效）。</p>
+<hr />
+</div>
+<div id="组成结构-dimension-17" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> 2️⃣ 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-17" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>主要组成部分：</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>线程类</strong></p>
+<ul>
+<li><code>Thread</code>：表示一个线程，可继承或传入目标函数。</li>
+</ul></li>
+<li><p><strong>同步原语</strong></p>
+<ul>
+<li><code>Lock</code>：互斥锁，防止多线程同时修改数据。</li>
+<li><code>RLock</code>：可重入锁，允许同一线程多次获取锁。</li>
+<li><code>Semaphore</code>：控制线程访问共享资源的数量。</li>
+<li><code>Event</code>：线程间通信的开关。</li>
+<li><code>Condition</code>：更复杂的条件变量，用于线程协作。</li>
+<li><code>Barrier</code>：等待一组线程都到达屏障点再继续。</li>
+</ul></li>
+<li><p><strong>工具方法</strong></p>
+<ul>
+<li><code>current_thread()</code>：获取当前线程对象。</li>
+<li><code>active_count()</code>：当前活动线程数。</li>
+<li><code>enumerate()</code>：列出所有线程。</li>
+<li><code>main_thread()</code>：获取主线程。</li>
+</ul></li>
+</ol>
+<hr />
+</div>
+<div id="原理-how-it-works-17" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> 3️⃣ 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-17" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p><strong>线程共享内存</strong>：所有线程在同一个进程内运行，变量是共享的。</p></li>
+<li><p><strong>GIL 限制</strong>：Python 的全局解释器锁（GIL）使得 <strong>同一时间只有一个线程执行 Python 字节码</strong>。</p>
+<ul>
+<li>因此 <code>threading</code> 适合 <strong>I/O 密集型任务</strong>（如网络请求、文件读写）。</li>
+<li>对于 <strong>CPU 密集型任务</strong>，推荐用 <code>multiprocessing</code>。</li>
+</ul></li>
+<li><p><strong>调度</strong>：由操作系统负责，Python 线程底层基于 OS 原生线程实现。</p></li>
+</ul>
+<hr />
+</div>
+<div id="应用-usage-17" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> 4️⃣ 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-17" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>I/O 并发</strong>：爬虫、网络请求、日志处理。</li>
+<li><strong>后台任务</strong>：守护线程运行监控任务。</li>
+<li><strong>线程同步</strong>：多个线程安全访问共享资源。</li>
+<li><strong>并行等待</strong>：同时启动多个任务，等待全部完成。</li>
+</ul>
+<hr />
+</div>
+<div id="举例-examples-17" class="section level3 hasAnchor" number="6.1.5">
+<h3><span class="header-section-number">6.1.5</span> 5️⃣ 举例 (Examples)<a href="#%E4%B8%BE%E4%BE%8B-examples-17" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="启动线程" class="section level4 hasAnchor" number="6.1.5.1">
+<h4><span class="header-section-number">6.1.5.1</span> 启动线程<a href="#%E5%90%AF%E5%8A%A8%E7%BA%BF%E7%A8%8B" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="python-标准库-并发与并行.html#cb1-1" tabindex="-1"></a><span class="im">import</span> threading</span>
+<span id="cb1-2"><a href="python-标准库-并发与并行.html#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="python-标准库-并发与并行.html#cb1-3" tabindex="-1"></a><span class="kw">def</span> worker(name):</span>
+<span id="cb1-4"><a href="python-标准库-并发与并行.html#cb1-4" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;线程 </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> 正在运行&quot;</span>)</span>
+<span id="cb1-5"><a href="python-标准库-并发与并行.html#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="python-标准库-并发与并行.html#cb1-6" tabindex="-1"></a>t <span class="op">=</span> threading.Thread(target<span class="op">=</span>worker, args<span class="op">=</span>(<span class="st">&quot;A&quot;</span>,))</span>
+<span id="cb1-7"><a href="python-标准库-并发与并行.html#cb1-7" tabindex="-1"></a>t.start()</span>
+<span id="cb1-8"><a href="python-标准库-并发与并行.html#cb1-8" tabindex="-1"></a>t.join()  <span class="co"># 等待线程完成</span></span></code></pre></div>
+</div>
+<div id="使用继承创建线程" class="section level4 hasAnchor" number="6.1.5.2">
+<h4><span class="header-section-number">6.1.5.2</span> 使用继承创建线程<a href="#%E4%BD%BF%E7%94%A8%E7%BB%A7%E6%89%BF%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="python-标准库-并发与并行.html#cb2-1" tabindex="-1"></a><span class="kw">class</span> MyThread(threading.Thread):</span>
+<span id="cb2-2"><a href="python-标准库-并发与并行.html#cb2-2" tabindex="-1"></a>    <span class="kw">def</span> run(<span class="va">self</span>):</span>
+<span id="cb2-3"><a href="python-标准库-并发与并行.html#cb2-3" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;线程 </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> 正在运行&quot;</span>)</span>
+<span id="cb2-4"><a href="python-标准库-并发与并行.html#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="python-标准库-并发与并行.html#cb2-5" tabindex="-1"></a>t <span class="op">=</span> MyThread()</span>
+<span id="cb2-6"><a href="python-标准库-并发与并行.html#cb2-6" tabindex="-1"></a>t.start()</span>
+<span id="cb2-7"><a href="python-标准库-并发与并行.html#cb2-7" tabindex="-1"></a>t.join()</span></code></pre></div>
+</div>
+<div id="锁的使用" class="section level4 hasAnchor" number="6.1.5.3">
+<h4><span class="header-section-number">6.1.5.3</span> 锁的使用<a href="#%E9%94%81%E7%9A%84%E4%BD%BF%E7%94%A8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="python-标准库-并发与并行.html#cb3-1" tabindex="-1"></a>lock <span class="op">=</span> threading.Lock()</span>
+<span id="cb3-2"><a href="python-标准库-并发与并行.html#cb3-2" tabindex="-1"></a>counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-3"><a href="python-标准库-并发与并行.html#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="python-标准库-并发与并行.html#cb3-4" tabindex="-1"></a><span class="kw">def</span> task():</span>
+<span id="cb3-5"><a href="python-标准库-并发与并行.html#cb3-5" tabindex="-1"></a>    <span class="kw">global</span> counter</span>
+<span id="cb3-6"><a href="python-标准库-并发与并行.html#cb3-6" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb3-7"><a href="python-标准库-并发与并行.html#cb3-7" tabindex="-1"></a>        <span class="cf">with</span> lock:   <span class="co"># 确保同一时刻只有一个线程修改 counter</span></span>
+<span id="cb3-8"><a href="python-标准库-并发与并行.html#cb3-8" tabindex="-1"></a>            counter <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-9"><a href="python-标准库-并发与并行.html#cb3-9" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="python-标准库-并发与并行.html#cb3-10" tabindex="-1"></a>threads <span class="op">=</span> [threading.Thread(target<span class="op">=</span>task) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span>
+<span id="cb3-11"><a href="python-标准库-并发与并行.html#cb3-11" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> threads: t.start()</span>
+<span id="cb3-12"><a href="python-标准库-并发与并行.html#cb3-12" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> threads: t.join()</span>
+<span id="cb3-13"><a href="python-标准库-并发与并行.html#cb3-13" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;最终结果:&quot;</span>, counter)</span></code></pre></div>
+</div>
+<div id="事件通信" class="section level4 hasAnchor" number="6.1.5.4">
+<h4><span class="header-section-number">6.1.5.4</span> 事件通信<a href="#%E4%BA%8B%E4%BB%B6%E9%80%9A%E4%BF%A1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="python-标准库-并发与并行.html#cb4-1" tabindex="-1"></a>event <span class="op">=</span> threading.Event()</span>
+<span id="cb4-2"><a href="python-标准库-并发与并行.html#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="python-标准库-并发与并行.html#cb4-3" tabindex="-1"></a><span class="kw">def</span> waiter():</span>
+<span id="cb4-4"><a href="python-标准库-并发与并行.html#cb4-4" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;等待事件触发...&quot;</span>)</span>
+<span id="cb4-5"><a href="python-标准库-并发与并行.html#cb4-5" tabindex="-1"></a>    event.wait()</span>
+<span id="cb4-6"><a href="python-标准库-并发与并行.html#cb4-6" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;事件已触发！&quot;</span>)</span>
+<span id="cb4-7"><a href="python-标准库-并发与并行.html#cb4-7" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="python-标准库-并发与并行.html#cb4-8" tabindex="-1"></a>threading.Thread(target<span class="op">=</span>waiter).start()</span>
+<span id="cb4-9"><a href="python-标准库-并发与并行.html#cb4-9" tabindex="-1"></a>event.<span class="bu">set</span>()  <span class="co"># 通知线程继续执行</span></span></code></pre></div>
+</div>
+<div id="多线程并发" class="section level4 hasAnchor" number="6.1.5.5">
+<h4><span class="header-section-number">6.1.5.5</span> 多线程并发<a href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="python-标准库-并发与并行.html#cb5-1" tabindex="-1"></a><span class="kw">def</span> worker(num):</span>
+<span id="cb5-2"><a href="python-标准库-并发与并行.html#cb5-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;任务 </span><span class="sc">{</span>num<span class="sc">}</span><span class="ss"> 开始&quot;</span>)</span>
+<span id="cb5-3"><a href="python-标准库-并发与并行.html#cb5-3" tabindex="-1"></a>    <span class="im">import</span> time<span class="op">;</span> time.sleep(<span class="dv">1</span>)</span>
+<span id="cb5-4"><a href="python-标准库-并发与并行.html#cb5-4" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;任务 </span><span class="sc">{</span>num<span class="sc">}</span><span class="ss"> 完成&quot;</span>)</span>
+<span id="cb5-5"><a href="python-标准库-并发与并行.html#cb5-5" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="python-标准库-并发与并行.html#cb5-6" tabindex="-1"></a>threads <span class="op">=</span> [threading.Thread(target<span class="op">=</span>worker, args<span class="op">=</span>(i,)) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]</span>
+<span id="cb5-7"><a href="python-标准库-并发与并行.html#cb5-7" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> threads: t.start()</span>
+<span id="cb5-8"><a href="python-标准库-并发与并行.html#cb5-8" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> threads: t.join()</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="辨析-misunderstanding-17" class="section level3 hasAnchor" number="6.1.6">
+<h3><span class="header-section-number">6.1.6</span> 6️⃣ 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-17" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>误解 1</strong>：<code>threading</code> 能让 Python 程序多核并行。</p>
+<ul>
+<li>实际：受 GIL 限制，无法真正并行执行 CPU 密集型代码。</li>
+</ul></li>
+<li><p><strong>误解 2</strong>：线程变量独立。</p>
+<ul>
+<li>实际：线程共享内存，需要加锁保护。</li>
+</ul></li>
+<li><p><strong>误解 3</strong>：守护线程（daemon）一定会执行完。</p>
+<ul>
+<li>实际：主线程结束时，daemon 线程会被直接终止。</li>
+</ul></li>
+<li><p><strong>误解 4</strong>：<code>threading</code> 比 <code>multiprocessing</code> 更快。</p>
+<ul>
+<li>实际：I/O 场景更快，CPU 场景反而不如 <code>multiprocessing</code>。</li>
+</ul></li>
+</ol>
+<hr />
+<p>✅ 总结：
+<code>threading</code> 模块适合 <strong>I/O 密集型并发</strong>：</p>
+<ul>
+<li><code>Thread</code> → 运行任务</li>
+<li><code>Lock/RLock</code> → 保证线程安全</li>
+<li><code>Event/Condition/Barrier</code> → 线程协作</li>
+</ul>
+<p>如果是 CPU 密集型任务，应该改用 <strong>multiprocessing</strong>。</p>
+</div>
+</div>
+<div id="python-标准库multiprocessing-模块" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> 2 Python 标准库：multiprocessing 模块<a href="#python-%E6%A0%87%E5%87%86%E5%BA%93multiprocessing-%E6%A8%A1%E5%9D%97" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-18" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> 1️⃣ 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-18" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>multiprocessing</code> 模块是 Python 的 <strong>多进程并行计算接口</strong>。
+它通过启动多个独立的进程，绕过 <strong>GIL (全局解释器锁)</strong>，真正实现 <strong>CPU 多核并行</strong>。</p>
+<p>一句话总结：<code>multiprocessing</code> 模块让 Python 能充分利用多核 CPU，适合 <strong>CPU 密集型任务</strong>。</p>
+<hr />
+</div>
+<div id="组成结构-dimension-18" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> 2️⃣ 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-18" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>主要组成部分：</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>进程管理</strong></p>
+<ul>
+<li><code>Process</code>：创建独立进程，类似 <code>threading.Thread</code>。</li>
+<li><code>Pool</code>：进程池，批量管理进程。</li>
+</ul></li>
+<li><p><strong>进程间通信 (IPC)</strong></p>
+<ul>
+<li><code>Queue</code>：多进程安全队列。</li>
+<li><code>Pipe</code>：双向通信管道。</li>
+</ul></li>
+<li><p><strong>共享数据</strong></p>
+<ul>
+<li><code>Value</code>、<code>Array</code>：跨进程共享变量。</li>
+<li><code>Manager</code>：支持 dict、list 等容器共享。</li>
+</ul></li>
+<li><p><strong>同步机制</strong></p>
+<ul>
+<li><code>Lock</code>、<code>Semaphore</code>、<code>Event</code>、<code>Condition</code>：与 <code>threading</code> 类似，但作用于进程。</li>
+</ul></li>
+<li><p><strong>工具方法</strong></p>
+<ul>
+<li><code>cpu_count()</code>：获取 CPU 核心数。</li>
+<li><code>current_process()</code>：获取当前进程对象。</li>
+<li><code>set_start_method()</code>：设置进程启动方式（<code>spawn</code>、<code>fork</code>、<code>forkserver</code>）。</li>
+</ul></li>
+</ol>
+<hr />
+</div>
+<div id="原理-how-it-works-18" class="section level3 hasAnchor" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> 3️⃣ 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-18" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p><code>multiprocessing</code> 基于操作系统的 <strong>多进程机制</strong>：</p>
+<ul>
+<li>每个子进程都有独立的 Python 解释器和内存空间。</li>
+<li>进程之间数据不共享，必须通过 IPC（队列、管道、共享内存）通信。</li>
+</ul></li>
+<li><p><strong>绕过 GIL</strong>：每个进程独立执行字节码，可以同时运行在不同 CPU 核心。</p></li>
+<li><p><strong>进程池 (Pool)</strong>：维护固定数量的进程，避免频繁创建和销毁，提高效率。</p></li>
+</ul>
+<hr />
+</div>
+<div id="应用-usage-18" class="section level3 hasAnchor" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> 4️⃣ 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-18" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>CPU 密集型任务</strong>：数值计算、加密解密、图像/视频处理。</li>
+<li><strong>批量任务并行</strong>：任务分片后交给进程池。</li>
+<li><strong>数据生产-消费模型</strong>：一个进程生产数据，另一个消费。</li>
+<li><strong>多进程服务</strong>：并发处理请求，类似 Web 服务器的 worker 模式。</li>
+</ul>
+<hr />
+</div>
+<div id="举例-examples-18" class="section level3 hasAnchor" number="6.2.5">
+<h3><span class="header-section-number">6.2.5</span> 5️⃣ 举例 (Examples)<a href="#%E4%B8%BE%E4%BE%8B-examples-18" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="基本进程" class="section level4 hasAnchor" number="6.2.5.1">
+<h4><span class="header-section-number">6.2.5.1</span> 基本进程<a href="#%E5%9F%BA%E6%9C%AC%E8%BF%9B%E7%A8%8B" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="python-标准库-并发与并行.html#cb6-1" tabindex="-1"></a><span class="im">from</span> multiprocessing <span class="im">import</span> Process</span>
+<span id="cb6-2"><a href="python-标准库-并发与并行.html#cb6-2" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="python-标准库-并发与并行.html#cb6-3" tabindex="-1"></a><span class="kw">def</span> worker(name):</span>
+<span id="cb6-4"><a href="python-标准库-并发与并行.html#cb6-4" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;进程 </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> 正在运行&quot;</span>)</span>
+<span id="cb6-5"><a href="python-标准库-并发与并行.html#cb6-5" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="python-标准库-并发与并行.html#cb6-6" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb6-7"><a href="python-标准库-并发与并行.html#cb6-7" tabindex="-1"></a>    p <span class="op">=</span> Process(target<span class="op">=</span>worker, args<span class="op">=</span>(<span class="st">&quot;A&quot;</span>,))</span>
+<span id="cb6-8"><a href="python-标准库-并发与并行.html#cb6-8" tabindex="-1"></a>    p.start()</span>
+<span id="cb6-9"><a href="python-标准库-并发与并行.html#cb6-9" tabindex="-1"></a>    p.join()</span></code></pre></div>
+</div>
+<div id="使用进程池" class="section level4 hasAnchor" number="6.2.5.2">
+<h4><span class="header-section-number">6.2.5.2</span> 使用进程池<a href="#%E4%BD%BF%E7%94%A8%E8%BF%9B%E7%A8%8B%E6%B1%A0" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="python-标准库-并发与并行.html#cb7-1" tabindex="-1"></a><span class="im">from</span> multiprocessing <span class="im">import</span> Pool</span>
+<span id="cb7-2"><a href="python-标准库-并发与并行.html#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="python-标准库-并发与并行.html#cb7-3" tabindex="-1"></a><span class="kw">def</span> square(x):</span>
+<span id="cb7-4"><a href="python-标准库-并发与并行.html#cb7-4" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> x</span>
+<span id="cb7-5"><a href="python-标准库-并发与并行.html#cb7-5" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="python-标准库-并发与并行.html#cb7-6" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb7-7"><a href="python-标准库-并发与并行.html#cb7-7" tabindex="-1"></a>    <span class="cf">with</span> Pool(<span class="dv">4</span>) <span class="im">as</span> pool:  <span class="co"># 创建 4 个进程</span></span>
+<span id="cb7-8"><a href="python-标准库-并发与并行.html#cb7-8" tabindex="-1"></a>        results <span class="op">=</span> pool.<span class="bu">map</span>(square, [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb7-9"><a href="python-标准库-并发与并行.html#cb7-9" tabindex="-1"></a>    <span class="bu">print</span>(results)  <span class="co"># [1, 4, 9, 16, 25]</span></span></code></pre></div>
+</div>
+<div id="进程间通信-queue" class="section level4 hasAnchor" number="6.2.5.3">
+<h4><span class="header-section-number">6.2.5.3</span> 进程间通信 (Queue)<a href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-queue" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="python-标准库-并发与并行.html#cb8-1" tabindex="-1"></a><span class="im">from</span> multiprocessing <span class="im">import</span> Process, Queue</span>
+<span id="cb8-2"><a href="python-标准库-并发与并行.html#cb8-2" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="python-标准库-并发与并行.html#cb8-3" tabindex="-1"></a><span class="kw">def</span> producer(q):</span>
+<span id="cb8-4"><a href="python-标准库-并发与并行.html#cb8-4" tabindex="-1"></a>    q.put(<span class="st">&quot;data&quot;</span>)</span>
+<span id="cb8-5"><a href="python-标准库-并发与并行.html#cb8-5" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="python-标准库-并发与并行.html#cb8-6" tabindex="-1"></a><span class="kw">def</span> consumer(q):</span>
+<span id="cb8-7"><a href="python-标准库-并发与并行.html#cb8-7" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;消费:&quot;</span>, q.get())</span>
+<span id="cb8-8"><a href="python-标准库-并发与并行.html#cb8-8" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="python-标准库-并发与并行.html#cb8-9" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb8-10"><a href="python-标准库-并发与并行.html#cb8-10" tabindex="-1"></a>    q <span class="op">=</span> Queue()</span>
+<span id="cb8-11"><a href="python-标准库-并发与并行.html#cb8-11" tabindex="-1"></a>    p1 <span class="op">=</span> Process(target<span class="op">=</span>producer, args<span class="op">=</span>(q,))</span>
+<span id="cb8-12"><a href="python-标准库-并发与并行.html#cb8-12" tabindex="-1"></a>    p2 <span class="op">=</span> Process(target<span class="op">=</span>consumer, args<span class="op">=</span>(q,))</span>
+<span id="cb8-13"><a href="python-标准库-并发与并行.html#cb8-13" tabindex="-1"></a>    p1.start()<span class="op">;</span> p2.start()</span>
+<span id="cb8-14"><a href="python-标准库-并发与并行.html#cb8-14" tabindex="-1"></a>    p1.join()<span class="op">;</span> p2.join()</span></code></pre></div>
+</div>
+<div id="共享数据-value-array" class="section level4 hasAnchor" number="6.2.5.4">
+<h4><span class="header-section-number">6.2.5.4</span> 共享数据 (Value, Array)<a href="#%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AE-value-array" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="python-标准库-并发与并行.html#cb9-1" tabindex="-1"></a><span class="im">from</span> multiprocessing <span class="im">import</span> Process, Value, Array</span>
+<span id="cb9-2"><a href="python-标准库-并发与并行.html#cb9-2" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="python-标准库-并发与并行.html#cb9-3" tabindex="-1"></a><span class="kw">def</span> f(n, a):</span>
+<span id="cb9-4"><a href="python-标准库-并发与并行.html#cb9-4" tabindex="-1"></a>    n.value <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb9-5"><a href="python-标准库-并发与并行.html#cb9-5" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(a)):</span>
+<span id="cb9-6"><a href="python-标准库-并发与并行.html#cb9-6" tabindex="-1"></a>        a[i] <span class="op">=</span> <span class="op">-</span>a[i]</span>
+<span id="cb9-7"><a href="python-标准库-并发与并行.html#cb9-7" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="python-标准库-并发与并行.html#cb9-8" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb9-9"><a href="python-标准库-并发与并行.html#cb9-9" tabindex="-1"></a>    num <span class="op">=</span> Value(<span class="st">&#39;i&#39;</span>, <span class="dv">0</span>)</span>
+<span id="cb9-10"><a href="python-标准库-并发与并行.html#cb9-10" tabindex="-1"></a>    arr <span class="op">=</span> Array(<span class="st">&#39;i&#39;</span>, <span class="bu">range</span>(<span class="dv">5</span>))</span>
+<span id="cb9-11"><a href="python-标准库-并发与并行.html#cb9-11" tabindex="-1"></a>    p <span class="op">=</span> Process(target<span class="op">=</span>f, args<span class="op">=</span>(num, arr))</span>
+<span id="cb9-12"><a href="python-标准库-并发与并行.html#cb9-12" tabindex="-1"></a>    p.start()<span class="op">;</span> p.join()</span>
+<span id="cb9-13"><a href="python-标准库-并发与并行.html#cb9-13" tabindex="-1"></a>    <span class="bu">print</span>(num.value)  <span class="co"># 1</span></span>
+<span id="cb9-14"><a href="python-标准库-并发与并行.html#cb9-14" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">list</span>(arr))  <span class="co"># [0, -1, -2, -3, -4]</span></span></code></pre></div>
+</div>
+<div id="进程同步-lock" class="section level4 hasAnchor" number="6.2.5.5">
+<h4><span class="header-section-number">6.2.5.5</span> 进程同步 (Lock)<a href="#%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-lock" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="python-标准库-并发与并行.html#cb10-1" tabindex="-1"></a><span class="im">from</span> multiprocessing <span class="im">import</span> Process, Lock</span>
+<span id="cb10-2"><a href="python-标准库-并发与并行.html#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="python-标准库-并发与并行.html#cb10-3" tabindex="-1"></a><span class="kw">def</span> task(lock, n):</span>
+<span id="cb10-4"><a href="python-标准库-并发与并行.html#cb10-4" tabindex="-1"></a>    <span class="cf">with</span> lock:</span>
+<span id="cb10-5"><a href="python-标准库-并发与并行.html#cb10-5" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;进程 </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> 获得锁&quot;</span>)</span>
+<span id="cb10-6"><a href="python-标准库-并发与并行.html#cb10-6" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="python-标准库-并发与并行.html#cb10-7" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb10-8"><a href="python-标准库-并发与并行.html#cb10-8" tabindex="-1"></a>    lock <span class="op">=</span> Lock()</span>
+<span id="cb10-9"><a href="python-标准库-并发与并行.html#cb10-9" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb10-10"><a href="python-标准库-并发与并行.html#cb10-10" tabindex="-1"></a>        Process(target<span class="op">=</span>task, args<span class="op">=</span>(lock, i)).start()</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="辨析-misunderstanding-18" class="section level3 hasAnchor" number="6.2.6">
+<h3><span class="header-section-number">6.2.6</span> 6️⃣ 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-18" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>误解 1</strong>：<code>multiprocessing</code> 和 <code>threading</code> 完全相同。</p>
+<ul>
+<li>实际：<code>threading</code> 共享内存但受 GIL 限制；<code>multiprocessing</code> 独立内存，可并行 CPU 任务。</li>
+</ul></li>
+<li><p><strong>误解 2</strong>：进程间数据共享像线程一样简单。</p>
+<ul>
+<li>实际：进程必须通过队列、管道、共享内存通信，复杂度更高。</li>
+</ul></li>
+<li><p><strong>误解 3</strong>：进程池比多线程一定更快。</p>
+<ul>
+<li>实际：创建进程开销更大，小任务反而可能更慢。</li>
+</ul></li>
+<li><p><strong>误解 4</strong>：跨平台代码不用考虑启动方式。</p>
+<ul>
+<li><p>实际：Windows 默认 <code>spawn</code>，Linux 默认 <code>fork</code>，某些代码需加保护：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="python-标准库-并发与并行.html#cb11-1" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb11-2"><a href="python-标准库-并发与并行.html#cb11-2" tabindex="-1"></a>    ...</span></code></pre></div></li>
+</ul></li>
+</ol>
+<hr />
+<p>✅ 总结：
+<code>multiprocessing</code> 模块是 Python <strong>实现真正并行计算</strong> 的利器：</p>
+<ul>
+<li><code>Process</code> → 单独进程</li>
+<li><code>Pool</code> → 批量任务</li>
+<li><code>Queue</code> / <code>Pipe</code> → 通信</li>
+<li><code>Value</code> / <code>Array</code> / <code>Manager</code> → 共享数据</li>
+</ul>
+<p>适合 <strong>CPU 密集型任务</strong>，而 I/O 密集型仍推荐用 <code>threading</code> 或 <code>asyncio</code>。</p>
+</div>
+</div>
+<div id="python-标准库concurrent.futures-模块" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> 3 Python 标准库：concurrent.futures 模块<a href="#python-%E6%A0%87%E5%87%86%E5%BA%93concurrent.futures-%E6%A8%A1%E5%9D%97" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-19" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> 1️⃣ 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-19" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>concurrent.futures</code> 模块是 Python 提供的 <strong>高级并发编程接口</strong>，封装了 <code>threading</code> 和 <code>multiprocessing</code> 的常见用法。
+它通过 <strong>Executor</strong>（执行器）对象来管理任务（函数调用）的提交与执行，提供统一的 API。</p>
+<p>一句话总结：<code>concurrent.futures</code> 是 Python 并发的“简化接口”，让多线程、多进程调用更现代、更好用。</p>
+<hr />
+</div>
+<div id="组成结构-dimension-19" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> 2️⃣ 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-19" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>主要组件：</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>执行器（Executor）</strong></p>
+<ul>
+<li><code>ThreadPoolExecutor</code>：基于线程池，适合 I/O 密集型任务。</li>
+<li><code>ProcessPoolExecutor</code>：基于进程池，适合 CPU 密集型任务。</li>
+</ul></li>
+<li><p><strong>Future 对象</strong></p>
+<ul>
+<li><p>表示一个“未来可能完成的任务”，用于获取结果或异常。</p></li>
+<li><p>方法：</p>
+<ul>
+<li><code>.result()</code>：获取任务结果（阻塞）。</li>
+<li><code>.done()</code>：任务是否完成。</li>
+<li><code>.exception()</code>：任务异常。</li>
+<li><code>.add_done_callback()</code>：任务完成时的回调。</li>
+</ul></li>
+</ul></li>
+<li><p><strong>工具方法</strong></p>
+<ul>
+<li><code>as_completed(fs)</code>：迭代已完成的 Future。</li>
+<li><code>wait(fs, timeout=None, return_when=ALL_COMPLETED)</code>：等待一组任务完成。</li>
+</ul></li>
+</ol>
+<hr />
+</div>
+<div id="原理-how-it-works-19" class="section level3 hasAnchor" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> 3️⃣ 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-19" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p><code>Executor</code> 管理线程池或进程池，负责任务调度。</p></li>
+<li><p>当调用 <code>submit(fn, *args)</code> 或 <code>map(fn, iterable)</code> 时：</p>
+<ul>
+<li>任务会放入任务队列，由池中的线程/进程异步执行。</li>
+<li>返回 <code>Future</code> 对象，表示该任务的执行状态。</li>
+</ul></li>
+<li><p><code>Future</code> 充当结果的占位符，可以在任务完成后获取结果或异常。</p></li>
+<li><p>与 <code>threading</code>/<code>multiprocessing</code> 相比：</p>
+<ul>
+<li>开发者无需手动管理线程/进程，只需提交任务。</li>
+</ul></li>
+</ul>
+<hr />
+</div>
+<div id="应用-usage-19" class="section level3 hasAnchor" number="6.3.4">
+<h3><span class="header-section-number">6.3.4</span> 4️⃣ 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-19" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>I/O 并发</strong>：用 <code>ThreadPoolExecutor</code> 同时执行多个网络请求或文件操作。</li>
+<li><strong>CPU 并行</strong>：用 <code>ProcessPoolExecutor</code> 并行计算大规模数值。</li>
+<li><strong>批量任务调度</strong>：提交一组函数，按完成顺序收集结果。</li>
+<li><strong>异步模式</strong>：结合 <code>Future</code> 回调机制，实现事件驱动逻辑。</li>
+</ul>
+<hr />
+</div>
+<div id="举例-examples-19" class="section level3 hasAnchor" number="6.3.5">
+<h3><span class="header-section-number">6.3.5</span> 5️⃣ 举例 (Examples)<a href="#%E4%B8%BE%E4%BE%8B-examples-19" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="基本用法线程池" class="section level4 hasAnchor" number="6.3.5.1">
+<h4><span class="header-section-number">6.3.5.1</span> 基本用法（线程池）<a href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95%E7%BA%BF%E7%A8%8B%E6%B1%A0" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="python-标准库-并发与并行.html#cb12-1" tabindex="-1"></a><span class="im">from</span> concurrent.futures <span class="im">import</span> ThreadPoolExecutor</span>
+<span id="cb12-2"><a href="python-标准库-并发与并行.html#cb12-2" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="python-标准库-并发与并行.html#cb12-3" tabindex="-1"></a><span class="kw">def</span> task(n):</span>
+<span id="cb12-4"><a href="python-标准库-并发与并行.html#cb12-4" tabindex="-1"></a>    <span class="cf">return</span> n <span class="op">*</span> n</span>
+<span id="cb12-5"><a href="python-标准库-并发与并行.html#cb12-5" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="python-标准库-并发与并行.html#cb12-6" tabindex="-1"></a><span class="cf">with</span> ThreadPoolExecutor(max_workers<span class="op">=</span><span class="dv">3</span>) <span class="im">as</span> executor:</span>
+<span id="cb12-7"><a href="python-标准库-并发与并行.html#cb12-7" tabindex="-1"></a>    futures <span class="op">=</span> [executor.submit(task, i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]</span>
+<span id="cb12-8"><a href="python-标准库-并发与并行.html#cb12-8" tabindex="-1"></a>    <span class="cf">for</span> f <span class="kw">in</span> futures:</span>
+<span id="cb12-9"><a href="python-标准库-并发与并行.html#cb12-9" tabindex="-1"></a>        <span class="bu">print</span>(f.result())</span></code></pre></div>
+</div>
+<div id="使用进程池-1" class="section level4 hasAnchor" number="6.3.5.2">
+<h4><span class="header-section-number">6.3.5.2</span> 使用进程池<a href="#%E4%BD%BF%E7%94%A8%E8%BF%9B%E7%A8%8B%E6%B1%A0-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="python-标准库-并发与并行.html#cb13-1" tabindex="-1"></a><span class="im">from</span> concurrent.futures <span class="im">import</span> ProcessPoolExecutor</span>
+<span id="cb13-2"><a href="python-标准库-并发与并行.html#cb13-2" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="python-标准库-并发与并行.html#cb13-3" tabindex="-1"></a><span class="kw">def</span> fib(n):</span>
+<span id="cb13-4"><a href="python-标准库-并发与并行.html#cb13-4" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">2</span>:</span>
+<span id="cb13-5"><a href="python-标准库-并发与并行.html#cb13-5" tabindex="-1"></a>        <span class="cf">return</span> n</span>
+<span id="cb13-6"><a href="python-标准库-并发与并行.html#cb13-6" tabindex="-1"></a>    <span class="cf">return</span> fib(n<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> fib(n<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb13-7"><a href="python-标准库-并发与并行.html#cb13-7" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="python-标准库-并发与并行.html#cb13-8" tabindex="-1"></a><span class="cf">with</span> ProcessPoolExecutor() <span class="im">as</span> executor:</span>
+<span id="cb13-9"><a href="python-标准库-并发与并行.html#cb13-9" tabindex="-1"></a>    results <span class="op">=</span> executor.<span class="bu">map</span>(fib, [<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>])</span>
+<span id="cb13-10"><a href="python-标准库-并发与并行.html#cb13-10" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">list</span>(results))</span></code></pre></div>
+</div>
+<div id="as_completed-收集结果" class="section level4 hasAnchor" number="6.3.5.3">
+<h4><span class="header-section-number">6.3.5.3</span> as_completed 收集结果<a href="#as_completed-%E6%94%B6%E9%9B%86%E7%BB%93%E6%9E%9C" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="python-标准库-并发与并行.html#cb14-1" tabindex="-1"></a><span class="im">from</span> concurrent.futures <span class="im">import</span> ThreadPoolExecutor, as_completed</span>
+<span id="cb14-2"><a href="python-标准库-并发与并行.html#cb14-2" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb14-3"><a href="python-标准库-并发与并行.html#cb14-3" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="python-标准库-并发与并行.html#cb14-4" tabindex="-1"></a><span class="kw">def</span> work(x):</span>
+<span id="cb14-5"><a href="python-标准库-并发与并行.html#cb14-5" tabindex="-1"></a>    time.sleep(x)</span>
+<span id="cb14-6"><a href="python-标准库-并发与并行.html#cb14-6" tabindex="-1"></a>    <span class="cf">return</span> x</span>
+<span id="cb14-7"><a href="python-标准库-并发与并行.html#cb14-7" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="python-标准库-并发与并行.html#cb14-8" tabindex="-1"></a><span class="cf">with</span> ThreadPoolExecutor(max_workers<span class="op">=</span><span class="dv">3</span>) <span class="im">as</span> executor:</span>
+<span id="cb14-9"><a href="python-标准库-并发与并行.html#cb14-9" tabindex="-1"></a>    futures <span class="op">=</span> [executor.submit(work, i) <span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>]]</span>
+<span id="cb14-10"><a href="python-标准库-并发与并行.html#cb14-10" tabindex="-1"></a>    <span class="cf">for</span> f <span class="kw">in</span> as_completed(futures):</span>
+<span id="cb14-11"><a href="python-标准库-并发与并行.html#cb14-11" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;完成任务:&quot;</span>, f.result())</span></code></pre></div>
+</div>
+<div id="wait-等待任务" class="section level4 hasAnchor" number="6.3.5.4">
+<h4><span class="header-section-number">6.3.5.4</span> wait 等待任务<a href="#wait-%E7%AD%89%E5%BE%85%E4%BB%BB%E5%8A%A1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="python-标准库-并发与并行.html#cb15-1" tabindex="-1"></a><span class="im">from</span> concurrent.futures <span class="im">import</span> ThreadPoolExecutor, wait</span>
+<span id="cb15-2"><a href="python-标准库-并发与并行.html#cb15-2" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="python-标准库-并发与并行.html#cb15-3" tabindex="-1"></a><span class="kw">def</span> task(n): <span class="cf">return</span> n</span>
+<span id="cb15-4"><a href="python-标准库-并发与并行.html#cb15-4" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="python-标准库-并发与并行.html#cb15-5" tabindex="-1"></a><span class="cf">with</span> ThreadPoolExecutor() <span class="im">as</span> executor:</span>
+<span id="cb15-6"><a href="python-标准库-并发与并行.html#cb15-6" tabindex="-1"></a>    futures <span class="op">=</span> [executor.submit(task, i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]</span>
+<span id="cb15-7"><a href="python-标准库-并发与并行.html#cb15-7" tabindex="-1"></a>    done, not_done <span class="op">=</span> wait(futures)</span>
+<span id="cb15-8"><a href="python-标准库-并发与并行.html#cb15-8" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;完成的:&quot;</span>, [f.result() <span class="cf">for</span> f <span class="kw">in</span> done])</span></code></pre></div>
+</div>
+<div id="future-回调" class="section level4 hasAnchor" number="6.3.5.5">
+<h4><span class="header-section-number">6.3.5.5</span> Future 回调<a href="#future-%E5%9B%9E%E8%B0%83" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="python-标准库-并发与并行.html#cb16-1" tabindex="-1"></a><span class="im">from</span> concurrent.futures <span class="im">import</span> ThreadPoolExecutor</span>
+<span id="cb16-2"><a href="python-标准库-并发与并行.html#cb16-2" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="python-标准库-并发与并行.html#cb16-3" tabindex="-1"></a><span class="kw">def</span> task(n):</span>
+<span id="cb16-4"><a href="python-标准库-并发与并行.html#cb16-4" tabindex="-1"></a>    <span class="cf">return</span> n <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb16-5"><a href="python-标准库-并发与并行.html#cb16-5" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="python-标准库-并发与并行.html#cb16-6" tabindex="-1"></a><span class="kw">def</span> when_done(future):</span>
+<span id="cb16-7"><a href="python-标准库-并发与并行.html#cb16-7" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;回调: 结果 =&quot;</span>, future.result())</span>
+<span id="cb16-8"><a href="python-标准库-并发与并行.html#cb16-8" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="python-标准库-并发与并行.html#cb16-9" tabindex="-1"></a><span class="cf">with</span> ThreadPoolExecutor() <span class="im">as</span> executor:</span>
+<span id="cb16-10"><a href="python-标准库-并发与并行.html#cb16-10" tabindex="-1"></a>    f <span class="op">=</span> executor.submit(task, <span class="dv">10</span>)</span>
+<span id="cb16-11"><a href="python-标准库-并发与并行.html#cb16-11" tabindex="-1"></a>    f.add_done_callback(when_done)</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="辨析-misunderstanding-19" class="section level3 hasAnchor" number="6.3.6">
+<h3><span class="header-section-number">6.3.6</span> 6️⃣ 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-19" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>误解 1</strong>：<code>ThreadPoolExecutor</code> 能突破 GIL 做 CPU 并行。</p>
+<ul>
+<li>实际：仍受 GIL 限制，适合 I/O 密集型，不适合 CPU 密集型。</li>
+</ul></li>
+<li><p><strong>误解 2</strong>：<code>executor.map</code> 和内置 <code>map</code> 一样。</p>
+<ul>
+<li>实际：<code>executor.map</code> 是并发执行，结果按提交顺序返回，而不是完成顺序。</li>
+</ul></li>
+<li><p><strong>误解 3</strong>：<code>Future.result()</code> 总是立即返回。</p>
+<ul>
+<li>实际：它会阻塞直到任务完成。</li>
+</ul></li>
+<li><p><strong>误解 4</strong>：线程池/进程池数量越多越快。</p>
+<ul>
+<li>实际：过多线程会增加上下文切换，过多进程会增加内存消耗。</li>
+</ul></li>
+</ol>
+<hr />
+<p>✅ 总结：
+<code>concurrent.futures</code> 是 Python <strong>并发编程的现代接口</strong>：</p>
+<ul>
+<li><code>ThreadPoolExecutor</code> → I/O 密集型</li>
+<li><code>ProcessPoolExecutor</code> → CPU 密集型</li>
+<li><code>Future</code> → 任务结果占位符</li>
+<li><code>as_completed</code> / <code>wait</code> → 批量任务管理</li>
+</ul>
+<p>相比 <code>threading</code> 和 <code>multiprocessing</code>，它更简洁、更安全，适合绝大多数并发需求。</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="python-标准库-高级数据结构与工具.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sharing-your-book.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-blocks.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

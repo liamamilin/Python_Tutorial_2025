@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 工具 | Python tutorial</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 工具 | Python tutorial" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 工具 | Python tutorial" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Lin Mi" />
+
+
+<meta name="date" content="2025-09-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="数据科学.html"/>
+<link rel="next" href="llm.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Python tutorial </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="10-工具.html"><a href="#python-%E5%BF%85%E5%AD%A6%E6%A8%A1%E5%9D%97%E6%B8%85%E5%8D%95"><i class="fa fa-check"></i><b>1</b> Python 必学模块清单</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="10-工具.html"><a href="#python-%E8%87%AA%E5%B8%A6%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1"><i class="fa fa-check"></i><b>1.1</b> Python 自带的标准库（必须掌握）</a></li>
+<li class="chapter" data-level="1.2" data-path="10-工具.html"><a href="#%E5%B8%B8%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%87%A0%E4%B9%8E%E5%BF%85%E5%AD%A6"><i class="fa fa-check"></i><b>1.2</b> 常用第三方库（几乎必学）</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="10-工具.html"><a href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%8E%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97"><i class="fa fa-check"></i><b>1.2.1</b> 数据处理与科学计算</a></li>
+<li class="chapter" data-level="1.2.2" data-path="10-工具.html"><a href="#%E7%BD%91%E7%BB%9C%E4%B8%8Eweb"><i class="fa fa-check"></i><b>1.2.2</b> 网络与Web</a></li>
+<li class="chapter" data-level="1.2.3" data-path="10-工具.html"><a href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E4%B8%8E%E8%84%9A%E6%9C%AC"><i class="fa fa-check"></i><b>1.2.3</b> 自动化与脚本</a></li>
+<li class="chapter" data-level="1.2.4" data-path="10-工具.html"><a href="#ai-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6"><i class="fa fa-check"></i><b>1.2.4</b> AI / 数据科学</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="10-工具.html"><a href="#%E5%B7%A5%E5%85%B7%E7%B1%BB%E9%A1%B9%E7%9B%AE%E5%BF%85%E5%A4%87"><i class="fa fa-check"></i><b>1.3</b> 工具类（项目必备）</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="10-工具.html"><a href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8"><i class="fa fa-check"></i><b>2</b> 操作系统/数据存储</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93os-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.1</b> Python 标准库：os 模块</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what"><i class="fa fa-check"></i><b>2.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.1.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension"><i class="fa fa-check"></i><b>2.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works"><i class="fa fa-check"></i><b>2.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.1.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage"><i class="fa fa-check"></i><b>2.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.1.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples"><i class="fa fa-check"></i><b>2.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.1.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding"><i class="fa fa-check"></i><b>2.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93sys-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.2</b> Python 标准库：sys 模块</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-1"><i class="fa fa-check"></i><b>2.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.2.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-1"><i class="fa fa-check"></i><b>2.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-1"><i class="fa fa-check"></i><b>2.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.2.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-1"><i class="fa fa-check"></i><b>2.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.2.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-1"><i class="fa fa-check"></i><b>2.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.2.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-1"><i class="fa fa-check"></i><b>2.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93pathlib-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.3</b> Python 标准库：pathlib 模块</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-2"><i class="fa fa-check"></i><b>2.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.3.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-2"><i class="fa fa-check"></i><b>2.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.3.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-2"><i class="fa fa-check"></i><b>2.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.3.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-2"><i class="fa fa-check"></i><b>2.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.3.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-2"><i class="fa fa-check"></i><b>2.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.3.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-2"><i class="fa fa-check"></i><b>2.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93json-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.4</b> Python 标准库：json 模块</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-3"><i class="fa fa-check"></i><b>2.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.4.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-3"><i class="fa fa-check"></i><b>2.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.4.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-3"><i class="fa fa-check"></i><b>2.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.4.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-3"><i class="fa fa-check"></i><b>2.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.4.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-3"><i class="fa fa-check"></i><b>2.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.4.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-3"><i class="fa fa-check"></i><b>2.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93csv-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.5</b> Python 标准库：csv 模块</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-4"><i class="fa fa-check"></i><b>2.5.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.5.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-4"><i class="fa fa-check"></i><b>2.5.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.5.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-4"><i class="fa fa-check"></i><b>2.5.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.5.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-4"><i class="fa fa-check"></i><b>2.5.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.5.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-4"><i class="fa fa-check"></i><b>2.5.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.5.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-4"><i class="fa fa-check"></i><b>2.5.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93configparser-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.6</b> Python 标准库：configparser 模块</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-5"><i class="fa fa-check"></i><b>2.6.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.6.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-5"><i class="fa fa-check"></i><b>2.6.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.6.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-5"><i class="fa fa-check"></i><b>2.6.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.6.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-5"><i class="fa fa-check"></i><b>2.6.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.6.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-5"><i class="fa fa-check"></i><b>2.6.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.6.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-5"><i class="fa fa-check"></i><b>2.6.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="10-工具.html"><a href="#%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E6%AD%A3%E5%88%99"><i class="fa fa-check"></i><b>3</b> 时间与日期处理/日志系统/正则</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93datetime-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.1</b> Python 标准库：datetime 模块</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-6"><i class="fa fa-check"></i><b>3.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.1.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-6"><i class="fa fa-check"></i><b>3.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-6"><i class="fa fa-check"></i><b>3.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.1.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-6"><i class="fa fa-check"></i><b>3.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.1.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-6"><i class="fa fa-check"></i><b>3.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.1.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-6"><i class="fa fa-check"></i><b>3.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93time-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.2</b> Python 标准库：time 模块</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-7"><i class="fa fa-check"></i><b>3.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-7"><i class="fa fa-check"></i><b>3.2.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-7"><i class="fa fa-check"></i><b>3.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.2.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-7"><i class="fa fa-check"></i><b>3.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.2.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-7"><i class="fa fa-check"></i><b>3.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.2.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-7"><i class="fa fa-check"></i><b>3.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93calendar-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.3</b> Python 标准库：calendar 模块</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-8"><i class="fa fa-check"></i><b>3.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-8"><i class="fa fa-check"></i><b>3.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.3.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-8"><i class="fa fa-check"></i><b>3.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.3.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-8"><i class="fa fa-check"></i><b>3.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.3.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-8"><i class="fa fa-check"></i><b>3.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.3.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-8"><i class="fa fa-check"></i><b>3.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93logging-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.4</b> Python 标准库：logging 模块</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-9"><i class="fa fa-check"></i><b>3.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-9"><i class="fa fa-check"></i><b>3.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.4.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-9"><i class="fa fa-check"></i><b>3.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.4.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-9"><i class="fa fa-check"></i><b>3.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.4.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-9"><i class="fa fa-check"></i><b>3.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.4.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-9"><i class="fa fa-check"></i><b>3.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93re-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.5</b> Python 标准库：re 模块</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-10"><i class="fa fa-check"></i><b>3.5.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.5.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-10"><i class="fa fa-check"></i><b>3.5.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.5.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-10"><i class="fa fa-check"></i><b>3.5.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.5.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-10"><i class="fa fa-check"></i><b>3.5.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.5.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-10"><i class="fa fa-check"></i><b>3.5.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.5.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-10"><i class="fa fa-check"></i><b>3.5.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="10-工具.html"><a href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90%E6%89%A7%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><i class="fa fa-check"></i><b>4</b> 命令行参数解析/执行系统命令</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93argparse-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>4.1</b> Python 标准库：argparse 模块</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-11"><i class="fa fa-check"></i><b>4.1.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="4.1.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-11"><i class="fa fa-check"></i><b>4.1.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="4.1.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-11"><i class="fa fa-check"></i><b>4.1.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="4.1.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-11"><i class="fa fa-check"></i><b>4.1.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="4.1.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-11"><i class="fa fa-check"></i><b>4.1.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="4.1.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-11"><i class="fa fa-check"></i><b>4.1.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93subprocess-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>4.2</b> Python 标准库：subprocess 模块</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-12"><i class="fa fa-check"></i><b>4.2.1</b> 1️⃣ 核心 (What)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-12"><i class="fa fa-check"></i><b>4.2.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-12"><i class="fa fa-check"></i><b>4.2.3</b> 3️⃣ 原理 (How it works)</a></li>
+<li class="chapter" data-level="4.2.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-12"><i class="fa fa-check"></i><b>4.2.4</b> 4️⃣ 应用 (Usage)</a></li>
+<li class="chapter" data-level="4.2.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-12"><i class="fa fa-check"></i><b>4.2.5</b> 5️⃣ 举例 (Examples)</a></li>
+<li class="chapter" data-level="4.2.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-12"><i class="fa fa-check"></i><b>4.2.6</b> 6️⃣ 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="10-工具.html"><a href="#%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E5%B7%A5%E5%85%B7"><i class="fa fa-check"></i><b>5</b> 高级数据结构与工具</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93functools-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>5.1</b> Python 标准库：functools 模块</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-13"><i class="fa fa-check"></i><b>5.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="5.1.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-13"><i class="fa fa-check"></i><b>5.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="5.1.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-13"><i class="fa fa-check"></i><b>5.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="5.1.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-13"><i class="fa fa-check"></i><b>5.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="5.1.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-13"><i class="fa fa-check"></i><b>5.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="5.1.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-13"><i class="fa fa-check"></i><b>5.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93itertools-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>5.2</b> Python 标准库：itertools 模块</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-14"><i class="fa fa-check"></i><b>5.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="5.2.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-14"><i class="fa fa-check"></i><b>5.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="5.2.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-14"><i class="fa fa-check"></i><b>5.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="5.2.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-14"><i class="fa fa-check"></i><b>5.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="5.2.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-14"><i class="fa fa-check"></i><b>5.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="5.2.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-14"><i class="fa fa-check"></i><b>5.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93collections-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>5.3</b> Python 标准库：collections 模块</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-15"><i class="fa fa-check"></i><b>5.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-15"><i class="fa fa-check"></i><b>5.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-15"><i class="fa fa-check"></i><b>5.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="5.3.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-15"><i class="fa fa-check"></i><b>5.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="5.3.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-15"><i class="fa fa-check"></i><b>5.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="5.3.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-15"><i class="fa fa-check"></i><b>5.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="10-工具.html"><a href="#%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C%E8%BD%BB%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><i class="fa fa-check"></i><b>6</b> 并发与并行/轻量数据库</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93threading-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.1</b> Python 标准库：threading 模块</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-16"><i class="fa fa-check"></i><b>6.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="6.1.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-16"><i class="fa fa-check"></i><b>6.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-16"><i class="fa fa-check"></i><b>6.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.1.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-16"><i class="fa fa-check"></i><b>6.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.1.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-16"><i class="fa fa-check"></i><b>6.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.1.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-16"><i class="fa fa-check"></i><b>6.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93multiprocessing-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.2</b> Python 标准库：multiprocessing 模块</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-17"><i class="fa fa-check"></i><b>6.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="6.2.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-17"><i class="fa fa-check"></i><b>6.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-17"><i class="fa fa-check"></i><b>6.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.2.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-17"><i class="fa fa-check"></i><b>6.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.2.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-17"><i class="fa fa-check"></i><b>6.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.2.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-17"><i class="fa fa-check"></i><b>6.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93concurrent.futures-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.3</b> Python 标准库：concurrent.futures 模块</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-18"><i class="fa fa-check"></i><b>6.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="6.3.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-18"><i class="fa fa-check"></i><b>6.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.3.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-18"><i class="fa fa-check"></i><b>6.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.3.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-18"><i class="fa fa-check"></i><b>6.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.3.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-18"><i class="fa fa-check"></i><b>6.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.3.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-18"><i class="fa fa-check"></i><b>6.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93sqlite3-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.4</b> Python 标准库：sqlite3 模块</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-19"><i class="fa fa-check"></i><b>6.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="6.4.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-19"><i class="fa fa-check"></i><b>6.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-19"><i class="fa fa-check"></i><b>6.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.4.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-19"><i class="fa fa-check"></i><b>6.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.4.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-19"><i class="fa fa-check"></i><b>6.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.4.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-19"><i class="fa fa-check"></i><b>6.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="10-工具.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93%E6%A8%A1%E5%9D%97%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E6%8C%87%E5%8D%97"><i class="fa fa-check"></i><b>6.5</b> Python 标准库模块应用场景指南</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="10-工具.html"><a href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3"><i class="fa fa-check"></i><b>6.5.1</b> 操作系统相关</a></li>
+<li class="chapter" data-level="6.5.2" data-path="10-工具.html"><a href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F"><i class="fa fa-check"></i><b>6.5.2</b> 数据存储格式</a></li>
+<li class="chapter" data-level="6.5.3" data-path="10-工具.html"><a href="#%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%A5%E6%9C%9F"><i class="fa fa-check"></i><b>6.5.3</b> 时间与日期</a></li>
+<li class="chapter" data-level="6.5.4" data-path="10-工具.html"><a href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F"><i class="fa fa-check"></i><b>6.5.4</b> 日志系统</a></li>
+<li class="chapter" data-level="6.5.5" data-path="10-工具.html"><a href="#%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86"><i class="fa fa-check"></i><b>6.5.5</b> 文本处理</a></li>
+<li class="chapter" data-level="6.5.6" data-path="10-工具.html"><a href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7"><i class="fa fa-check"></i><b>6.5.6</b> 命令行工具</a></li>
+<li class="chapter" data-level="6.5.7" data-path="10-工具.html"><a href="#%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><i class="fa fa-check"></i><b>6.5.7</b> 系统命令</a></li>
+<li class="chapter" data-level="6.5.8" data-path="10-工具.html"><a href="#%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E5%B7%A5%E5%85%B7-1"><i class="fa fa-check"></i><b>6.5.8</b> 高级数据结构与工具</a></li>
+<li class="chapter" data-level="6.5.9" data-path="10-工具.html"><a href="#%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C"><i class="fa fa-check"></i><b>6.5.9</b> 并发与并行</a></li>
+<li class="chapter" data-level="6.5.10" data-path="10-工具.html"><a href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8"><i class="fa fa-check"></i><b>6.5.10</b> 数据存储</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-processing.html"><a href="data-processing.html"><i class="fa fa-check"></i><b>7</b> 数据处理与计算</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93numpy-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>7.1</b> Python 第三方库：NumPy 模块</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-20"><i class="fa fa-check"></i><b>7.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="7.1.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-20"><i class="fa fa-check"></i><b>7.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="7.1.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-20"><i class="fa fa-check"></i><b>7.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="7.1.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-20"><i class="fa fa-check"></i><b>7.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="7.1.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-20"><i class="fa fa-check"></i><b>7.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="7.1.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-20"><i class="fa fa-check"></i><b>7.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93pandas-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>7.2</b> Python 第三方库：Pandas 模块</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-21"><i class="fa fa-check"></i><b>7.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="7.2.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-21"><i class="fa fa-check"></i><b>7.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="7.2.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-21"><i class="fa fa-check"></i><b>7.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="7.2.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-21"><i class="fa fa-check"></i><b>7.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-21"><i class="fa fa-check"></i><b>7.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="7.2.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-21"><i class="fa fa-check"></i><b>7.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93matplotlib-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>7.3</b> Python 第三方库：Matplotlib 模块</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-22"><i class="fa fa-check"></i><b>7.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="7.3.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-22"><i class="fa fa-check"></i><b>7.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="7.3.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-22"><i class="fa fa-check"></i><b>7.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="7.3.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-22"><i class="fa fa-check"></i><b>7.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="7.3.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-22"><i class="fa fa-check"></i><b>7.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="7.3.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-22"><i class="fa fa-check"></i><b>7.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93seaborn-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>7.4</b> Python 第三方库：Seaborn 模块</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-23"><i class="fa fa-check"></i><b>7.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="7.4.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-23"><i class="fa fa-check"></i><b>7.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="7.4.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-23"><i class="fa fa-check"></i><b>7.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="7.4.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-23"><i class="fa fa-check"></i><b>7.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="7.4.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-23"><i class="fa fa-check"></i><b>7.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="7.4.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-23"><i class="fa fa-check"></i><b>7.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="10-工具.html"><a href="#%E7%BD%91%E7%BB%9C%E4%B8%8Eweb-1"><i class="fa fa-check"></i><b>8</b> 网络与Web</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93requests-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>8.1</b> Python 第三方库：Requests 模块</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-24"><i class="fa fa-check"></i><b>8.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="8.1.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-24"><i class="fa fa-check"></i><b>8.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="8.1.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-24"><i class="fa fa-check"></i><b>8.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="8.1.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-24"><i class="fa fa-check"></i><b>8.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="8.1.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-24"><i class="fa fa-check"></i><b>8.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="8.1.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-24"><i class="fa fa-check"></i><b>8.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93flask-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>8.2</b> Python 第三方库：Flask 模块</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-25"><i class="fa fa-check"></i><b>8.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="8.2.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-25"><i class="fa fa-check"></i><b>8.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="8.2.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-25"><i class="fa fa-check"></i><b>8.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="8.2.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-25"><i class="fa fa-check"></i><b>8.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="8.2.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-example"><i class="fa fa-check"></i><b>8.2.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="8.2.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-25"><i class="fa fa-check"></i><b>8.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93fastapi-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>8.3</b> Python 第三方库：FastAPI 模块</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-26"><i class="fa fa-check"></i><b>8.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-26"><i class="fa fa-check"></i><b>8.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="8.3.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-26"><i class="fa fa-check"></i><b>8.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="8.3.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-26"><i class="fa fa-check"></i><b>8.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="8.3.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-example-1"><i class="fa fa-check"></i><b>8.3.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="8.3.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-26"><i class="fa fa-check"></i><b>8.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93django-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>8.4</b> Python 第三方库：Django 模块</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-27"><i class="fa fa-check"></i><b>8.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="8.4.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-27"><i class="fa fa-check"></i><b>8.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="8.4.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-27"><i class="fa fa-check"></i><b>8.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="8.4.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-27"><i class="fa fa-check"></i><b>8.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="8.4.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-example-2"><i class="fa fa-check"></i><b>8.4.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="8.4.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-27"><i class="fa fa-check"></i><b>8.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="10-工具.html"><a href="#%E7%88%AC%E8%99%AB"><i class="fa fa-check"></i><b>9</b> 爬虫</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93beautifulsoup4-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>9.1</b> Python 第三方库：BeautifulSoup4 模块</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-28"><i class="fa fa-check"></i><b>9.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="9.1.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-28"><i class="fa fa-check"></i><b>9.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="9.1.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-28"><i class="fa fa-check"></i><b>9.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="9.1.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-28"><i class="fa fa-check"></i><b>9.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="9.1.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-example-3"><i class="fa fa-check"></i><b>9.1.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="9.1.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-28"><i class="fa fa-check"></i><b>9.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93lxml-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>9.2</b> Python 第三方库：lxml 模块</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-29"><i class="fa fa-check"></i><b>9.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="9.2.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-29"><i class="fa fa-check"></i><b>9.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="9.2.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-29"><i class="fa fa-check"></i><b>9.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="9.2.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-29"><i class="fa fa-check"></i><b>9.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="9.2.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-example-4"><i class="fa fa-check"></i><b>9.2.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="9.2.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-29"><i class="fa fa-check"></i><b>9.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="10-工具.html"><a href="#%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6"><i class="fa fa-check"></i><b>10</b> 数据科学</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93scikit-learn-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>10.1</b> Python 第三方库：scikit-learn 模块</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-30"><i class="fa fa-check"></i><b>10.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="10.1.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-30"><i class="fa fa-check"></i><b>10.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="10.1.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-30"><i class="fa fa-check"></i><b>10.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="10.1.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-30"><i class="fa fa-check"></i><b>10.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="10.1.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-25"><i class="fa fa-check"></i><b>10.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="10.1.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-30"><i class="fa fa-check"></i><b>10.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93pytorch-torch-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>10.2</b> Python 第三方库：PyTorch (torch) 模块</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-31"><i class="fa fa-check"></i><b>10.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="10.2.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-31"><i class="fa fa-check"></i><b>10.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="10.2.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-31"><i class="fa fa-check"></i><b>10.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="10.2.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-31"><i class="fa fa-check"></i><b>10.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="10.2.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-example-5"><i class="fa fa-check"></i><b>10.2.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="10.2.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-31"><i class="fa fa-check"></i><b>10.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93tensorflow-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>10.3</b> Python 第三方库：TensorFlow 模块</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-32"><i class="fa fa-check"></i><b>10.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="10.3.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-32"><i class="fa fa-check"></i><b>10.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="10.3.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-32"><i class="fa fa-check"></i><b>10.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="10.3.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-32"><i class="fa fa-check"></i><b>10.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="10.3.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-example-6"><i class="fa fa-check"></i><b>10.3.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="10.3.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-32"><i class="fa fa-check"></i><b>10.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93transformers-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>10.4</b> Python 第三方库：transformers 模块</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-33"><i class="fa fa-check"></i><b>10.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="10.4.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-33"><i class="fa fa-check"></i><b>10.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="10.4.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-33"><i class="fa fa-check"></i><b>10.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="10.4.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-33"><i class="fa fa-check"></i><b>10.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="10.4.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-26"><i class="fa fa-check"></i><b>10.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="10.4.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-33"><i class="fa fa-check"></i><b>10.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="10-工具.html"><a href="#%E5%B7%A5%E5%85%B7"><i class="fa fa-check"></i><b>11</b> 工具</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93pytest-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>11.1</b> Python 第三方库：pytest 模块</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-34"><i class="fa fa-check"></i><b>11.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.1.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-34"><i class="fa fa-check"></i><b>11.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.1.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-34"><i class="fa fa-check"></i><b>11.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.1.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-34"><i class="fa fa-check"></i><b>11.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.1.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-27"><i class="fa fa-check"></i><b>11.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="11.1.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-34"><i class="fa fa-check"></i><b>11.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="10-工具.html"><a href="#python-%E5%B7%A5%E5%85%B7virtualenv"><i class="fa fa-check"></i><b>11.2</b> Python 工具：virtualenv</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-35"><i class="fa fa-check"></i><b>11.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.2.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-35"><i class="fa fa-check"></i><b>11.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.2.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-35"><i class="fa fa-check"></i><b>11.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.2.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-35"><i class="fa fa-check"></i><b>11.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.2.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-example-7"><i class="fa fa-check"></i><b>11.2.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.2.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-35"><i class="fa fa-check"></i><b>11.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="10-工具.html"><a href="#python-%E5%B7%A5%E5%85%B7conda"><i class="fa fa-check"></i><b>11.3</b> Python 工具：conda</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-36"><i class="fa fa-check"></i><b>11.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.3.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-36"><i class="fa fa-check"></i><b>11.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.3.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-36"><i class="fa fa-check"></i><b>11.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.3.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-36"><i class="fa fa-check"></i><b>11.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.3.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-example-8"><i class="fa fa-check"></i><b>11.3.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.3.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-36"><i class="fa fa-check"></i><b>11.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="10-工具.html"><a href="#python-%E5%B7%A5%E5%85%B7poetry"><i class="fa fa-check"></i><b>11.4</b> Python 工具：poetry</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-37"><i class="fa fa-check"></i><b>11.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.4.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-37"><i class="fa fa-check"></i><b>11.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.4.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-37"><i class="fa fa-check"></i><b>11.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.4.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-37"><i class="fa fa-check"></i><b>11.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.4.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-example-9"><i class="fa fa-check"></i><b>11.4.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.4.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-37"><i class="fa fa-check"></i><b>11.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="10-工具.html"><a href="#python-%E5%B7%A5%E5%85%B7black"><i class="fa fa-check"></i><b>11.5</b> Python 工具：black</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-38"><i class="fa fa-check"></i><b>11.5.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.5.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-38"><i class="fa fa-check"></i><b>11.5.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.5.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-38"><i class="fa fa-check"></i><b>11.5.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.5.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-38"><i class="fa fa-check"></i><b>11.5.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.5.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-example-10"><i class="fa fa-check"></i><b>11.5.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.5.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-38"><i class="fa fa-check"></i><b>11.5.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="10-工具.html"><a href="#python-%E5%B7%A5%E5%85%B7flake8"><i class="fa fa-check"></i><b>11.6</b> Python 工具：flake8</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-39"><i class="fa fa-check"></i><b>11.6.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.6.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-39"><i class="fa fa-check"></i><b>11.6.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.6.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-39"><i class="fa fa-check"></i><b>11.6.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.6.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-39"><i class="fa fa-check"></i><b>11.6.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.6.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-example-11"><i class="fa fa-check"></i><b>11.6.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.6.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-39"><i class="fa fa-check"></i><b>11.6.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="10-工具.html"><a href="#python-%E5%B7%A5%E5%85%B7isort"><i class="fa fa-check"></i><b>11.7</b> Python 工具：isort</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-40"><i class="fa fa-check"></i><b>11.7.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.7.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-40"><i class="fa fa-check"></i><b>11.7.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.7.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-40"><i class="fa fa-check"></i><b>11.7.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.7.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-40"><i class="fa fa-check"></i><b>11.7.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.7.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-example-12"><i class="fa fa-check"></i><b>11.7.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.7.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-40"><i class="fa fa-check"></i><b>11.7.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="llm.html"><a href="llm.html"><i class="fa fa-check"></i><b>12</b> LLM</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93openai-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>12.1</b> Python 第三方库：openai 模块</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-41"><i class="fa fa-check"></i><b>12.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="12.1.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-41"><i class="fa fa-check"></i><b>12.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="12.1.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-41"><i class="fa fa-check"></i><b>12.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="12.1.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-41"><i class="fa fa-check"></i><b>12.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="12.1.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-28"><i class="fa fa-check"></i><b>12.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="12.1.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-41"><i class="fa fa-check"></i><b>12.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93faiss-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>12.2</b> Python 第三方库：faiss 模块</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-42"><i class="fa fa-check"></i><b>12.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="12.2.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-42"><i class="fa fa-check"></i><b>12.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="12.2.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-42"><i class="fa fa-check"></i><b>12.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="12.2.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-42"><i class="fa fa-check"></i><b>12.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="12.2.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-29"><i class="fa fa-check"></i><b>12.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="12.2.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-42"><i class="fa fa-check"></i><b>12.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="10-工具.html"><a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93peft-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>12.3</b> Python 第三方库：peft 模块</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="10-工具.html"><a href="#%E6%A0%B8%E5%BF%83-what-43"><i class="fa fa-check"></i><b>12.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="12.3.2" data-path="10-工具.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-43"><i class="fa fa-check"></i><b>12.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="12.3.3" data-path="10-工具.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-43"><i class="fa fa-check"></i><b>12.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="12.3.4" data-path="10-工具.html"><a href="#%E5%BA%94%E7%94%A8-usage-43"><i class="fa fa-check"></i><b>12.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="12.3.5" data-path="10-工具.html"><a href="#%E4%B8%BE%E4%BE%8B-example-13"><i class="fa fa-check"></i><b>12.3.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="12.3.6" data-path="10-工具.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-43"><i class="fa fa-check"></i><b>12.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/liamamilin" target="blank">Lin Mi</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Python tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="工具" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> 工具<a href="#%E5%B7%A5%E5%85%B7" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="python-第三方库pytest-模块" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Python 第三方库：pytest 模块<a href="#python-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93pytest-%E6%A8%A1%E5%9D%97" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-34" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-34" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>pytest</strong> 是 Python 最流行的 <strong>单元测试框架</strong>，用于编写和运行测试代码。
+相比 Python 内置的 <code>unittest</code>，pytest 更 <strong>简洁、强大、可扩展</strong>。</p>
+<p>一句话总结：pytest 就是 <strong>“Python 测试利器”</strong>，让你写测试像写普通函数一样简单。</p>
+</div>
+<div id="组成结构-dimension-34" class="section level3 hasAnchor" number="11.1.2">
+<h3><span class="header-section-number">11.1.2</span> 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-34" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>pytest 的主要功能模块：</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>测试函数</strong></p>
+<ul>
+<li>直接写 <code>def test_xxx():</code> 就是一个测试</li>
+<li>不需要继承类、不需要写复杂的结构</li>
+</ul></li>
+<li><p><strong>断言 (assert)</strong></p>
+<ul>
+<li>使用 Python 内置的 <code>assert</code>，pytest 自动增强错误提示</li>
+</ul></li>
+<li><p><strong>Fixture（测试夹具）</strong></p>
+<ul>
+<li>可复用的测试准备/清理代码</li>
+<li>用 <code>@pytest.fixture</code> 标记</li>
+</ul></li>
+<li><p><strong>参数化</strong></p>
+<ul>
+<li><code>@pytest.mark.parametrize</code> 可用一组输入跑多个测试</li>
+</ul></li>
+<li><p><strong>插件系统</strong></p>
+<ul>
+<li><code>pytest-django</code>、<code>pytest-cov</code> 等扩展功能</li>
+</ul></li>
+<li><p><strong>命令行工具</strong></p>
+<ul>
+<li><code>pytest -v</code>：详细模式</li>
+<li><code>pytest -k "keyword"</code>：运行包含关键字的测试</li>
+<li><code>pytest --maxfail=1 --disable-warnings</code>：出错即停</li>
+</ul></li>
+</ol>
+</div>
+<div id="原理-how-it-works-34" class="section level3 hasAnchor" number="11.1.3">
+<h3><span class="header-section-number">11.1.3</span> 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-34" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>pytest 会扫描项目里的 <strong>test 文件</strong>（以 <code>test_</code> 开头）</li>
+<li>自动发现测试函数/类 → 执行 → 收集结果</li>
+<li>断言失败时，pytest 会打印详细的变量对比，而不是简单的 True/False</li>
+<li>通过 <strong>fixture</strong> 提供依赖注入，方便管理测试上下文</li>
+</ul>
+</div>
+<div id="应用-usage-34" class="section level3 hasAnchor" number="11.1.4">
+<h3><span class="header-section-number">11.1.4</span> 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-34" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>单元测试</strong>：测试单个函数是否正确</li>
+<li><strong>集成测试</strong>：测试多个模块是否能协同工作</li>
+<li><strong>回归测试</strong>：防止修改代码后旧功能被破坏</li>
+<li><strong>持续集成 (CI/CD)</strong>：结合 GitHub Actions、GitLab CI 自动运行测试</li>
+</ul>
+</div>
+<div id="举例-examples-27" class="section level3 hasAnchor" number="11.1.5">
+<h3><span class="header-section-number">11.1.5</span> 举例 (Examples)<a href="#%E4%B8%BE%E4%BE%8B-examples-27" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="基本测试" class="section level4 hasAnchor" number="11.1.5.1">
+<h4><span class="header-section-number">11.1.5.1</span> 基本测试<a href="#%E5%9F%BA%E6%9C%AC%E6%B5%8B%E8%AF%95" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb141"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb141-1"><a href="工具.html#cb141-1" tabindex="-1"></a><span class="co"># test_math.py</span></span>
+<span id="cb141-2"><a href="工具.html#cb141-2" tabindex="-1"></a><span class="kw">def</span> add(x, y):</span>
+<span id="cb141-3"><a href="工具.html#cb141-3" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> y</span>
+<span id="cb141-4"><a href="工具.html#cb141-4" tabindex="-1"></a></span>
+<span id="cb141-5"><a href="工具.html#cb141-5" tabindex="-1"></a><span class="kw">def</span> test_add():</span>
+<span id="cb141-6"><a href="工具.html#cb141-6" tabindex="-1"></a>    <span class="cf">assert</span> add(<span class="dv">2</span>, <span class="dv">3</span>) <span class="op">==</span> <span class="dv">5</span></span></code></pre></div>
+<p>运行：</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb142-1"><a href="工具.html#cb142-1" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">-v</span></span></code></pre></div>
+<p>输出：</p>
+<pre><code>test_math.py::test_add PASSED</code></pre>
+</div>
+<div id="fixture-用法" class="section level4 hasAnchor" number="11.1.5.2">
+<h4><span class="header-section-number">11.1.5.2</span> Fixture 用法<a href="#fixture-%E7%94%A8%E6%B3%95" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb144"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb144-1"><a href="工具.html#cb144-1" tabindex="-1"></a><span class="im">import</span> pytest</span>
+<span id="cb144-2"><a href="工具.html#cb144-2" tabindex="-1"></a></span>
+<span id="cb144-3"><a href="工具.html#cb144-3" tabindex="-1"></a><span class="at">@pytest.fixture</span></span>
+<span id="cb144-4"><a href="工具.html#cb144-4" tabindex="-1"></a><span class="kw">def</span> sample_data():</span>
+<span id="cb144-5"><a href="工具.html#cb144-5" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">&quot;a&quot;</span>: <span class="dv">1</span>, <span class="st">&quot;b&quot;</span>: <span class="dv">2</span>}</span>
+<span id="cb144-6"><a href="工具.html#cb144-6" tabindex="-1"></a></span>
+<span id="cb144-7"><a href="工具.html#cb144-7" tabindex="-1"></a><span class="kw">def</span> test_dict(sample_data):</span>
+<span id="cb144-8"><a href="工具.html#cb144-8" tabindex="-1"></a>    <span class="cf">assert</span> sample_data[<span class="st">&quot;a&quot;</span>] <span class="op">==</span> <span class="dv">1</span></span></code></pre></div>
+</div>
+<div id="参数化测试" class="section level4 hasAnchor" number="11.1.5.3">
+<h4><span class="header-section-number">11.1.5.3</span> 参数化测试<a href="#%E5%8F%82%E6%95%B0%E5%8C%96%E6%B5%8B%E8%AF%95" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb145"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb145-1"><a href="工具.html#cb145-1" tabindex="-1"></a><span class="im">import</span> pytest</span>
+<span id="cb145-2"><a href="工具.html#cb145-2" tabindex="-1"></a></span>
+<span id="cb145-3"><a href="工具.html#cb145-3" tabindex="-1"></a><span class="at">@pytest.mark.parametrize</span>(<span class="st">&quot;x, y, expected&quot;</span>, [</span>
+<span id="cb145-4"><a href="工具.html#cb145-4" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>),</span>
+<span id="cb145-5"><a href="工具.html#cb145-5" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>),</span>
+<span id="cb145-6"><a href="工具.html#cb145-6" tabindex="-1"></a>    (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb145-7"><a href="工具.html#cb145-7" tabindex="-1"></a>])</span>
+<span id="cb145-8"><a href="工具.html#cb145-8" tabindex="-1"></a><span class="kw">def</span> test_add(x, y, expected):</span>
+<span id="cb145-9"><a href="工具.html#cb145-9" tabindex="-1"></a>    <span class="cf">assert</span> x <span class="op">+</span> y <span class="op">==</span> expected</span></code></pre></div>
+</div>
+<div id="异常测试" class="section level4 hasAnchor" number="11.1.5.4">
+<h4><span class="header-section-number">11.1.5.4</span> 异常测试<a href="#%E5%BC%82%E5%B8%B8%E6%B5%8B%E8%AF%95" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb146"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb146-1"><a href="工具.html#cb146-1" tabindex="-1"></a><span class="im">import</span> pytest</span>
+<span id="cb146-2"><a href="工具.html#cb146-2" tabindex="-1"></a></span>
+<span id="cb146-3"><a href="工具.html#cb146-3" tabindex="-1"></a><span class="kw">def</span> divide(a, b):</span>
+<span id="cb146-4"><a href="工具.html#cb146-4" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">/</span> b</span>
+<span id="cb146-5"><a href="工具.html#cb146-5" tabindex="-1"></a></span>
+<span id="cb146-6"><a href="工具.html#cb146-6" tabindex="-1"></a><span class="kw">def</span> test_divide_by_zero():</span>
+<span id="cb146-7"><a href="工具.html#cb146-7" tabindex="-1"></a>    <span class="cf">with</span> pytest.raises(<span class="pp">ZeroDivisionError</span>):</span>
+<span id="cb146-8"><a href="工具.html#cb146-8" tabindex="-1"></a>        divide(<span class="dv">1</span>, <span class="dv">0</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="辨析-misunderstanding-34" class="section level3 hasAnchor" number="11.1.6">
+<h3><span class="header-section-number">11.1.6</span> 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-34" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>误解 1</strong>：pytest 只能替代 unittest。</p>
+<ul>
+<li>实际：pytest 兼容 unittest 和 nose 的测试用例，可以无缝迁移。</li>
+</ul></li>
+<li><p><strong>误解 2</strong>：写测试很麻烦。</p>
+<ul>
+<li>实际：pytest 让测试代码和普通函数差不多简单。</li>
+</ul></li>
+<li><p><strong>误解 3</strong>：pytest 只能测小项目。</p>
+<ul>
+<li>实际：大型项目常配合 CI/CD、覆盖率统计、mock 工具使用。</li>
+</ul></li>
+<li><p><strong>误解 4</strong>：assert 太简单，不够专业。</p>
+<ul>
+<li>实际：pytest 会增强 assert，显示变量对比，非常直观。</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="python-工具virtualenv" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Python 工具：virtualenv<a href="#python-%E5%B7%A5%E5%85%B7virtualenv" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-35" class="section level3 hasAnchor" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-35" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>virtualenv</code> 是 Python 最早期、最经典的 <strong>虚拟环境工具</strong>。
+作用是：为每个项目创建一个 <strong>独立的 Python 环境</strong>（解释器 + 包），避免多个项目之间的依赖冲突。</p>
+</div>
+<div id="组成结构-dimension-35" class="section level3 hasAnchor" number="11.2.2">
+<h3><span class="header-section-number">11.2.2</span> 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-35" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>创建环境：<code>virtualenv venv</code></li>
+<li>激活环境：<code>source venv/bin/activate</code> (Linux/macOS)，<code>venv\Scripts\activate</code> (Windows)</li>
+<li>安装依赖：<code>pip install 包名</code></li>
+</ul>
+</div>
+<div id="原理-how-it-works-35" class="section level3 hasAnchor" number="11.2.3">
+<h3><span class="header-section-number">11.2.3</span> 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-35" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>拷贝一份 Python 解释器到指定目录</li>
+<li>创建一个隔离的 <code>site-packages</code> 目录</li>
+<li>激活时修改 <code>PATH</code>，让项目用独立环境</li>
+</ul>
+</div>
+<div id="应用-usage-35" class="section level3 hasAnchor" number="11.2.4">
+<h3><span class="header-section-number">11.2.4</span> 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-35" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>小型项目，依赖不复杂</li>
+<li>想快速上手虚拟环境</li>
+</ul>
+</div>
+<div id="举例-example-7" class="section level3 hasAnchor" number="11.2.5">
+<h3><span class="header-section-number">11.2.5</span> 举例 (Example)<a href="#%E4%B8%BE%E4%BE%8B-example-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb147"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb147-1"><a href="工具.html#cb147-1" tabindex="-1"></a><span class="ex">pip</span> install virtualenv</span>
+<span id="cb147-2"><a href="工具.html#cb147-2" tabindex="-1"></a><span class="ex">virtualenv</span> venv</span>
+<span id="cb147-3"><a href="工具.html#cb147-3" tabindex="-1"></a><span class="bu">source</span> venv/bin/activate</span>
+<span id="cb147-4"><a href="工具.html#cb147-4" tabindex="-1"></a><span class="ex">pip</span> install requests</span></code></pre></div>
+</div>
+<div id="辨析-misunderstanding-35" class="section level3 hasAnchor" number="11.2.6">
+<h3><span class="header-section-number">11.2.6</span> 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-35" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>❌ 误解 1：virtualenv 自带包管理。</p>
+<ul>
+<li>实际：它只隔离环境，依赖管理还要靠 pip + requirements.txt。</li>
+</ul></li>
+<li><p>❌ 误解 2：virtualenv 和 venv 一样。</p>
+<ul>
+<li>实际：<code>venv</code> 是 Python3 自带的轻量版 virtualenv。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="python-工具conda" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Python 工具：conda<a href="#python-%E5%B7%A5%E5%85%B7conda" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-36" class="section level3 hasAnchor" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-36" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>conda</strong> 是 Anaconda 生态里的 <strong>包管理 + 环境管理工具</strong>。
+它不仅能管理 Python 包，还能管理 <strong>C 库、系统依赖</strong>，适合科学计算。</p>
+</div>
+<div id="组成结构-dimension-36" class="section level3 hasAnchor" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-36" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>创建环境：<code>conda create -n myenv python=3.10</code></li>
+<li>激活环境：<code>conda activate myenv</code></li>
+<li>安装依赖：<code>conda install numpy pandas</code></li>
+<li>环境导出：<code>conda env export &gt; env.yml</code></li>
+</ul>
+</div>
+<div id="原理-how-it-works-36" class="section level3 hasAnchor" number="11.3.3">
+<h3><span class="header-section-number">11.3.3</span> 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-36" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>conda 管理的是 <strong>二进制包</strong>（含依赖库）</li>
+<li>不依赖 pip，直接安装编译好的包</li>
+<li>特别适合需要 C/C++ 库的科学计算场景</li>
+</ul>
+</div>
+<div id="应用-usage-36" class="section level3 hasAnchor" number="11.3.4">
+<h3><span class="header-section-number">11.3.4</span> 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-36" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>数据科学 / 机器学习（numpy, pandas, tensorflow, pytorch）</li>
+<li>跨平台部署，特别是在 Windows 下更友好</li>
+</ul>
+</div>
+<div id="举例-example-8" class="section level3 hasAnchor" number="11.3.5">
+<h3><span class="header-section-number">11.3.5</span> 举例 (Example)<a href="#%E4%B8%BE%E4%BE%8B-example-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb148"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb148-1"><a href="工具.html#cb148-1" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> ds python=3.9</span>
+<span id="cb148-2"><a href="工具.html#cb148-2" tabindex="-1"></a><span class="ex">conda</span> activate ds</span>
+<span id="cb148-3"><a href="工具.html#cb148-3" tabindex="-1"></a><span class="ex">conda</span> install numpy pandas scikit-learn</span></code></pre></div>
+</div>
+<div id="辨析-misunderstanding-36" class="section level3 hasAnchor" number="11.3.6">
+<h3><span class="header-section-number">11.3.6</span> 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-36" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>❌ 误解 1：conda 只能管理 Python 包。</p>
+<ul>
+<li>实际：它能管理 C 库、R 包、系统依赖。</li>
+</ul></li>
+<li><p>❌ 误解 2：conda 和 pip 冲突。</p>
+<ul>
+<li>实际：它们可以配合使用，但建议优先用 conda 安装大包。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="python-工具poetry" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Python 工具：poetry<a href="#python-%E5%B7%A5%E5%85%B7poetry" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-37" class="section level3 hasAnchor" number="11.4.1">
+<h3><span class="header-section-number">11.4.1</span> 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-37" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>poetry</strong> 是新一代 Python <strong>依赖管理 + 打包工具</strong>。
+它不仅能创建虚拟环境，还能 <strong>自动解析依赖版本、生成 lock 文件、发布到 PyPI</strong>。</p>
+<p>一句话总结：poetry = <strong>pip + virtualenv + setuptools 的现代替代品</strong>。</p>
+</div>
+<div id="组成结构-dimension-37" class="section level3 hasAnchor" number="11.4.2">
+<h3><span class="header-section-number">11.4.2</span> 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-37" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>配置文件：<code>pyproject.toml</code>（声明依赖和元信息）</li>
+<li>虚拟环境：<code>poetry install</code> 会自动创建和管理</li>
+<li>锁文件：<code>poetry.lock</code> 保证依赖版本一致</li>
+<li>发布工具：<code>poetry publish</code></li>
+</ul>
+</div>
+<div id="原理-how-it-works-37" class="section level3 hasAnchor" number="11.4.3">
+<h3><span class="header-section-number">11.4.3</span> 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-37" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>基于 <strong>PEP 518</strong> 的标准（<code>pyproject.toml</code>）</li>
+<li>自动解析依赖冲突，生成锁定版本</li>
+<li>内置虚拟环境管理，不依赖手动 <code>venv</code></li>
+</ul>
+</div>
+<div id="应用-usage-37" class="section level3 hasAnchor" number="11.4.4">
+<h3><span class="header-section-number">11.4.4</span> 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-37" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Python 应用和库的开发（尤其是需要发布到 PyPI）</li>
+<li>需要严格依赖管理的团队项目</li>
+</ul>
+</div>
+<div id="举例-example-9" class="section level3 hasAnchor" number="11.4.5">
+<h3><span class="header-section-number">11.4.5</span> 举例 (Example)<a href="#%E4%B8%BE%E4%BE%8B-example-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb149"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb149-1"><a href="工具.html#cb149-1" tabindex="-1"></a><span class="ex">pip</span> install poetry</span>
+<span id="cb149-2"><a href="工具.html#cb149-2" tabindex="-1"></a><span class="ex">poetry</span> init</span>
+<span id="cb149-3"><a href="工具.html#cb149-3" tabindex="-1"></a><span class="ex">poetry</span> add requests</span>
+<span id="cb149-4"><a href="工具.html#cb149-4" tabindex="-1"></a><span class="ex">poetry</span> install</span>
+<span id="cb149-5"><a href="工具.html#cb149-5" tabindex="-1"></a><span class="ex">poetry</span> run python main.py</span></code></pre></div>
+</div>
+<div id="辨析-misunderstanding-37" class="section level3 hasAnchor" number="11.4.6">
+<h3><span class="header-section-number">11.4.6</span> 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-37" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>❌ 误解 1：poetry = pip。</p>
+<ul>
+<li>实际：poetry 是完整的项目管理工具，pip 只是安装包。</li>
+</ul></li>
+<li><p>❌ 误解 2：poetry 必须手动建虚拟环境。</p>
+<ul>
+<li>实际：它会自动管理虚拟环境。</li>
+</ul></li>
+<li><p>❌ 误解 3：poetry 只适合开源项目。</p>
+<ul>
+<li>实际：团队开发和商业项目也很适合。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="python-工具black" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> Python 工具：black<a href="#python-%E5%B7%A5%E5%85%B7black" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-38" class="section level3 hasAnchor" number="11.5.1">
+<h3><span class="header-section-number">11.5.1</span> 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-38" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>black</strong> 是一个 <strong>自动代码格式化工具</strong>，号称 <em>The Uncompromising Code Formatter</em>。
+它的核心思想是：<strong>不用讨论风格问题，直接全自动统一格式</strong>。</p>
+</div>
+<div id="组成结构-dimension-38" class="section level3 hasAnchor" number="11.5.2">
+<h3><span class="header-section-number">11.5.2</span> 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-38" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>命令行工具：<code>black file.py</code></li>
+<li>配置文件：<code>pyproject.toml</code>（可以设置行宽等少量参数）</li>
+<li>编辑器插件：VSCode、PyCharm 都支持</li>
+</ul>
+</div>
+<div id="原理-how-it-works-38" class="section level3 hasAnchor" number="11.5.3">
+<h3><span class="header-section-number">11.5.3</span> 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-38" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>解析 Python 代码 → 转换为语法树 → 重新输出格式化后的代码</li>
+<li>代码风格是固定的，用户几乎不能定制（避免团队争论）</li>
+</ul>
+</div>
+<div id="应用-usage-38" class="section level3 hasAnchor" number="11.5.4">
+<h3><span class="header-section-number">11.5.4</span> 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-38" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>项目中统一代码风格</li>
+<li>CI/CD 自动化检查 + 格式化</li>
+<li>团队协作时避免 “格式吵架”</li>
+</ul>
+</div>
+<div id="举例-example-10" class="section level3 hasAnchor" number="11.5.5">
+<h3><span class="header-section-number">11.5.5</span> 举例 (Example)<a href="#%E4%B8%BE%E4%BE%8B-example-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>原始代码：</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb150-1"><a href="工具.html#cb150-1" tabindex="-1"></a><span class="kw">def</span> add(a,b): <span class="cf">return</span> a<span class="op">+</span>b</span></code></pre></div>
+<p>执行：</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb151-1"><a href="工具.html#cb151-1" tabindex="-1"></a><span class="ex">black</span> file.py</span></code></pre></div>
+<p>输出：</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb152-1"><a href="工具.html#cb152-1" tabindex="-1"></a><span class="kw">def</span> add(a, b):</span>
+<span id="cb152-2"><a href="工具.html#cb152-2" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span></code></pre></div>
+</div>
+<div id="辨析-misunderstanding-38" class="section level3 hasAnchor" number="11.5.6">
+<h3><span class="header-section-number">11.5.6</span> 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-38" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>❌ 误解 1：black 会改动逻辑。</p>
+<ul>
+<li>实际：它只改格式，不动逻辑。</li>
+</ul></li>
+<li><p>❌ 误解 2：black 可高度定制。</p>
+<ul>
+<li>实际：几乎不能定制，只能调整少数选项（如行宽）。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="python-工具flake8" class="section level2 hasAnchor" number="11.6">
+<h2><span class="header-section-number">11.6</span> Python 工具：flake8<a href="#python-%E5%B7%A5%E5%85%B7flake8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-39" class="section level3 hasAnchor" number="11.6.1">
+<h3><span class="header-section-number">11.6.1</span> 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-39" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>flake8</strong> 是一个 <strong>代码检查工具 (linter)</strong>，用来发现潜在的 <strong>语法错误、风格问题、不规范写法</strong>。</p>
+<p>一句话总结：flake8 = <strong>代码警察</strong>，帮你发现问题，但不自动改。</p>
+</div>
+<div id="组成结构-dimension-39" class="section level3 hasAnchor" number="11.6.2">
+<h3><span class="header-section-number">11.6.2</span> 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-39" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>命令行工具：<code>flake8 file.py</code></li>
+<li>配置文件：<code>.flake8</code> 或 <code>setup.cfg</code></li>
+<li>插件生态：<code>flake8-docstrings</code>、<code>flake8-import-order</code> 等</li>
+</ul>
+</div>
+<div id="原理-how-it-works-39" class="section level3 hasAnchor" number="11.6.3">
+<h3><span class="header-section-number">11.6.3</span> 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-39" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>基于 PyFlakes（语法错误检查）+ pycodestyle（PEP8 风格检查）+ McCabe（复杂度检查）</li>
+<li>把代码扫描一遍，输出错误编号和提示</li>
+</ul>
+</div>
+<div id="应用-usage-39" class="section level3 hasAnchor" number="11.6.4">
+<h3><span class="header-section-number">11.6.4</span> 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-39" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>检查变量未使用、未导入</li>
+<li>提醒缩进、命名、空格等不规范</li>
+<li>发现循环/函数过于复杂</li>
+</ul>
+</div>
+<div id="举例-example-11" class="section level3 hasAnchor" number="11.6.5">
+<h3><span class="header-section-number">11.6.5</span> 举例 (Example)<a href="#%E4%B8%BE%E4%BE%8B-example-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>代码：</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb153-1"><a href="工具.html#cb153-1" tabindex="-1"></a>x<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb153-2"><a href="工具.html#cb153-2" tabindex="-1"></a><span class="bu">print</span>(y)</span></code></pre></div>
+<p>执行：</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb154-1"><a href="工具.html#cb154-1" tabindex="-1"></a><span class="ex">flake8</span> file.py</span></code></pre></div>
+<p>输出：</p>
+<pre><code>file.py:1:1: E225 missing whitespace around operator
+file.py:2:7: F821 undefined name &#39;y&#39;</code></pre>
+</div>
+<div id="辨析-misunderstanding-39" class="section level3 hasAnchor" number="11.6.6">
+<h3><span class="header-section-number">11.6.6</span> 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-39" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>❌ 误解 1：flake8 会自动修复错误。</p>
+<ul>
+<li>实际：它只报错，不修改。</li>
+</ul></li>
+<li><p>❌ 误解 2：flake8 只检查语法。</p>
+<ul>
+<li>实际：它还能检查复杂度和风格。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="python-工具isort" class="section level2 hasAnchor" number="11.7">
+<h2><span class="header-section-number">11.7</span> Python 工具：isort<a href="#python-%E5%B7%A5%E5%85%B7isort" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-what-40" class="section level3 hasAnchor" number="11.7.1">
+<h3><span class="header-section-number">11.7.1</span> 核心 (What)<a href="#%E6%A0%B8%E5%BF%83-what-40" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>isort</strong> 专门用于 <strong>自动排序 import 语句</strong>，让导入更整洁。</p>
+</div>
+<div id="组成结构-dimension-40" class="section level3 hasAnchor" number="11.7.2">
+<h3><span class="header-section-number">11.7.2</span> 组成结构 (Dimension)<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-40" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>命令行工具：<code>isort file.py</code></li>
+<li>配置文件：<code>pyproject.toml</code>、<code>.isort.cfg</code></li>
+<li>可配置分组：标准库 / 第三方库 / 本地模块</li>
+</ul>
+</div>
+<div id="原理-how-it-works-40" class="section level3 hasAnchor" number="11.7.3">
+<h3><span class="header-section-number">11.7.3</span> 原理 (How it works)<a href="#%E5%8E%9F%E7%90%86-how-it-works-40" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>读取代码 → 解析 import → 按规则分组并排序</li>
+<li>分组规则：标准库在前，第三方在中，本地在后</li>
+</ul>
+</div>
+<div id="应用-usage-40" class="section level3 hasAnchor" number="11.7.4">
+<h3><span class="header-section-number">11.7.4</span> 应用 (Usage)<a href="#%E5%BA%94%E7%94%A8-usage-40" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>保持 import 语句一致</li>
+<li>大型项目更容易读代码</li>
+<li>与 black 配合，自动保持格式</li>
+</ul>
+</div>
+<div id="举例-example-12" class="section level3 hasAnchor" number="11.7.5">
+<h3><span class="header-section-number">11.7.5</span> 举例 (Example)<a href="#%E4%B8%BE%E4%BE%8B-example-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>原始代码：</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb156-1"><a href="工具.html#cb156-1" tabindex="-1"></a><span class="im">import</span> pandas</span>
+<span id="cb156-2"><a href="工具.html#cb156-2" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb156-3"><a href="工具.html#cb156-3" tabindex="-1"></a><span class="im">import</span> numpy</span></code></pre></div>
+<p>执行：</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb157-1"><a href="工具.html#cb157-1" tabindex="-1"></a><span class="ex">isort</span> file.py</span></code></pre></div>
+<p>输出：</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb158-1"><a href="工具.html#cb158-1" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb158-2"><a href="工具.html#cb158-2" tabindex="-1"></a></span>
+<span id="cb158-3"><a href="工具.html#cb158-3" tabindex="-1"></a><span class="im">import</span> numpy</span>
+<span id="cb158-4"><a href="工具.html#cb158-4" tabindex="-1"></a><span class="im">import</span> pandas</span></code></pre></div>
+</div>
+<div id="辨析-misunderstanding-40" class="section level3 hasAnchor" number="11.7.6">
+<h3><span class="header-section-number">11.7.6</span> 辨析 (Misunderstanding)<a href="#%E8%BE%A8%E6%9E%90-misunderstanding-40" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>❌ 误解 1：isort 只是排序字母表。</p>
+<ul>
+<li>实际：它按 <strong>分组规则</strong>（标准库 / 第三方 / 本地）来整理。</li>
+</ul></li>
+<li><p>❌ 误解 2：isort 会影响逻辑。</p>
+<ul>
+<li>实际：只改变 import 顺序，不改运行逻辑。</li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="数据科学.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="llm.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-工具.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

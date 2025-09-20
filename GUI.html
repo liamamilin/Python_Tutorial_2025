@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 13 GUI | Python tutorial</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 13 GUI | Python tutorial" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 13 GUI | Python tutorial" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Lin Mi" />
+
+
+<meta name="date" content="2025-09-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="C12.html"/>
+<link rel="next" href="project.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Python tutorial </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="12-GUI.html"><a href="#python-%E5%BF%85%E5%AD%A6%E6%A8%A1%E5%9D%97%E6%B8%85%E5%8D%95"><i class="fa fa-check"></i><b>1</b> Python 必学模块清单</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="12-GUI.html"><a href="#python-%E8%87%AA%E5%B8%A6%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1"><i class="fa fa-check"></i><b>1.1</b> Python 自带的标准库（必须掌握）</a></li>
+<li class="chapter" data-level="1.2" data-path="12-GUI.html"><a href="#%E5%B8%B8%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%87%A0%E4%B9%8E%E5%BF%85%E5%AD%A6"><i class="fa fa-check"></i><b>1.2</b> 常用第三方库（几乎必学）</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="12-GUI.html"><a href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%8E%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97"><i class="fa fa-check"></i><b>1.2.1</b> 数据处理与科学计算</a></li>
+<li class="chapter" data-level="1.2.2" data-path="12-GUI.html"><a href="#%E7%BD%91%E7%BB%9C%E4%B8%8Eweb"><i class="fa fa-check"></i><b>1.2.2</b> 网络与Web</a></li>
+<li class="chapter" data-level="1.2.3" data-path="12-GUI.html"><a href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E4%B8%8E%E8%84%9A%E6%9C%AC"><i class="fa fa-check"></i><b>1.2.3</b> 自动化与脚本</a></li>
+<li class="chapter" data-level="1.2.4" data-path="12-GUI.html"><a href="#ai-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6"><i class="fa fa-check"></i><b>1.2.4</b> AI / 数据科学</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="12-GUI.html"><a href="#%E5%B7%A5%E5%85%B7%E7%B1%BB%E9%A1%B9%E7%9B%AE%E5%BF%85%E5%A4%87"><i class="fa fa-check"></i><b>1.3</b> 工具类（项目必备）</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="C2.html"><a href="C2.html"><i class="fa fa-check"></i><b>2</b> 操作系统/数据存储</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="12-GUI.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93os-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.1</b> Python 标准库：os 模块</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what"><i class="fa fa-check"></i><b>2.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.1.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension"><i class="fa fa-check"></i><b>2.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works"><i class="fa fa-check"></i><b>2.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.1.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage"><i class="fa fa-check"></i><b>2.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.1.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples"><i class="fa fa-check"></i><b>2.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.1.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding"><i class="fa fa-check"></i><b>2.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="12-GUI.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93sys-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.2</b> Python 标准库：sys 模块</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-1"><i class="fa fa-check"></i><b>2.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.2.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-1"><i class="fa fa-check"></i><b>2.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-1"><i class="fa fa-check"></i><b>2.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.2.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-1"><i class="fa fa-check"></i><b>2.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.2.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-1"><i class="fa fa-check"></i><b>2.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.2.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-1"><i class="fa fa-check"></i><b>2.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="12-GUI.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93pathlib-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.3</b> Python 标准库：pathlib 模块</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-2"><i class="fa fa-check"></i><b>2.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.3.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-2"><i class="fa fa-check"></i><b>2.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.3.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-2"><i class="fa fa-check"></i><b>2.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.3.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-2"><i class="fa fa-check"></i><b>2.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.3.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-2"><i class="fa fa-check"></i><b>2.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.3.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-2"><i class="fa fa-check"></i><b>2.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="12-GUI.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93json-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.4</b> Python 标准库：json 模块</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-3"><i class="fa fa-check"></i><b>2.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.4.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-3"><i class="fa fa-check"></i><b>2.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.4.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-3"><i class="fa fa-check"></i><b>2.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.4.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-3"><i class="fa fa-check"></i><b>2.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.4.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-3"><i class="fa fa-check"></i><b>2.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.4.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-3"><i class="fa fa-check"></i><b>2.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="12-GUI.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93csv-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.5</b> Python 标准库：csv 模块</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-4"><i class="fa fa-check"></i><b>2.5.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.5.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-4"><i class="fa fa-check"></i><b>2.5.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.5.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-4"><i class="fa fa-check"></i><b>2.5.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.5.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-4"><i class="fa fa-check"></i><b>2.5.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.5.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-4"><i class="fa fa-check"></i><b>2.5.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.5.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-4"><i class="fa fa-check"></i><b>2.5.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="12-GUI.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93configparser-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>2.6</b> Python 标准库：configparser 模块</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-5"><i class="fa fa-check"></i><b>2.6.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="2.6.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-5"><i class="fa fa-check"></i><b>2.6.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="2.6.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-5"><i class="fa fa-check"></i><b>2.6.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="2.6.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-5"><i class="fa fa-check"></i><b>2.6.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="2.6.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-5"><i class="fa fa-check"></i><b>2.6.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="2.6.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-5"><i class="fa fa-check"></i><b>2.6.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="C3.html"><a href="C3.html"><i class="fa fa-check"></i><b>3</b> 时间与日期处理/日志系统/正则</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="12-GUI.html"><a href="#datetime-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.1</b> datetime 模块</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-6"><i class="fa fa-check"></i><b>3.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.1.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-6"><i class="fa fa-check"></i><b>3.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-6"><i class="fa fa-check"></i><b>3.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.1.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-6"><i class="fa fa-check"></i><b>3.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.1.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-6"><i class="fa fa-check"></i><b>3.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.1.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-6"><i class="fa fa-check"></i><b>3.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="12-GUI.html"><a href="#time-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.2</b> time 模块</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-7"><i class="fa fa-check"></i><b>3.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-7"><i class="fa fa-check"></i><b>3.2.2</b> 2️⃣ 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-7"><i class="fa fa-check"></i><b>3.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.2.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-7"><i class="fa fa-check"></i><b>3.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.2.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-7"><i class="fa fa-check"></i><b>3.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.2.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-7"><i class="fa fa-check"></i><b>3.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="12-GUI.html"><a href="#calendar-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.3</b> calendar 模块</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-8"><i class="fa fa-check"></i><b>3.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-8"><i class="fa fa-check"></i><b>3.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.3.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-8"><i class="fa fa-check"></i><b>3.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.3.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-8"><i class="fa fa-check"></i><b>3.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.3.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-8"><i class="fa fa-check"></i><b>3.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.3.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-8"><i class="fa fa-check"></i><b>3.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="12-GUI.html"><a href="#logging-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.4</b> logging 模块</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-9"><i class="fa fa-check"></i><b>3.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-9"><i class="fa fa-check"></i><b>3.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.4.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-9"><i class="fa fa-check"></i><b>3.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.4.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-9"><i class="fa fa-check"></i><b>3.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.4.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-9"><i class="fa fa-check"></i><b>3.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.4.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-9"><i class="fa fa-check"></i><b>3.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="12-GUI.html"><a href="#re-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>3.5</b> re 模块</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-10"><i class="fa fa-check"></i><b>3.5.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="3.5.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-10"><i class="fa fa-check"></i><b>3.5.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="3.5.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-10"><i class="fa fa-check"></i><b>3.5.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="3.5.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-10"><i class="fa fa-check"></i><b>3.5.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="3.5.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-10"><i class="fa fa-check"></i><b>3.5.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="3.5.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-10"><i class="fa fa-check"></i><b>3.5.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="C4.html"><a href="C4.html"><i class="fa fa-check"></i><b>4</b> 命令行参数解析/执行系统命令</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="12-GUI.html"><a href="#argparse-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>4.1</b> argparse 模块</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-11"><i class="fa fa-check"></i><b>4.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="4.1.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-11"><i class="fa fa-check"></i><b>4.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="4.1.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-11"><i class="fa fa-check"></i><b>4.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="4.1.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-11"><i class="fa fa-check"></i><b>4.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="4.1.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-11"><i class="fa fa-check"></i><b>4.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="4.1.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-11"><i class="fa fa-check"></i><b>4.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="12-GUI.html"><a href="#subprocess-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>4.2</b> subprocess 模块</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-12"><i class="fa fa-check"></i><b>4.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-12"><i class="fa fa-check"></i><b>4.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-12"><i class="fa fa-check"></i><b>4.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="4.2.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-12"><i class="fa fa-check"></i><b>4.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="4.2.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-12"><i class="fa fa-check"></i><b>4.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="4.2.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-12"><i class="fa fa-check"></i><b>4.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="C5.html"><a href="C5.html"><i class="fa fa-check"></i><b>5</b> 高级数据结构与工具</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="12-GUI.html"><a href="#functools-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>5.1</b> functools 模块</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-13"><i class="fa fa-check"></i><b>5.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="5.1.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-13"><i class="fa fa-check"></i><b>5.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="5.1.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-13"><i class="fa fa-check"></i><b>5.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="5.1.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-13"><i class="fa fa-check"></i><b>5.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="5.1.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-13"><i class="fa fa-check"></i><b>5.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="5.1.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-13"><i class="fa fa-check"></i><b>5.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="12-GUI.html"><a href="#itertools-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>5.2</b> itertools 模块</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-14"><i class="fa fa-check"></i><b>5.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="5.2.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-14"><i class="fa fa-check"></i><b>5.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="5.2.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-14"><i class="fa fa-check"></i><b>5.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="5.2.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-14"><i class="fa fa-check"></i><b>5.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="5.2.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-14"><i class="fa fa-check"></i><b>5.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="5.2.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-14"><i class="fa fa-check"></i><b>5.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="12-GUI.html"><a href="#collections-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>5.3</b> collections 模块</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-15"><i class="fa fa-check"></i><b>5.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-15"><i class="fa fa-check"></i><b>5.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-15"><i class="fa fa-check"></i><b>5.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="5.3.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-15"><i class="fa fa-check"></i><b>5.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="5.3.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-15"><i class="fa fa-check"></i><b>5.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="5.3.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-15"><i class="fa fa-check"></i><b>5.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="C6.html"><a href="C6.html"><i class="fa fa-check"></i><b>6</b> 并发与并行/轻量数据库</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="12-GUI.html"><a href="#threading-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.1</b> threading 模块</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-16"><i class="fa fa-check"></i><b>6.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="6.1.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-16"><i class="fa fa-check"></i><b>6.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-16"><i class="fa fa-check"></i><b>6.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.1.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-16"><i class="fa fa-check"></i><b>6.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.1.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-16"><i class="fa fa-check"></i><b>6.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.1.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-16"><i class="fa fa-check"></i><b>6.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="12-GUI.html"><a href="#multiprocessing-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.2</b> multiprocessing 模块</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-17"><i class="fa fa-check"></i><b>6.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="6.2.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-17"><i class="fa fa-check"></i><b>6.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-17"><i class="fa fa-check"></i><b>6.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.2.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-17"><i class="fa fa-check"></i><b>6.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.2.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-17"><i class="fa fa-check"></i><b>6.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.2.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-17"><i class="fa fa-check"></i><b>6.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="12-GUI.html"><a href="#concurrent.futures-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.3</b> concurrent.futures 模块</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-18"><i class="fa fa-check"></i><b>6.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="6.3.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-18"><i class="fa fa-check"></i><b>6.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.3.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-18"><i class="fa fa-check"></i><b>6.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.3.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-18"><i class="fa fa-check"></i><b>6.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.3.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-18"><i class="fa fa-check"></i><b>6.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.3.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-18"><i class="fa fa-check"></i><b>6.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="12-GUI.html"><a href="#sqlite3-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>6.4</b> sqlite3 模块</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-19"><i class="fa fa-check"></i><b>6.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="6.4.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-19"><i class="fa fa-check"></i><b>6.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-19"><i class="fa fa-check"></i><b>6.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="6.4.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-19"><i class="fa fa-check"></i><b>6.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="6.4.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-19"><i class="fa fa-check"></i><b>6.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="6.4.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-19"><i class="fa fa-check"></i><b>6.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="12-GUI.html"><a href="#python-%E6%A0%87%E5%87%86%E5%BA%93%E6%A8%A1%E5%9D%97%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E6%8C%87%E5%8D%97"><i class="fa fa-check"></i><b>6.5</b> Python 标准库模块应用场景指南</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="12-GUI.html"><a href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3"><i class="fa fa-check"></i><b>6.5.1</b> 操作系统相关</a></li>
+<li class="chapter" data-level="6.5.2" data-path="12-GUI.html"><a href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F"><i class="fa fa-check"></i><b>6.5.2</b> 数据存储格式</a></li>
+<li class="chapter" data-level="6.5.3" data-path="12-GUI.html"><a href="#%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%A5%E6%9C%9F"><i class="fa fa-check"></i><b>6.5.3</b> 时间与日期</a></li>
+<li class="chapter" data-level="6.5.4" data-path="12-GUI.html"><a href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F"><i class="fa fa-check"></i><b>6.5.4</b> 日志系统</a></li>
+<li class="chapter" data-level="6.5.5" data-path="12-GUI.html"><a href="#%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86"><i class="fa fa-check"></i><b>6.5.5</b> 文本处理</a></li>
+<li class="chapter" data-level="6.5.6" data-path="12-GUI.html"><a href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7"><i class="fa fa-check"></i><b>6.5.6</b> 命令行工具</a></li>
+<li class="chapter" data-level="6.5.7" data-path="12-GUI.html"><a href="#%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><i class="fa fa-check"></i><b>6.5.7</b> 系统命令</a></li>
+<li class="chapter" data-level="6.5.8" data-path="12-GUI.html"><a href="#%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E5%B7%A5%E5%85%B7"><i class="fa fa-check"></i><b>6.5.8</b> 高级数据结构与工具</a></li>
+<li class="chapter" data-level="6.5.9" data-path="12-GUI.html"><a href="#%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C"><i class="fa fa-check"></i><b>6.5.9</b> 并发与并行</a></li>
+<li class="chapter" data-level="6.5.10" data-path="12-GUI.html"><a href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8"><i class="fa fa-check"></i><b>6.5.10</b> 数据存储</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-processing.html"><a href="data-processing.html"><i class="fa fa-check"></i><b>7</b> 数据处理与计算</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="12-GUI.html"><a href="#numpy-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>7.1</b> NumPy 模块</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-20"><i class="fa fa-check"></i><b>7.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="7.1.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-20"><i class="fa fa-check"></i><b>7.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="7.1.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-20"><i class="fa fa-check"></i><b>7.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="7.1.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-20"><i class="fa fa-check"></i><b>7.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="7.1.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-20"><i class="fa fa-check"></i><b>7.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="7.1.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-20"><i class="fa fa-check"></i><b>7.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="12-GUI.html"><a href="#pandas-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>7.2</b> Pandas 模块</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-21"><i class="fa fa-check"></i><b>7.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="7.2.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-21"><i class="fa fa-check"></i><b>7.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="7.2.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-21"><i class="fa fa-check"></i><b>7.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="7.2.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-21"><i class="fa fa-check"></i><b>7.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="7.2.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-21"><i class="fa fa-check"></i><b>7.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="7.2.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-21"><i class="fa fa-check"></i><b>7.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="12-GUI.html"><a href="#matplotlib-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>7.3</b> Matplotlib 模块</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-22"><i class="fa fa-check"></i><b>7.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="7.3.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-22"><i class="fa fa-check"></i><b>7.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="7.3.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-22"><i class="fa fa-check"></i><b>7.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="7.3.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-22"><i class="fa fa-check"></i><b>7.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="7.3.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-22"><i class="fa fa-check"></i><b>7.3.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="7.3.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-22"><i class="fa fa-check"></i><b>7.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="12-GUI.html"><a href="#seaborn-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>7.4</b> Seaborn 模块</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-23"><i class="fa fa-check"></i><b>7.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="7.4.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-23"><i class="fa fa-check"></i><b>7.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="7.4.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-23"><i class="fa fa-check"></i><b>7.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="7.4.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-23"><i class="fa fa-check"></i><b>7.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="7.4.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-23"><i class="fa fa-check"></i><b>7.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="7.4.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-23"><i class="fa fa-check"></i><b>7.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="C8.html"><a href="C8.html"><i class="fa fa-check"></i><b>8</b> 网络与Web</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="12-GUI.html"><a href="#requests-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>8.1</b> Requests 模块</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-24"><i class="fa fa-check"></i><b>8.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="8.1.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-24"><i class="fa fa-check"></i><b>8.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="8.1.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-24"><i class="fa fa-check"></i><b>8.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="8.1.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-24"><i class="fa fa-check"></i><b>8.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="8.1.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-24"><i class="fa fa-check"></i><b>8.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="8.1.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-24"><i class="fa fa-check"></i><b>8.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="12-GUI.html"><a href="#flask-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>8.2</b> Flask 模块</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-25"><i class="fa fa-check"></i><b>8.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="8.2.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-25"><i class="fa fa-check"></i><b>8.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="8.2.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-25"><i class="fa fa-check"></i><b>8.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="8.2.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-25"><i class="fa fa-check"></i><b>8.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="8.2.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-example"><i class="fa fa-check"></i><b>8.2.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="8.2.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-25"><i class="fa fa-check"></i><b>8.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="12-GUI.html"><a href="#fastapi-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>8.3</b> FastAPI 模块</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-26"><i class="fa fa-check"></i><b>8.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-26"><i class="fa fa-check"></i><b>8.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="8.3.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-26"><i class="fa fa-check"></i><b>8.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="8.3.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-26"><i class="fa fa-check"></i><b>8.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="8.3.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-example-1"><i class="fa fa-check"></i><b>8.3.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="8.3.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-26"><i class="fa fa-check"></i><b>8.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="12-GUI.html"><a href="#django-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>8.4</b> Django 模块</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-27"><i class="fa fa-check"></i><b>8.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="8.4.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-27"><i class="fa fa-check"></i><b>8.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="8.4.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-27"><i class="fa fa-check"></i><b>8.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="8.4.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-27"><i class="fa fa-check"></i><b>8.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="8.4.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-example-2"><i class="fa fa-check"></i><b>8.4.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="8.4.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-27"><i class="fa fa-check"></i><b>8.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="C9.html"><a href="C9.html"><i class="fa fa-check"></i><b>9</b> 爬虫</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="12-GUI.html"><a href="#beautifulsoup4-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>9.1</b> BeautifulSoup4 模块</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-28"><i class="fa fa-check"></i><b>9.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="9.1.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-28"><i class="fa fa-check"></i><b>9.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="9.1.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-28"><i class="fa fa-check"></i><b>9.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="9.1.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-28"><i class="fa fa-check"></i><b>9.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="9.1.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-example-3"><i class="fa fa-check"></i><b>9.1.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="9.1.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-28"><i class="fa fa-check"></i><b>9.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="12-GUI.html"><a href="#lxml-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>9.2</b> lxml 模块</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-29"><i class="fa fa-check"></i><b>9.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="9.2.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-29"><i class="fa fa-check"></i><b>9.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="9.2.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-29"><i class="fa fa-check"></i><b>9.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="9.2.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-29"><i class="fa fa-check"></i><b>9.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="9.2.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-example-4"><i class="fa fa-check"></i><b>9.2.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="9.2.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-29"><i class="fa fa-check"></i><b>9.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="C10.html"><a href="C10.html"><i class="fa fa-check"></i><b>10</b> 数据科学</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="12-GUI.html"><a href="#scikit-learn-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>10.1</b> scikit-learn 模块</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-30"><i class="fa fa-check"></i><b>10.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="10.1.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-30"><i class="fa fa-check"></i><b>10.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="10.1.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-30"><i class="fa fa-check"></i><b>10.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="10.1.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-30"><i class="fa fa-check"></i><b>10.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="10.1.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-25"><i class="fa fa-check"></i><b>10.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="10.1.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-30"><i class="fa fa-check"></i><b>10.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="12-GUI.html"><a href="#pytorch-torch-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>10.2</b> PyTorch (torch) 模块</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-31"><i class="fa fa-check"></i><b>10.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="10.2.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-31"><i class="fa fa-check"></i><b>10.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="10.2.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-31"><i class="fa fa-check"></i><b>10.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="10.2.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-31"><i class="fa fa-check"></i><b>10.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="10.2.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-example-5"><i class="fa fa-check"></i><b>10.2.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="10.2.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-31"><i class="fa fa-check"></i><b>10.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="12-GUI.html"><a href="#tensorflow-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>10.3</b> TensorFlow 模块</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-32"><i class="fa fa-check"></i><b>10.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="10.3.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-32"><i class="fa fa-check"></i><b>10.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="10.3.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-32"><i class="fa fa-check"></i><b>10.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="10.3.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-32"><i class="fa fa-check"></i><b>10.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="10.3.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-example-6"><i class="fa fa-check"></i><b>10.3.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="10.3.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-32"><i class="fa fa-check"></i><b>10.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="12-GUI.html"><a href="#transformers-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>10.4</b> transformers 模块</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-33"><i class="fa fa-check"></i><b>10.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="10.4.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-33"><i class="fa fa-check"></i><b>10.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="10.4.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-33"><i class="fa fa-check"></i><b>10.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="10.4.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-33"><i class="fa fa-check"></i><b>10.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="10.4.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-26"><i class="fa fa-check"></i><b>10.4.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="10.4.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-33"><i class="fa fa-check"></i><b>10.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="C11.html"><a href="C11.html"><i class="fa fa-check"></i><b>11</b> 工具</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="12-GUI.html"><a href="#pytest-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>11.1</b> pytest 模块</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-34"><i class="fa fa-check"></i><b>11.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.1.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-34"><i class="fa fa-check"></i><b>11.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.1.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-34"><i class="fa fa-check"></i><b>11.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.1.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-34"><i class="fa fa-check"></i><b>11.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.1.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-27"><i class="fa fa-check"></i><b>11.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="11.1.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-34"><i class="fa fa-check"></i><b>11.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="C11.html"><a href="C11.html#virtualenv"><i class="fa fa-check"></i><b>11.2</b> virtualenv</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-35"><i class="fa fa-check"></i><b>11.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.2.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-35"><i class="fa fa-check"></i><b>11.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.2.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-35"><i class="fa fa-check"></i><b>11.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.2.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-35"><i class="fa fa-check"></i><b>11.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.2.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-example-7"><i class="fa fa-check"></i><b>11.2.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.2.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-35"><i class="fa fa-check"></i><b>11.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="C11.html"><a href="C11.html#conda"><i class="fa fa-check"></i><b>11.3</b> conda</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-36"><i class="fa fa-check"></i><b>11.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.3.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-36"><i class="fa fa-check"></i><b>11.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.3.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-36"><i class="fa fa-check"></i><b>11.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.3.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-36"><i class="fa fa-check"></i><b>11.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.3.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-example-8"><i class="fa fa-check"></i><b>11.3.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.3.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-36"><i class="fa fa-check"></i><b>11.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="C11.html"><a href="C11.html#poetry"><i class="fa fa-check"></i><b>11.4</b> poetry</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-37"><i class="fa fa-check"></i><b>11.4.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.4.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-37"><i class="fa fa-check"></i><b>11.4.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.4.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-37"><i class="fa fa-check"></i><b>11.4.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.4.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-37"><i class="fa fa-check"></i><b>11.4.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.4.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-example-9"><i class="fa fa-check"></i><b>11.4.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.4.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-37"><i class="fa fa-check"></i><b>11.4.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="C11.html"><a href="C11.html#black"><i class="fa fa-check"></i><b>11.5</b> black</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-38"><i class="fa fa-check"></i><b>11.5.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.5.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-38"><i class="fa fa-check"></i><b>11.5.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.5.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-38"><i class="fa fa-check"></i><b>11.5.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.5.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-38"><i class="fa fa-check"></i><b>11.5.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.5.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-example-10"><i class="fa fa-check"></i><b>11.5.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.5.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-38"><i class="fa fa-check"></i><b>11.5.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="C11.html"><a href="C11.html#flake8"><i class="fa fa-check"></i><b>11.6</b> flake8</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-39"><i class="fa fa-check"></i><b>11.6.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.6.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-39"><i class="fa fa-check"></i><b>11.6.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.6.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-39"><i class="fa fa-check"></i><b>11.6.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.6.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-39"><i class="fa fa-check"></i><b>11.6.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.6.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-example-11"><i class="fa fa-check"></i><b>11.6.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.6.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-39"><i class="fa fa-check"></i><b>11.6.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="C11.html"><a href="C11.html#isort"><i class="fa fa-check"></i><b>11.7</b> isort</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-40"><i class="fa fa-check"></i><b>11.7.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="11.7.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-40"><i class="fa fa-check"></i><b>11.7.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="11.7.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-40"><i class="fa fa-check"></i><b>11.7.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="11.7.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-40"><i class="fa fa-check"></i><b>11.7.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="11.7.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-example-12"><i class="fa fa-check"></i><b>11.7.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="11.7.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-40"><i class="fa fa-check"></i><b>11.7.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="C12.html"><a href="C12.html"><i class="fa fa-check"></i><b>12</b> LLM</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="12-GUI.html"><a href="#openai-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>12.1</b> openai 模块</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-41"><i class="fa fa-check"></i><b>12.1.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="12.1.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-41"><i class="fa fa-check"></i><b>12.1.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="12.1.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-41"><i class="fa fa-check"></i><b>12.1.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="12.1.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-41"><i class="fa fa-check"></i><b>12.1.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="12.1.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-28"><i class="fa fa-check"></i><b>12.1.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="12.1.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-41"><i class="fa fa-check"></i><b>12.1.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="12-GUI.html"><a href="#faiss-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>12.2</b> faiss 模块</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-42"><i class="fa fa-check"></i><b>12.2.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="12.2.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-42"><i class="fa fa-check"></i><b>12.2.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="12.2.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-42"><i class="fa fa-check"></i><b>12.2.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="12.2.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-42"><i class="fa fa-check"></i><b>12.2.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="12.2.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-examples-29"><i class="fa fa-check"></i><b>12.2.5</b> 举例 (Examples)</a></li>
+<li class="chapter" data-level="12.2.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-42"><i class="fa fa-check"></i><b>12.2.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="12-GUI.html"><a href="#peft-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>12.3</b> peft 模块</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-what-43"><i class="fa fa-check"></i><b>12.3.1</b> 核心 (What)</a></li>
+<li class="chapter" data-level="12.3.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-dimension-43"><i class="fa fa-check"></i><b>12.3.2</b> 组成结构 (Dimension)</a></li>
+<li class="chapter" data-level="12.3.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-how-it-works-43"><i class="fa fa-check"></i><b>12.3.3</b> 原理 (How it works)</a></li>
+<li class="chapter" data-level="12.3.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-usage-43"><i class="fa fa-check"></i><b>12.3.4</b> 应用 (Usage)</a></li>
+<li class="chapter" data-level="12.3.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-example-13"><i class="fa fa-check"></i><b>12.3.5</b> 举例 (Example)</a></li>
+<li class="chapter" data-level="12.3.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-misunderstanding-43"><i class="fa fa-check"></i><b>12.3.6</b> 辨析 (Misunderstanding)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="GUI.html"><a href="GUI.html"><i class="fa fa-check"></i><b>13</b> GUI</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="12-GUI.html"><a href="#tkinter-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>13.1</b> tkinter 模块</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83"><i class="fa fa-check"></i><b>13.1.1</b> 核心</a></li>
+<li class="chapter" data-level="13.1.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84"><i class="fa fa-check"></i><b>13.1.2</b> 组成结构</a></li>
+<li class="chapter" data-level="13.1.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86"><i class="fa fa-check"></i><b>13.1.3</b> 原理</a></li>
+<li class="chapter" data-level="13.1.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8"><i class="fa fa-check"></i><b>13.1.4</b> 应用</a></li>
+<li class="chapter" data-level="13.1.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B"><i class="fa fa-check"></i><b>13.1.5</b> 举例</a></li>
+<li class="chapter" data-level="13.1.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90"><i class="fa fa-check"></i><b>13.1.6</b> 辨析</a></li>
+<li class="chapter" data-level="13.1.7" data-path="12-GUI.html"><a href="#%E6%80%BB%E7%BB%93"><i class="fa fa-check"></i><b>13.1.7</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="12-GUI.html"><a href="#pyqt-pyside-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>13.2</b> PyQt / PySide 模块</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-1"><i class="fa fa-check"></i><b>13.2.1</b> 核心</a></li>
+<li class="chapter" data-level="13.2.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-1"><i class="fa fa-check"></i><b>13.2.2</b> 组成结构</a></li>
+<li class="chapter" data-level="13.2.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-1"><i class="fa fa-check"></i><b>13.2.3</b> 原理</a></li>
+<li class="chapter" data-level="13.2.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-1"><i class="fa fa-check"></i><b>13.2.4</b> 应用</a></li>
+<li class="chapter" data-level="13.2.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-1"><i class="fa fa-check"></i><b>13.2.5</b> 举例</a></li>
+<li class="chapter" data-level="13.2.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-1"><i class="fa fa-check"></i><b>13.2.6</b> 辨析</a></li>
+<li class="chapter" data-level="13.2.7" data-path="12-GUI.html"><a href="#%E6%80%BB%E7%BB%93-1"><i class="fa fa-check"></i><b>13.2.7</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="12-GUI.html"><a href="#wxpython-%E6%A8%A1%E5%9D%97"><i class="fa fa-check"></i><b>13.3</b> wxPython 模块</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-2"><i class="fa fa-check"></i><b>13.3.1</b> 核心</a></li>
+<li class="chapter" data-level="13.3.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-2"><i class="fa fa-check"></i><b>13.3.2</b> 组成结构</a></li>
+<li class="chapter" data-level="13.3.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-2"><i class="fa fa-check"></i><b>13.3.3</b> 原理</a></li>
+<li class="chapter" data-level="13.3.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-2"><i class="fa fa-check"></i><b>13.3.4</b> 应用</a></li>
+<li class="chapter" data-level="13.3.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-2"><i class="fa fa-check"></i><b>13.3.5</b> 举例</a></li>
+<li class="chapter" data-level="13.3.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-2"><i class="fa fa-check"></i><b>13.3.6</b> 辨析</a></li>
+<li class="chapter" data-level="13.3.7" data-path="12-GUI.html"><a href="#%E6%80%BB%E7%BB%93-2"><i class="fa fa-check"></i><b>13.3.7</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="GUI.html"><a href="GUI.html#wxpython"><i class="fa fa-check"></i><b>13.4</b> wxPython</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-3"><i class="fa fa-check"></i><b>13.4.1</b> 核心</a></li>
+<li class="chapter" data-level="13.4.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-3"><i class="fa fa-check"></i><b>13.4.2</b> 组成结构</a></li>
+<li class="chapter" data-level="13.4.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-3"><i class="fa fa-check"></i><b>13.4.3</b> 原理</a></li>
+<li class="chapter" data-level="13.4.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-3"><i class="fa fa-check"></i><b>13.4.4</b> 应用</a></li>
+<li class="chapter" data-level="13.4.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-3"><i class="fa fa-check"></i><b>13.4.5</b> 举例</a></li>
+<li class="chapter" data-level="13.4.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-3"><i class="fa fa-check"></i><b>13.4.6</b> 辨析</a></li>
+<li class="chapter" data-level="13.4.7" data-path="12-GUI.html"><a href="#%E6%80%BB%E7%BB%93-3"><i class="fa fa-check"></i><b>13.4.7</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="GUI.html"><a href="GUI.html#kivy"><i class="fa fa-check"></i><b>13.5</b> Kivy</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-4"><i class="fa fa-check"></i><b>13.5.1</b> 核心</a></li>
+<li class="chapter" data-level="13.5.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-4"><i class="fa fa-check"></i><b>13.5.2</b> 组成结构</a></li>
+<li class="chapter" data-level="13.5.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-4"><i class="fa fa-check"></i><b>13.5.3</b> 原理</a></li>
+<li class="chapter" data-level="13.5.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-4"><i class="fa fa-check"></i><b>13.5.4</b> 应用</a></li>
+<li class="chapter" data-level="13.5.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-4"><i class="fa fa-check"></i><b>13.5.5</b> 举例</a></li>
+<li class="chapter" data-level="13.5.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-4"><i class="fa fa-check"></i><b>13.5.6</b> 辨析</a></li>
+<li class="chapter" data-level="13.5.7" data-path="12-GUI.html"><a href="#%E6%80%BB%E7%BB%93-4"><i class="fa fa-check"></i><b>13.5.7</b> 总结</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="GUI.html"><a href="GUI.html#beeware-toga"><i class="fa fa-check"></i><b>13.6</b> BeeWare / Toga</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="12-GUI.html"><a href="#%E6%A0%B8%E5%BF%83-5"><i class="fa fa-check"></i><b>13.6.1</b> 核心</a></li>
+<li class="chapter" data-level="13.6.2" data-path="12-GUI.html"><a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-5"><i class="fa fa-check"></i><b>13.6.2</b> 组成结构</a></li>
+<li class="chapter" data-level="13.6.3" data-path="12-GUI.html"><a href="#%E5%8E%9F%E7%90%86-5"><i class="fa fa-check"></i><b>13.6.3</b> 原理</a></li>
+<li class="chapter" data-level="13.6.4" data-path="12-GUI.html"><a href="#%E5%BA%94%E7%94%A8-5"><i class="fa fa-check"></i><b>13.6.4</b> 应用</a></li>
+<li class="chapter" data-level="13.6.5" data-path="12-GUI.html"><a href="#%E4%B8%BE%E4%BE%8B-5"><i class="fa fa-check"></i><b>13.6.5</b> 举例</a></li>
+<li class="chapter" data-level="13.6.6" data-path="12-GUI.html"><a href="#%E8%BE%A8%E6%9E%90-5"><i class="fa fa-check"></i><b>13.6.6</b> 辨析</a></li>
+<li class="chapter" data-level="13.6.7" data-path="12-GUI.html"><a href="#%E6%80%BB%E7%BB%93-5"><i class="fa fa-check"></i><b>13.6.7</b> 总结</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="project.html"><a href="project.html"><i class="fa fa-check"></i><b>14</b> 项目开发</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="12-GUI.html"><a href="#%E4%B8%80-%E6%83%B3%E6%B3%95%E5%88%B0%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%B8%BF%E6%B2%9F%E5%9C%A8%E5%93%AA%E9%87%8C"><i class="fa fa-check"></i><b>14.1</b> 一 想法到项目的鸿沟在哪里</a></li>
+<li class="chapter" data-level="14.2" data-path="12-GUI.html"><a href="#%E4%BA%8C-%E5%A6%82%E4%BD%95%E8%B7%A8%E8%B6%8A%E9%B8%BF%E6%B2%9F"><i class="fa fa-check"></i><b>14.2</b> 二 如何跨越鸿沟</a></li>
+<li class="chapter" data-level="14.3" data-path="12-GUI.html"><a href="#%E4%B8%89-%E5%A6%82%E4%BD%95%E7%94%BB%E8%AE%BE%E8%AE%A1%E5%9B%BE"><i class="fa fa-check"></i><b>14.3</b> 三 如何画设计图</a></li>
+<li class="chapter" data-level="14.4" data-path="12-GUI.html"><a href="#%E5%9B%9B-%E8%A1%8C%E5%8A%A8%E8%AE%A1%E5%88%92"><i class="fa fa-check"></i><b>14.4</b> 四 行动计划</a></li>
+<li class="chapter" data-level="14.5" data-path="12-GUI.html"><a href="#%E4%B8%80-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E7%B1%BB"><i class="fa fa-check"></i><b>14.5</b> 一 环境搭建类</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="12-GUI.html"><a href="#%E5%88%9B%E5%BB%BA-python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><i class="fa fa-check"></i><b>14.5.1</b> 1 创建 Python 虚拟环境</a></li>
+<li class="chapter" data-level="14.5.2" data-path="12-GUI.html"><a href="#git-%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96"><i class="fa fa-check"></i><b>14.5.2</b> 2 Git 项目初始化</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="12-GUI.html"><a href="#%E4%BA%8C-%E5%8A%9F%E8%83%BD%E5%BC%80%E5%8F%91%E7%B1%BB"><i class="fa fa-check"></i><b>14.6</b> 二 功能开发类</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="12-GUI.html"><a href="#%E6%90%AD%E5%BB%BA%E6%9C%80%E5%B0%8F-api-%E6%9C%8D%E5%8A%A1flask"><i class="fa fa-check"></i><b>14.6.1</b> 3 搭建最小 API 服务（Flask）</a></li>
+<li class="chapter" data-level="14.6.2" data-path="12-GUI.html"><a href="#%E5%86%99%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7argparse"><i class="fa fa-check"></i><b>14.6.2</b> 4 写一个命令行工具（argparse）</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="12-GUI.html"><a href="#%E4%B8%89-%E6%96%87%E6%A1%A3%E5%86%99%E4%BD%9C%E7%B1%BB"><i class="fa fa-check"></i><b>14.7</b> 三 文档写作类</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="12-GUI.html"><a href="#%E5%86%99%E9%A1%B9%E7%9B%AE%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3-readme"><i class="fa fa-check"></i><b>14.7.1</b> 5 写项目说明文档 README</a></li>
+<li class="chapter" data-level="14.7.2" data-path="12-GUI.html"><a href="#%E7%94%BB%E6%9E%B6%E6%9E%84%E5%9B%BE"><i class="fa fa-check"></i><b>14.7.2</b> 6 画架构图</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="12-GUI.html"><a href="#%E5%9B%9B-%E6%B5%8B%E8%AF%95%E7%B1%BB"><i class="fa fa-check"></i><b>14.8</b> 四 测试类</a>
+<ul>
+<li class="chapter" data-level="14.8.1" data-path="12-GUI.html"><a href="#%E5%86%99%E4%B8%80%E4%B8%AA-pytest-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><i class="fa fa-check"></i><b>14.8.1</b> 7 写一个 pytest 单元测试</a></li>
+<li class="chapter" data-level="14.8.2" data-path="12-GUI.html"><a href="#api-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95"><i class="fa fa-check"></i><b>14.8.2</b> 8 API 接口测试</a></li>
+</ul></li>
+<li class="chapter" data-level="14.9" data-path="12-GUI.html"><a href="#%E4%BA%94-%E5%8F%91%E5%B8%83%E4%B8%8E%E8%BF%AD%E4%BB%A3%E7%B1%BB"><i class="fa fa-check"></i><b>14.9</b> 五 发布与迭代类</a>
+<ul>
+<li class="chapter" data-level="14.9.1" data-path="12-GUI.html"><a href="#%E6%89%93%E5%8C%85-python-%E9%A1%B9%E7%9B%AE"><i class="fa fa-check"></i><b>14.9.1</b> 9 打包 Python 项目</a></li>
+<li class="chapter" data-level="14.9.2" data-path="12-GUI.html"><a href="#%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><i class="fa fa-check"></i><b>14.9.2</b> 10 部署到服务器</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/liamamilin" target="blank">Lin Mi</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Python tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="GUI" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> GUI<a href="GUI.html#GUI" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="tkinter-模块" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> tkinter 模块<a href="#tkinter-%E6%A8%A1%E5%9D%97" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心" class="section level3 hasAnchor" number="13.1.1">
+<h3><span class="header-section-number">13.1.1</span> 核心<a href="#%E6%A0%B8%E5%BF%83" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>tkinter 是 Python 自带的图形界面库，封装了 Tcl/Tk 库。
+它可以让你用 Python 代码创建窗口、按钮、文本框、标签等常见的 GUI 控件。</p>
+<p>一句话总结：tkinter 是 Python 内置的轻量级桌面应用开发工具，零安装，开箱即用。</p>
+</div>
+<div id="组成结构" class="section level3 hasAnchor" number="13.1.2">
+<h3><span class="header-section-number">13.1.2</span> 组成结构<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>1 窗口管理</p>
+<ul>
+<li>Tk 主窗口</li>
+<li>Toplevel 额外窗口</li>
+</ul>
+<p>2 控件</p>
+<ul>
+<li>Label 标签</li>
+<li>Button 按钮</li>
+<li>Entry 文本输入框</li>
+<li>Text 多行文本框</li>
+<li>Checkbutton 复选框</li>
+<li>Radiobutton 单选按钮</li>
+<li>Listbox 列表框</li>
+<li>Canvas 画布</li>
+<li>Frame 容器</li>
+</ul>
+<p>3 布局管理</p>
+<ul>
+<li>pack 按顺序摆放</li>
+<li>grid 网格布局</li>
+<li>place 指定位置</li>
+</ul>
+<p>4 事件绑定</p>
+<ul>
+<li>bind 方法可绑定键盘 鼠标事件</li>
+<li>command 属性可绑定函数</li>
+</ul>
+</div>
+<div id="原理" class="section level3 hasAnchor" number="13.1.3">
+<h3><span class="header-section-number">13.1.3</span> 原理<a href="#%E5%8E%9F%E7%90%86" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>tkinter 是对 Tcl/Tk GUI 库的封装</li>
+<li>创建 Tk 实例后会进入主循环 mainloop 持续等待和响应用户操作</li>
+<li>控件对象通过方法调用更新界面，不需要手动刷新</li>
+</ul>
+</div>
+<div id="应用" class="section level3 hasAnchor" number="13.1.4">
+<h3><span class="header-section-number">13.1.4</span> 应用<a href="#%E5%BA%94%E7%94%A8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>简单桌面小工具</li>
+<li>学习 GUI 编程入门</li>
+<li>原型界面开发</li>
+<li>内部工具（文件批量处理器、数据录入工具）</li>
+</ul>
+</div>
+<div id="举例" class="section level3 hasAnchor" number="13.1.5">
+<h3><span class="header-section-number">13.1.5</span> 举例<a href="#%E4%B8%BE%E4%BE%8B" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>最简单的窗口</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb168-1"><a href="GUI.html#cb168-1" tabindex="-1"></a><span class="im">import</span> tkinter <span class="im">as</span> tk</span>
+<span id="cb168-2"><a href="GUI.html#cb168-2" tabindex="-1"></a></span>
+<span id="cb168-3"><a href="GUI.html#cb168-3" tabindex="-1"></a>root <span class="op">=</span> tk.Tk()</span>
+<span id="cb168-4"><a href="GUI.html#cb168-4" tabindex="-1"></a>root.title(<span class="st">&quot;我的第一个窗口&quot;</span>)</span>
+<span id="cb168-5"><a href="GUI.html#cb168-5" tabindex="-1"></a>label <span class="op">=</span> tk.Label(root, text<span class="op">=</span><span class="st">&quot;你好 tkinter&quot;</span>)</span>
+<span id="cb168-6"><a href="GUI.html#cb168-6" tabindex="-1"></a>label.pack()</span>
+<span id="cb168-7"><a href="GUI.html#cb168-7" tabindex="-1"></a>root.mainloop()</span></code></pre></div>
+<p>带按钮交互</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb169-1"><a href="GUI.html#cb169-1" tabindex="-1"></a><span class="im">import</span> tkinter <span class="im">as</span> tk</span>
+<span id="cb169-2"><a href="GUI.html#cb169-2" tabindex="-1"></a></span>
+<span id="cb169-3"><a href="GUI.html#cb169-3" tabindex="-1"></a><span class="kw">def</span> say_hello():</span>
+<span id="cb169-4"><a href="GUI.html#cb169-4" tabindex="-1"></a>    label.config(text<span class="op">=</span><span class="st">&quot;按钮被点击了&quot;</span>)</span>
+<span id="cb169-5"><a href="GUI.html#cb169-5" tabindex="-1"></a></span>
+<span id="cb169-6"><a href="GUI.html#cb169-6" tabindex="-1"></a>root <span class="op">=</span> tk.Tk()</span>
+<span id="cb169-7"><a href="GUI.html#cb169-7" tabindex="-1"></a>root.title(<span class="st">&quot;按钮示例&quot;</span>)</span>
+<span id="cb169-8"><a href="GUI.html#cb169-8" tabindex="-1"></a></span>
+<span id="cb169-9"><a href="GUI.html#cb169-9" tabindex="-1"></a>label <span class="op">=</span> tk.Label(root, text<span class="op">=</span><span class="st">&quot;初始文本&quot;</span>)</span>
+<span id="cb169-10"><a href="GUI.html#cb169-10" tabindex="-1"></a>label.pack()</span>
+<span id="cb169-11"><a href="GUI.html#cb169-11" tabindex="-1"></a></span>
+<span id="cb169-12"><a href="GUI.html#cb169-12" tabindex="-1"></a>button <span class="op">=</span> tk.Button(root, text<span class="op">=</span><span class="st">&quot;点我&quot;</span>, command<span class="op">=</span>say_hello)</span>
+<span id="cb169-13"><a href="GUI.html#cb169-13" tabindex="-1"></a>button.pack()</span>
+<span id="cb169-14"><a href="GUI.html#cb169-14" tabindex="-1"></a></span>
+<span id="cb169-15"><a href="GUI.html#cb169-15" tabindex="-1"></a>root.mainloop()</span></code></pre></div>
+<p>布局示例</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb170-1"><a href="GUI.html#cb170-1" tabindex="-1"></a><span class="im">import</span> tkinter <span class="im">as</span> tk</span>
+<span id="cb170-2"><a href="GUI.html#cb170-2" tabindex="-1"></a></span>
+<span id="cb170-3"><a href="GUI.html#cb170-3" tabindex="-1"></a>root <span class="op">=</span> tk.Tk()</span>
+<span id="cb170-4"><a href="GUI.html#cb170-4" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb170-5"><a href="GUI.html#cb170-5" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb170-6"><a href="GUI.html#cb170-6" tabindex="-1"></a>        tk.Label(root, text<span class="op">=</span><span class="ss">f&quot;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">,</span><span class="sc">{</span>j<span class="sc">}</span><span class="ss">&quot;</span>, borderwidth<span class="op">=</span><span class="dv">1</span>, relief<span class="op">=</span><span class="st">&quot;solid&quot;</span>).grid(row<span class="op">=</span>i, column<span class="op">=</span>j, padx<span class="op">=</span><span class="dv">5</span>, pady<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb170-7"><a href="GUI.html#cb170-7" tabindex="-1"></a>root.mainloop()</span></code></pre></div>
+</div>
+<div id="辨析" class="section level3 hasAnchor" number="13.1.6">
+<h3><span class="header-section-number">13.1.6</span> 辨析<a href="#%E8%BE%A8%E6%9E%90" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>1 误解 tkinter 很落后
+实际 虽然界面简陋 但足以胜任小工具开发 并且零依赖</p>
+<p>2 误解 tkinter 不能做复杂界面
+实际 tkinter 提供 canvas 可绘制自定义组件 但复杂界面更推荐 PyQt 或 wxPython</p>
+<p>3 误解 tkinter 需要单独安装
+实际 Python 自带 tkinter 大多数环境可直接使用</p>
+</div>
+<div id="总结" class="section level3 hasAnchor" number="13.1.7">
+<h3><span class="header-section-number">13.1.7</span> 总结<a href="#%E6%80%BB%E7%BB%93" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>tkinter 是最简单的 Python 图形界面工具</p>
+<ul>
+<li>优点 零安装 易学 快速原型</li>
+<li>缺点 风格老旧 功能有限 不适合大型应用</li>
+<li>适合 入门学习 小型工具 快速试验</li>
+</ul>
+</div>
+</div>
+<div id="pyqt-pyside-模块" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> PyQt / PySide 模块<a href="#pyqt-pyside-%E6%A8%A1%E5%9D%97" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-1" class="section level3 hasAnchor" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> 核心<a href="#%E6%A0%B8%E5%BF%83-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>PyQt 和 PySide 都是基于 Qt 框架的 Python 绑定。Qt 是一个强大的跨平台 C++ GUI 框架，可以开发功能完整、外观现代的桌面应用。
+区别在于：</p>
+<ul>
+<li><strong>PyQt</strong> 由 Riverbank 公司维护，GPL 或商业授权</li>
+<li><strong>PySide</strong> 由 Qt 官方（The Qt Company）维护，LGPL 授权，更自由</li>
+</ul>
+<p>一句话总结：PyQt 和 PySide 都能让 Python 拥有专业级的桌面应用开发能力，界面和功能可以媲美原生应用。</p>
+</div>
+<div id="组成结构-1" class="section level3 hasAnchor" number="13.2.2">
+<h3><span class="header-section-number">13.2.2</span> 组成结构<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>1 窗口与控件</p>
+<ul>
+<li>QWidget 基础窗口</li>
+<li>QMainWindow 主窗口</li>
+<li>QPushButton 按钮</li>
+<li>QLabel 标签</li>
+<li>QLineEdit 单行输入</li>
+<li>QTextEdit 多行文本</li>
+<li>QTableWidget 表格</li>
+<li>QTreeView 树形控件</li>
+</ul>
+<p>2 布局管理</p>
+<ul>
+<li>QVBoxLayout 垂直布局</li>
+<li>QHBoxLayout 水平布局</li>
+<li>QGridLayout 网格布局</li>
+<li>QFormLayout 表单布局</li>
+</ul>
+<p>3 信号与槽</p>
+<ul>
+<li>信号 signal 类似事件</li>
+<li>槽 slot 类似回调函数</li>
+<li>控件通过 signal-slot 机制完成交互</li>
+</ul>
+<p>4 其他功能模块</p>
+<ul>
+<li>QPainter 绘图</li>
+<li>QTimer 定时器</li>
+<li>QFileDialog 文件选择对话框</li>
+<li>QThread 多线程支持</li>
+</ul>
+</div>
+<div id="原理-1" class="section level3 hasAnchor" number="13.2.3">
+<h3><span class="header-section-number">13.2.3</span> 原理<a href="#%E5%8E%9F%E7%90%86-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Qt 库是用 C++ 实现的，PyQt 和 PySide 提供 Python 接口</li>
+<li>运行时 Python 调用 Qt 库，由 Qt 渲染窗口和控件</li>
+<li>核心机制是信号与槽（事件驱动），控件之间通过消息传递实现交互</li>
+<li>程序主循环由 <code>app.exec_()</code> 驱动</li>
+</ul>
+</div>
+<div id="应用-1" class="section level3 hasAnchor" number="13.2.4">
+<h3><span class="header-section-number">13.2.4</span> 应用<a href="#%E5%BA%94%E7%94%A8-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>专业桌面应用（IDE、绘图工具、播放器）</li>
+<li>企业内部工具（数据管理、信息系统客户端）</li>
+<li>跨平台应用（Windows、macOS、Linux）</li>
+<li>可视化界面（结合 matplotlib、OpenGL）</li>
+</ul>
+</div>
+<div id="举例-1" class="section level3 hasAnchor" number="13.2.5">
+<h3><span class="header-section-number">13.2.5</span> 举例<a href="#%E4%B8%BE%E4%BE%8B-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>最简单的窗口</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb171-1"><a href="GUI.html#cb171-1" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb171-2"><a href="GUI.html#cb171-2" tabindex="-1"></a><span class="im">from</span> PyQt5.QtWidgets <span class="im">import</span> QApplication, QLabel</span>
+<span id="cb171-3"><a href="GUI.html#cb171-3" tabindex="-1"></a></span>
+<span id="cb171-4"><a href="GUI.html#cb171-4" tabindex="-1"></a>app <span class="op">=</span> QApplication(sys.argv)</span>
+<span id="cb171-5"><a href="GUI.html#cb171-5" tabindex="-1"></a>label <span class="op">=</span> QLabel(<span class="st">&quot;你好，PyQt&quot;</span>)</span>
+<span id="cb171-6"><a href="GUI.html#cb171-6" tabindex="-1"></a>label.show()</span>
+<span id="cb171-7"><a href="GUI.html#cb171-7" tabindex="-1"></a>app.exec_()</span></code></pre></div>
+<p>带按钮交互</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb172-1"><a href="GUI.html#cb172-1" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb172-2"><a href="GUI.html#cb172-2" tabindex="-1"></a><span class="im">from</span> PyQt5.QtWidgets <span class="im">import</span> QApplication, QWidget, QPushButton, QVBoxLayout, QLabel</span>
+<span id="cb172-3"><a href="GUI.html#cb172-3" tabindex="-1"></a></span>
+<span id="cb172-4"><a href="GUI.html#cb172-4" tabindex="-1"></a><span class="kw">def</span> on_click():</span>
+<span id="cb172-5"><a href="GUI.html#cb172-5" tabindex="-1"></a>    label.setText(<span class="st">&quot;按钮被点击了&quot;</span>)</span>
+<span id="cb172-6"><a href="GUI.html#cb172-6" tabindex="-1"></a></span>
+<span id="cb172-7"><a href="GUI.html#cb172-7" tabindex="-1"></a>app <span class="op">=</span> QApplication(sys.argv)</span>
+<span id="cb172-8"><a href="GUI.html#cb172-8" tabindex="-1"></a>window <span class="op">=</span> QWidget()</span>
+<span id="cb172-9"><a href="GUI.html#cb172-9" tabindex="-1"></a>window.setWindowTitle(<span class="st">&quot;PyQt 示例&quot;</span>)</span>
+<span id="cb172-10"><a href="GUI.html#cb172-10" tabindex="-1"></a></span>
+<span id="cb172-11"><a href="GUI.html#cb172-11" tabindex="-1"></a>label <span class="op">=</span> QLabel(<span class="st">&quot;初始文本&quot;</span>)</span>
+<span id="cb172-12"><a href="GUI.html#cb172-12" tabindex="-1"></a>button <span class="op">=</span> QPushButton(<span class="st">&quot;点我&quot;</span>)</span>
+<span id="cb172-13"><a href="GUI.html#cb172-13" tabindex="-1"></a>button.clicked.<span class="ex">connect</span>(on_click)</span>
+<span id="cb172-14"><a href="GUI.html#cb172-14" tabindex="-1"></a></span>
+<span id="cb172-15"><a href="GUI.html#cb172-15" tabindex="-1"></a>layout <span class="op">=</span> QVBoxLayout()</span>
+<span id="cb172-16"><a href="GUI.html#cb172-16" tabindex="-1"></a>layout.addWidget(label)</span>
+<span id="cb172-17"><a href="GUI.html#cb172-17" tabindex="-1"></a>layout.addWidget(button)</span>
+<span id="cb172-18"><a href="GUI.html#cb172-18" tabindex="-1"></a>window.setLayout(layout)</span>
+<span id="cb172-19"><a href="GUI.html#cb172-19" tabindex="-1"></a></span>
+<span id="cb172-20"><a href="GUI.html#cb172-20" tabindex="-1"></a>window.show()</span>
+<span id="cb172-21"><a href="GUI.html#cb172-21" tabindex="-1"></a>app.exec_()</span></code></pre></div>
+<p>表格控件</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb173-1"><a href="GUI.html#cb173-1" tabindex="-1"></a><span class="im">from</span> PyQt5.QtWidgets <span class="im">import</span> QApplication, QTableWidget, QTableWidgetItem</span>
+<span id="cb173-2"><a href="GUI.html#cb173-2" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb173-3"><a href="GUI.html#cb173-3" tabindex="-1"></a></span>
+<span id="cb173-4"><a href="GUI.html#cb173-4" tabindex="-1"></a>app <span class="op">=</span> QApplication(sys.argv)</span>
+<span id="cb173-5"><a href="GUI.html#cb173-5" tabindex="-1"></a>table <span class="op">=</span> QTableWidget(<span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb173-6"><a href="GUI.html#cb173-6" tabindex="-1"></a>table.setHorizontalHeaderLabels([<span class="st">&quot;姓名&quot;</span>, <span class="st">&quot;年龄&quot;</span>])</span>
+<span id="cb173-7"><a href="GUI.html#cb173-7" tabindex="-1"></a>table.setItem(<span class="dv">0</span>, <span class="dv">0</span>, QTableWidgetItem(<span class="st">&quot;张三&quot;</span>))</span>
+<span id="cb173-8"><a href="GUI.html#cb173-8" tabindex="-1"></a>table.setItem(<span class="dv">0</span>, <span class="dv">1</span>, QTableWidgetItem(<span class="st">&quot;25&quot;</span>))</span>
+<span id="cb173-9"><a href="GUI.html#cb173-9" tabindex="-1"></a>table.show()</span>
+<span id="cb173-10"><a href="GUI.html#cb173-10" tabindex="-1"></a>app.exec_()</span></code></pre></div>
+</div>
+<div id="辨析-1" class="section level3 hasAnchor" number="13.2.6">
+<h3><span class="header-section-number">13.2.6</span> 辨析<a href="#%E8%BE%A8%E6%9E%90-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>1 常见误解是 PyQt 和 PySide 有本质不同
+实际 二者 API 基本一致，大多数代码可以互换，主要差异在授权协议</p>
+<p>2 常见误解是 PyQt 太复杂
+实际 PyQt 提供 Qt Designer 可视化设计工具，可以拖拽生成界面</p>
+<p>3 常见误解是 Python 做桌面应用不如 C++
+实际 如果性能要求不是极限，Python + Qt 足以满足大部分桌面开发需求</p>
+<p>4 常见误解是 PyQt 不能跨平台
+实际 PyQt 和 PySide 完全跨平台，Qt 在各大系统上表现一致</p>
+</div>
+<div id="总结-1" class="section level3 hasAnchor" number="13.2.7">
+<h3><span class="header-section-number">13.2.7</span> 总结<a href="#%E6%80%BB%E7%BB%93-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>PyQt 和 PySide 都基于 Qt 框架，功能强大，适合开发复杂桌面应用</li>
+<li>PyQt 商业授权更严格，PySide 更自由</li>
+<li>推荐入门学习 PySide，团队开发或商用时更容易避免授权问题</li>
+</ul>
+</div>
+</div>
+<div id="wxpython-模块" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> wxPython 模块<a href="#wxpython-%E6%A8%A1%E5%9D%97" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-2" class="section level3 hasAnchor" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> 核心<a href="#%E6%A0%B8%E5%BF%83-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>wxPython 是一个基于 C++ GUI 框架 wxWidgets 的 Python 封装库。
+它的特点是：在不同系统上调用原生控件，所以程序在 Windows、macOS、Linux 上看起来更贴近系统风格。</p>
+<p>一句话总结：wxPython 是一个跨平台 GUI 框架，界面效果更接近系统原生。</p>
+</div>
+<div id="组成结构-2" class="section level3 hasAnchor" number="13.3.2">
+<h3><span class="header-section-number">13.3.2</span> 组成结构<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>1 应用与窗口</p>
+<ul>
+<li>wx.App 应用对象</li>
+<li>wx.Frame 主窗口</li>
+<li>wx.Panel 面板 容纳控件</li>
+<li>wx.Dialog 对话框</li>
+</ul>
+<p>2 控件</p>
+<ul>
+<li>wx.Button 按钮</li>
+<li>wx.StaticText 静态文本</li>
+<li>wx.TextCtrl 文本输入框</li>
+<li>wx.CheckBox 复选框</li>
+<li>wx.RadioButton 单选按钮</li>
+<li>wx.ListBox 列表框</li>
+<li>wx.Grid 表格控件</li>
+</ul>
+<p>3 布局管理</p>
+<ul>
+<li>wx.BoxSizer 水平 垂直布局</li>
+<li>wx.GridSizer 网格布局</li>
+<li>wx.FlexGridSizer 可变网格</li>
+</ul>
+<p>4 事件系统</p>
+<ul>
+<li>通过 Bind 方法绑定事件</li>
+<li>事件对象如 wx.EVT_BUTTON wx.EVT_TEXT</li>
+</ul>
+</div>
+<div id="原理-2" class="section level3 hasAnchor" number="13.3.3">
+<h3><span class="header-section-number">13.3.3</span> 原理<a href="#%E5%8E%9F%E7%90%86-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>wxPython 基于 wxWidgets 运行</li>
+<li>每个平台调用的是原生控件 所以界面风格贴合系统</li>
+<li>主循环由 app.MainLoop 驱动，事件通过回调函数处理</li>
+</ul>
+</div>
+<div id="应用-2" class="section level3 hasAnchor" number="13.3.4">
+<h3><span class="header-section-number">13.3.4</span> 应用<a href="#%E5%BA%94%E7%94%A8-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>桌面工具开发</li>
+<li>跨平台软件（Windows、Linux、macOS）</li>
+<li>内部信息系统客户端</li>
+<li>原型界面开发</li>
+</ul>
+</div>
+<div id="举例-2" class="section level3 hasAnchor" number="13.3.5">
+<h3><span class="header-section-number">13.3.5</span> 举例<a href="#%E4%B8%BE%E4%BE%8B-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>最简单的窗口</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb174-1"><a href="GUI.html#cb174-1" tabindex="-1"></a><span class="im">import</span> wx</span>
+<span id="cb174-2"><a href="GUI.html#cb174-2" tabindex="-1"></a></span>
+<span id="cb174-3"><a href="GUI.html#cb174-3" tabindex="-1"></a>app <span class="op">=</span> wx.App()</span>
+<span id="cb174-4"><a href="GUI.html#cb174-4" tabindex="-1"></a>frame <span class="op">=</span> wx.Frame(<span class="va">None</span>, title<span class="op">=</span><span class="st">&quot;你好，wxPython&quot;</span>, size<span class="op">=</span>(<span class="dv">300</span>, <span class="dv">200</span>))</span>
+<span id="cb174-5"><a href="GUI.html#cb174-5" tabindex="-1"></a>frame.Show()</span>
+<span id="cb174-6"><a href="GUI.html#cb174-6" tabindex="-1"></a>app.MainLoop()</span></code></pre></div>
+<p>带按钮交互</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb175-1"><a href="GUI.html#cb175-1" tabindex="-1"></a><span class="im">import</span> wx</span>
+<span id="cb175-2"><a href="GUI.html#cb175-2" tabindex="-1"></a></span>
+<span id="cb175-3"><a href="GUI.html#cb175-3" tabindex="-1"></a><span class="kw">class</span> MyFrame(wx.Frame):</span>
+<span id="cb175-4"><a href="GUI.html#cb175-4" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb175-5"><a href="GUI.html#cb175-5" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="va">None</span>, title<span class="op">=</span><span class="st">&quot;按钮示例&quot;</span>)</span>
+<span id="cb175-6"><a href="GUI.html#cb175-6" tabindex="-1"></a>        panel <span class="op">=</span> wx.Panel(<span class="va">self</span>)</span>
+<span id="cb175-7"><a href="GUI.html#cb175-7" tabindex="-1"></a>        <span class="va">self</span>.text <span class="op">=</span> wx.StaticText(panel, label<span class="op">=</span><span class="st">&quot;初始文本&quot;</span>, pos<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">20</span>))</span>
+<span id="cb175-8"><a href="GUI.html#cb175-8" tabindex="-1"></a>        button <span class="op">=</span> wx.Button(panel, label<span class="op">=</span><span class="st">&quot;点我&quot;</span>, pos<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">50</span>))</span>
+<span id="cb175-9"><a href="GUI.html#cb175-9" tabindex="-1"></a>        button.Bind(wx.EVT_BUTTON, <span class="va">self</span>.on_click)</span>
+<span id="cb175-10"><a href="GUI.html#cb175-10" tabindex="-1"></a></span>
+<span id="cb175-11"><a href="GUI.html#cb175-11" tabindex="-1"></a>    <span class="kw">def</span> on_click(<span class="va">self</span>, event):</span>
+<span id="cb175-12"><a href="GUI.html#cb175-12" tabindex="-1"></a>        <span class="va">self</span>.text.SetLabel(<span class="st">&quot;按钮被点击了&quot;</span>)</span>
+<span id="cb175-13"><a href="GUI.html#cb175-13" tabindex="-1"></a></span>
+<span id="cb175-14"><a href="GUI.html#cb175-14" tabindex="-1"></a>app <span class="op">=</span> wx.App()</span>
+<span id="cb175-15"><a href="GUI.html#cb175-15" tabindex="-1"></a>frame <span class="op">=</span> MyFrame()</span>
+<span id="cb175-16"><a href="GUI.html#cb175-16" tabindex="-1"></a>frame.Show()</span>
+<span id="cb175-17"><a href="GUI.html#cb175-17" tabindex="-1"></a>app.MainLoop()</span></code></pre></div>
+<p>布局示例</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb176-1"><a href="GUI.html#cb176-1" tabindex="-1"></a><span class="im">import</span> wx</span>
+<span id="cb176-2"><a href="GUI.html#cb176-2" tabindex="-1"></a></span>
+<span id="cb176-3"><a href="GUI.html#cb176-3" tabindex="-1"></a>app <span class="op">=</span> wx.App()</span>
+<span id="cb176-4"><a href="GUI.html#cb176-4" tabindex="-1"></a>frame <span class="op">=</span> wx.Frame(<span class="va">None</span>, title<span class="op">=</span><span class="st">&quot;布局示例&quot;</span>)</span>
+<span id="cb176-5"><a href="GUI.html#cb176-5" tabindex="-1"></a>panel <span class="op">=</span> wx.Panel(frame)</span>
+<span id="cb176-6"><a href="GUI.html#cb176-6" tabindex="-1"></a></span>
+<span id="cb176-7"><a href="GUI.html#cb176-7" tabindex="-1"></a>sizer <span class="op">=</span> wx.BoxSizer(wx.VERTICAL)</span>
+<span id="cb176-8"><a href="GUI.html#cb176-8" tabindex="-1"></a>sizer.Add(wx.Button(panel, label<span class="op">=</span><span class="st">&quot;按钮1&quot;</span>), <span class="dv">0</span>, wx.ALL, <span class="dv">5</span>)</span>
+<span id="cb176-9"><a href="GUI.html#cb176-9" tabindex="-1"></a>sizer.Add(wx.Button(panel, label<span class="op">=</span><span class="st">&quot;按钮2&quot;</span>), <span class="dv">0</span>, wx.ALL, <span class="dv">5</span>)</span>
+<span id="cb176-10"><a href="GUI.html#cb176-10" tabindex="-1"></a></span>
+<span id="cb176-11"><a href="GUI.html#cb176-11" tabindex="-1"></a>panel.SetSizer(sizer)</span>
+<span id="cb176-12"><a href="GUI.html#cb176-12" tabindex="-1"></a>frame.Show()</span>
+<span id="cb176-13"><a href="GUI.html#cb176-13" tabindex="-1"></a>app.MainLoop()</span></code></pre></div>
+</div>
+<div id="辨析-2" class="section level3 hasAnchor" number="13.3.6">
+<h3><span class="header-section-number">13.3.6</span> 辨析<a href="#%E8%BE%A8%E6%9E%90-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>1 误解 wxPython 和 PyQt 一样
+实际 wxPython 更轻量 界面原生风格更好 但生态不如 Qt 完整</p>
+<p>2 误解 wxPython 界面老旧
+实际 wxPython 使用系统控件 看起来更贴近操作系统本身</p>
+<p>3 误解 wxPython 不支持复杂应用
+实际 wxPython 提供丰富控件 包括表格 树形结构 富文本 但社区资料相对少</p>
+</div>
+<div id="总结-2" class="section level3 hasAnchor" number="13.3.7">
+<h3><span class="header-section-number">13.3.7</span> 总结<a href="#%E6%80%BB%E7%BB%93-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>wxPython 是跨平台 GUI 框架，界面原生友好</li>
+<li>优点 跨平台 原生风格 上手比 PyQt 简单</li>
+<li>缺点 社区规模较小 教程不如 PyQt 丰富</li>
+<li>适合 想要轻量跨平台原生体验的桌面应用</li>
+</ul>
+</div>
+</div>
+<div id="wxpython" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> wxPython<a href="GUI.html#wxpython" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-3" class="section level3 hasAnchor" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> 核心<a href="#%E6%A0%B8%E5%BF%83-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>wxPython 是基于 C++ 框架 wxWidgets 的 Python 封装。
+它最大的特点是：在不同系统上调用系统自带的原生控件，所以界面风格会和 Windows、macOS、Linux 的默认应用保持一致。</p>
+<p>一句话总结：wxPython 是一个跨平台、原生风格的 Python 图形界面开发框架。</p>
+</div>
+<div id="组成结构-3" class="section level3 hasAnchor" number="13.4.2">
+<h3><span class="header-section-number">13.4.2</span> 组成结构<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>1 应用与窗口</p>
+<ul>
+<li>wx.App 应用入口</li>
+<li>wx.Frame 主窗口</li>
+<li>wx.Panel 面板 用来放控件</li>
+<li>wx.Dialog 对话框</li>
+</ul>
+<p>2 常见控件</p>
+<ul>
+<li>wx.Button 按钮</li>
+<li>wx.StaticText 标签</li>
+<li>wx.TextCtrl 文本输入框</li>
+<li>wx.CheckBox 复选框</li>
+<li>wx.RadioButton 单选按钮</li>
+<li>wx.ListBox 列表框</li>
+<li>wx.Grid 表格</li>
+</ul>
+<p>3 布局管理</p>
+<ul>
+<li>wx.BoxSizer 水平或垂直布局</li>
+<li>wx.GridSizer 网格布局</li>
+<li>wx.FlexGridSizer 可变网格</li>
+</ul>
+<p>4 事件系统</p>
+<ul>
+<li>所有交互通过 Bind 方法绑定</li>
+<li>常用事件 wx.EVT_BUTTON wx.EVT_TEXT wx.EVT_CHECKBOX</li>
+</ul>
+</div>
+<div id="原理-3" class="section level3 hasAnchor" number="13.4.3">
+<h3><span class="header-section-number">13.4.3</span> 原理<a href="#%E5%8E%9F%E7%90%86-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>wxPython 调用 wxWidgets，而 wxWidgets 使用系统的原生控件。</li>
+<li>应用先创建 wx.App 对象，再进入 MainLoop 消息循环。</li>
+<li>用户操作（点击、输入）触发事件，事件回调函数处理逻辑。</li>
+</ul>
+</div>
+<div id="应用-3" class="section level3 hasAnchor" number="13.4.4">
+<h3><span class="header-section-number">13.4.4</span> 应用<a href="#%E5%BA%94%E7%94%A8-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>跨平台桌面应用（内部小工具、管理软件）</li>
+<li>数据处理和可视化界面</li>
+<li>需要原生外观的桌面客户端</li>
+<li>快速原型界面开发</li>
+</ul>
+</div>
+<div id="举例-3" class="section level3 hasAnchor" number="13.4.5">
+<h3><span class="header-section-number">13.4.5</span> 举例<a href="#%E4%B8%BE%E4%BE%8B-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>最简单窗口</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb177-1"><a href="GUI.html#cb177-1" tabindex="-1"></a><span class="im">import</span> wx</span>
+<span id="cb177-2"><a href="GUI.html#cb177-2" tabindex="-1"></a></span>
+<span id="cb177-3"><a href="GUI.html#cb177-3" tabindex="-1"></a>app <span class="op">=</span> wx.App()</span>
+<span id="cb177-4"><a href="GUI.html#cb177-4" tabindex="-1"></a>frame <span class="op">=</span> wx.Frame(<span class="va">None</span>, title<span class="op">=</span><span class="st">&quot;你好，wxPython&quot;</span>, size<span class="op">=</span>(<span class="dv">300</span>, <span class="dv">200</span>))</span>
+<span id="cb177-5"><a href="GUI.html#cb177-5" tabindex="-1"></a>frame.Show()</span>
+<span id="cb177-6"><a href="GUI.html#cb177-6" tabindex="-1"></a>app.MainLoop()</span></code></pre></div>
+<p>按钮交互</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb178-1"><a href="GUI.html#cb178-1" tabindex="-1"></a><span class="im">import</span> wx</span>
+<span id="cb178-2"><a href="GUI.html#cb178-2" tabindex="-1"></a></span>
+<span id="cb178-3"><a href="GUI.html#cb178-3" tabindex="-1"></a><span class="kw">class</span> MyFrame(wx.Frame):</span>
+<span id="cb178-4"><a href="GUI.html#cb178-4" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb178-5"><a href="GUI.html#cb178-5" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="va">None</span>, title<span class="op">=</span><span class="st">&quot;按钮示例&quot;</span>)</span>
+<span id="cb178-6"><a href="GUI.html#cb178-6" tabindex="-1"></a>        panel <span class="op">=</span> wx.Panel(<span class="va">self</span>)</span>
+<span id="cb178-7"><a href="GUI.html#cb178-7" tabindex="-1"></a>        <span class="va">self</span>.label <span class="op">=</span> wx.StaticText(panel, label<span class="op">=</span><span class="st">&quot;初始文本&quot;</span>, pos<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">20</span>))</span>
+<span id="cb178-8"><a href="GUI.html#cb178-8" tabindex="-1"></a>        button <span class="op">=</span> wx.Button(panel, label<span class="op">=</span><span class="st">&quot;点我&quot;</span>, pos<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">60</span>))</span>
+<span id="cb178-9"><a href="GUI.html#cb178-9" tabindex="-1"></a>        button.Bind(wx.EVT_BUTTON, <span class="va">self</span>.on_click)</span>
+<span id="cb178-10"><a href="GUI.html#cb178-10" tabindex="-1"></a></span>
+<span id="cb178-11"><a href="GUI.html#cb178-11" tabindex="-1"></a>    <span class="kw">def</span> on_click(<span class="va">self</span>, event):</span>
+<span id="cb178-12"><a href="GUI.html#cb178-12" tabindex="-1"></a>        <span class="va">self</span>.label.SetLabel(<span class="st">&quot;按钮被点击了&quot;</span>)</span>
+<span id="cb178-13"><a href="GUI.html#cb178-13" tabindex="-1"></a></span>
+<span id="cb178-14"><a href="GUI.html#cb178-14" tabindex="-1"></a>app <span class="op">=</span> wx.App()</span>
+<span id="cb178-15"><a href="GUI.html#cb178-15" tabindex="-1"></a>frame <span class="op">=</span> MyFrame()</span>
+<span id="cb178-16"><a href="GUI.html#cb178-16" tabindex="-1"></a>frame.Show()</span>
+<span id="cb178-17"><a href="GUI.html#cb178-17" tabindex="-1"></a>app.MainLoop()</span></code></pre></div>
+<p>布局管理</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb179-1"><a href="GUI.html#cb179-1" tabindex="-1"></a><span class="im">import</span> wx</span>
+<span id="cb179-2"><a href="GUI.html#cb179-2" tabindex="-1"></a></span>
+<span id="cb179-3"><a href="GUI.html#cb179-3" tabindex="-1"></a>app <span class="op">=</span> wx.App()</span>
+<span id="cb179-4"><a href="GUI.html#cb179-4" tabindex="-1"></a>frame <span class="op">=</span> wx.Frame(<span class="va">None</span>, title<span class="op">=</span><span class="st">&quot;布局示例&quot;</span>)</span>
+<span id="cb179-5"><a href="GUI.html#cb179-5" tabindex="-1"></a>panel <span class="op">=</span> wx.Panel(frame)</span>
+<span id="cb179-6"><a href="GUI.html#cb179-6" tabindex="-1"></a></span>
+<span id="cb179-7"><a href="GUI.html#cb179-7" tabindex="-1"></a>sizer <span class="op">=</span> wx.BoxSizer(wx.VERTICAL)</span>
+<span id="cb179-8"><a href="GUI.html#cb179-8" tabindex="-1"></a>sizer.Add(wx.Button(panel, label<span class="op">=</span><span class="st">&quot;按钮1&quot;</span>), <span class="dv">0</span>, wx.ALL, <span class="dv">5</span>)</span>
+<span id="cb179-9"><a href="GUI.html#cb179-9" tabindex="-1"></a>sizer.Add(wx.Button(panel, label<span class="op">=</span><span class="st">&quot;按钮2&quot;</span>), <span class="dv">0</span>, wx.ALL, <span class="dv">5</span>)</span>
+<span id="cb179-10"><a href="GUI.html#cb179-10" tabindex="-1"></a></span>
+<span id="cb179-11"><a href="GUI.html#cb179-11" tabindex="-1"></a>panel.SetSizer(sizer)</span>
+<span id="cb179-12"><a href="GUI.html#cb179-12" tabindex="-1"></a>frame.Show()</span>
+<span id="cb179-13"><a href="GUI.html#cb179-13" tabindex="-1"></a>app.MainLoop()</span></code></pre></div>
+</div>
+<div id="辨析-3" class="section level3 hasAnchor" number="13.4.6">
+<h3><span class="header-section-number">13.4.6</span> 辨析<a href="#%E8%BE%A8%E6%9E%90-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>1 误解 wxPython 落后
+实际 wxPython 使用原生控件，界面和系统一致，不会显得老旧。</p>
+<p>2 误解 wxPython 功能不如 PyQt
+实际 wxPython 也有丰富的控件，包括表格、树、富文本，只是生态和资料不如 PyQt 丰富。</p>
+<p>3 误解 wxPython 只能做简单工具
+实际 wxPython 能做完整的桌面应用，只是大型项目更多使用 PyQt。</p>
+</div>
+<div id="总结-3" class="section level3 hasAnchor" number="13.4.7">
+<h3><span class="header-section-number">13.4.7</span> 总结<a href="#%E6%80%BB%E7%BB%93-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>wxPython 优点 跨平台 原生外观 上手简单</li>
+<li>缺点 文档和社区规模较小 教程不如 PyQt 丰富</li>
+<li>适合需要原生外观的桌面应用 或中小型跨平台项目</li>
+</ul>
+</div>
+</div>
+<div id="kivy" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> Kivy<a href="GUI.html#kivy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-4" class="section level3 hasAnchor" number="13.5.1">
+<h3><span class="header-section-number">13.5.1</span> 核心<a href="#%E6%A0%B8%E5%BF%83-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Kivy 是一个跨平台的图形界面开发框架，支持桌面、Android、iOS 等平台。
+它最大的特点是：</p>
+<ul>
+<li>使用 <strong>OpenGL 加速</strong>，界面流畅</li>
+<li>内置触摸、手势、多点触控支持</li>
+<li>适合开发现代化、跨平台的应用</li>
+</ul>
+<p>一句话总结：Kivy 是一个面向桌面和移动端的跨平台 Python GUI 框架。</p>
+</div>
+<div id="组成结构-4" class="section level3 hasAnchor" number="13.5.2">
+<h3><span class="header-section-number">13.5.2</span> 组成结构<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>1 应用程序入口</p>
+<ul>
+<li><code>App</code> 所有应用继承自 App 类</li>
+<li><code>build</code> 方法返回根控件</li>
+</ul>
+<p>2 常见控件</p>
+<ul>
+<li><code>Label</code> 标签</li>
+<li><code>Button</code> 按钮</li>
+<li><code>TextInput</code> 文本输入框</li>
+<li><code>CheckBox</code> 复选框</li>
+<li><code>Slider</code> 滑动条</li>
+<li><code>Switch</code> 开关</li>
+<li><code>Layout</code> 布局容器</li>
+</ul>
+<p>3 布局管理</p>
+<ul>
+<li><code>BoxLayout</code> 水平或垂直排列</li>
+<li><code>GridLayout</code> 网格布局</li>
+<li><code>StackLayout</code> 堆叠布局</li>
+<li><code>AnchorLayout</code> 定点布局</li>
+</ul>
+<p>4 KV 语言</p>
+<ul>
+<li>Kivy 提供专门的 <strong>kv 文件</strong> 描述界面，相当于 HTML+CSS 的作用</li>
+<li>将界面布局和逻辑分离</li>
+</ul>
+</div>
+<div id="原理-4" class="section level3 hasAnchor" number="13.5.3">
+<h3><span class="header-section-number">13.5.3</span> 原理<a href="#%E5%8E%9F%E7%90%86-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Kivy 使用 OpenGL ES 渲染界面，因此在桌面和移动端都有流畅的动画效果</li>
+<li>控件事件通过回调函数绑定，比如 on_press on_text</li>
+<li>KV 语言可以定义布局、属性和事件，简化界面开发</li>
+</ul>
+</div>
+<div id="应用-4" class="section level3 hasAnchor" number="13.5.4">
+<h3><span class="header-section-number">13.5.4</span> 应用<a href="#%E5%BA%94%E7%94%A8-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>移动端跨平台应用（Android、iOS）</li>
+<li>桌面应用（Windows、macOS、Linux）</li>
+<li>教学演示和原型开发</li>
+<li>需要动画、触摸、手势交互的应用</li>
+</ul>
+</div>
+<div id="举例-4" class="section level3 hasAnchor" number="13.5.5">
+<h3><span class="header-section-number">13.5.5</span> 举例<a href="#%E4%B8%BE%E4%BE%8B-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>最简单窗口</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb180-1"><a href="GUI.html#cb180-1" tabindex="-1"></a><span class="im">from</span> kivy.app <span class="im">import</span> App</span>
+<span id="cb180-2"><a href="GUI.html#cb180-2" tabindex="-1"></a><span class="im">from</span> kivy.uix.label <span class="im">import</span> Label</span>
+<span id="cb180-3"><a href="GUI.html#cb180-3" tabindex="-1"></a></span>
+<span id="cb180-4"><a href="GUI.html#cb180-4" tabindex="-1"></a><span class="kw">class</span> MyApp(App):</span>
+<span id="cb180-5"><a href="GUI.html#cb180-5" tabindex="-1"></a>    <span class="kw">def</span> build(<span class="va">self</span>):</span>
+<span id="cb180-6"><a href="GUI.html#cb180-6" tabindex="-1"></a>        <span class="cf">return</span> Label(text<span class="op">=</span><span class="st">&quot;你好，Kivy&quot;</span>)</span>
+<span id="cb180-7"><a href="GUI.html#cb180-7" tabindex="-1"></a></span>
+<span id="cb180-8"><a href="GUI.html#cb180-8" tabindex="-1"></a>MyApp().run()</span></code></pre></div>
+<p>按钮交互</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb181-1"><a href="GUI.html#cb181-1" tabindex="-1"></a><span class="im">from</span> kivy.app <span class="im">import</span> App</span>
+<span id="cb181-2"><a href="GUI.html#cb181-2" tabindex="-1"></a><span class="im">from</span> kivy.uix.button <span class="im">import</span> Button</span>
+<span id="cb181-3"><a href="GUI.html#cb181-3" tabindex="-1"></a></span>
+<span id="cb181-4"><a href="GUI.html#cb181-4" tabindex="-1"></a><span class="kw">class</span> MyApp(App):</span>
+<span id="cb181-5"><a href="GUI.html#cb181-5" tabindex="-1"></a>    <span class="kw">def</span> build(<span class="va">self</span>):</span>
+<span id="cb181-6"><a href="GUI.html#cb181-6" tabindex="-1"></a>        <span class="cf">return</span> Button(text<span class="op">=</span><span class="st">&quot;点我&quot;</span>, on_press<span class="op">=</span><span class="va">self</span>.say_hello)</span>
+<span id="cb181-7"><a href="GUI.html#cb181-7" tabindex="-1"></a></span>
+<span id="cb181-8"><a href="GUI.html#cb181-8" tabindex="-1"></a>    <span class="kw">def</span> say_hello(<span class="va">self</span>, instance):</span>
+<span id="cb181-9"><a href="GUI.html#cb181-9" tabindex="-1"></a>        instance.text <span class="op">=</span> <span class="st">&quot;按钮被点击了&quot;</span></span>
+<span id="cb181-10"><a href="GUI.html#cb181-10" tabindex="-1"></a></span>
+<span id="cb181-11"><a href="GUI.html#cb181-11" tabindex="-1"></a>MyApp().run()</span></code></pre></div>
+<p>使用布局</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb182-1"><a href="GUI.html#cb182-1" tabindex="-1"></a><span class="im">from</span> kivy.app <span class="im">import</span> App</span>
+<span id="cb182-2"><a href="GUI.html#cb182-2" tabindex="-1"></a><span class="im">from</span> kivy.uix.boxlayout <span class="im">import</span> BoxLayout</span>
+<span id="cb182-3"><a href="GUI.html#cb182-3" tabindex="-1"></a><span class="im">from</span> kivy.uix.button <span class="im">import</span> Button</span>
+<span id="cb182-4"><a href="GUI.html#cb182-4" tabindex="-1"></a></span>
+<span id="cb182-5"><a href="GUI.html#cb182-5" tabindex="-1"></a><span class="kw">class</span> MyApp(App):</span>
+<span id="cb182-6"><a href="GUI.html#cb182-6" tabindex="-1"></a>    <span class="kw">def</span> build(<span class="va">self</span>):</span>
+<span id="cb182-7"><a href="GUI.html#cb182-7" tabindex="-1"></a>        layout <span class="op">=</span> BoxLayout(orientation<span class="op">=</span><span class="st">&quot;vertical&quot;</span>)</span>
+<span id="cb182-8"><a href="GUI.html#cb182-8" tabindex="-1"></a>        layout.add_widget(Button(text<span class="op">=</span><span class="st">&quot;按钮1&quot;</span>))</span>
+<span id="cb182-9"><a href="GUI.html#cb182-9" tabindex="-1"></a>        layout.add_widget(Button(text<span class="op">=</span><span class="st">&quot;按钮2&quot;</span>))</span>
+<span id="cb182-10"><a href="GUI.html#cb182-10" tabindex="-1"></a>        <span class="cf">return</span> layout</span>
+<span id="cb182-11"><a href="GUI.html#cb182-11" tabindex="-1"></a></span>
+<span id="cb182-12"><a href="GUI.html#cb182-12" tabindex="-1"></a>MyApp().run()</span></code></pre></div>
+<p>KV 文件示例
+main.py</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb183-1"><a href="GUI.html#cb183-1" tabindex="-1"></a><span class="im">from</span> kivy.app <span class="im">import</span> App</span>
+<span id="cb183-2"><a href="GUI.html#cb183-2" tabindex="-1"></a><span class="im">from</span> kivy.uix.boxlayout <span class="im">import</span> BoxLayout</span>
+<span id="cb183-3"><a href="GUI.html#cb183-3" tabindex="-1"></a></span>
+<span id="cb183-4"><a href="GUI.html#cb183-4" tabindex="-1"></a><span class="kw">class</span> MyLayout(BoxLayout):</span>
+<span id="cb183-5"><a href="GUI.html#cb183-5" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb183-6"><a href="GUI.html#cb183-6" tabindex="-1"></a></span>
+<span id="cb183-7"><a href="GUI.html#cb183-7" tabindex="-1"></a><span class="kw">class</span> MyApp(App):</span>
+<span id="cb183-8"><a href="GUI.html#cb183-8" tabindex="-1"></a>    <span class="kw">def</span> build(<span class="va">self</span>):</span>
+<span id="cb183-9"><a href="GUI.html#cb183-9" tabindex="-1"></a>        <span class="cf">return</span> MyLayout()</span>
+<span id="cb183-10"><a href="GUI.html#cb183-10" tabindex="-1"></a></span>
+<span id="cb183-11"><a href="GUI.html#cb183-11" tabindex="-1"></a>MyApp().run()</span></code></pre></div>
+<p>my.kv</p>
+<pre class="kv"><code>&lt;MyLayout&gt;:
+    orientation: &quot;vertical&quot;
+    Button:
+        text: &quot;按钮1&quot;
+    Button:
+        text: &quot;按钮2&quot;</code></pre>
+</div>
+<div id="辨析-4" class="section level3 hasAnchor" number="13.5.6">
+<h3><span class="header-section-number">13.5.6</span> 辨析<a href="#%E8%BE%A8%E6%9E%90-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>1 误解 Kivy 只能做手机应用
+实际 Kivy 同样支持桌面应用，只是移动端优势更明显</p>
+<p>2 误解 Kivy 不够专业
+实际 Kivy 提供 OpenGL 加速和手势支持，能做出流畅的现代化界面</p>
+<p>3 误解 Kivy 学习成本高
+实际 Kivy 上手很快，尤其是 KV 语言让界面代码更简洁</p>
+</div>
+<div id="总结-4" class="section level3 hasAnchor" number="13.5.7">
+<h3><span class="header-section-number">13.5.7</span> 总结<a href="#%E6%80%BB%E7%BB%93-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Kivy 优点 跨平台 支持触摸和动画 适合移动端</li>
+<li>缺点 打包和发布相对复杂 桌面应用外观不如 PyQt 原生</li>
+<li>适合 跨平台移动端应用 原型工具 教学项目</li>
+</ul>
+</div>
+</div>
+<div id="beeware-toga" class="section level2 hasAnchor" number="13.6">
+<h2><span class="header-section-number">13.6</span> BeeWare / Toga<a href="GUI.html#beeware-toga" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="核心-5" class="section level3 hasAnchor" number="13.6.1">
+<h3><span class="header-section-number">13.6.1</span> 核心<a href="#%E6%A0%B8%E5%BF%83-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>BeeWare 是一个跨平台应用开发工具集，其中 <strong>Toga</strong> 是它的 GUI 库。
+它的特点是：</p>
+<ul>
+<li>用 <strong>Python 写一次代码</strong>，可以运行在 Windows、macOS、Linux、Android、iOS，甚至 Web。</li>
+<li>Toga 提供统一的 API，底层调用各个平台的原生控件。</li>
+<li>BeeWare 还包括 <strong>Briefcase</strong>（打包工具）等，帮助你生成安装包或移动端 App。</li>
+</ul>
+<p>一句话总结：BeeWare/Toga 让 Python 能像 JavaScript 的 Electron 或 Flutter 一样，跨平台开发桌面和移动应用。</p>
+</div>
+<div id="组成结构-5" class="section level3 hasAnchor" number="13.6.2">
+<h3><span class="header-section-number">13.6.2</span> 组成结构<a href="#%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>1 Toga 控件</p>
+<ul>
+<li>Label 标签</li>
+<li>Button 按钮</li>
+<li>TextInput 文本框</li>
+<li>Switch 开关</li>
+<li>Table 表格</li>
+<li>Tree 树控件</li>
+</ul>
+<p>2 布局管理</p>
+<ul>
+<li>Box 容器，水平或垂直布局</li>
+<li>Split 分割布局</li>
+<li>Scroll 滚动布局</li>
+</ul>
+<p>3 应用框架</p>
+<ul>
+<li><code>toga.App</code> 应用入口</li>
+<li><code>toga.MainWindow</code> 主窗口</li>
+<li>控件通过 <code>add</code> 方法加入窗口</li>
+</ul>
+<p>4 打包工具</p>
+<ul>
+<li>Briefcase 用于打包应用</li>
+<li>支持打包成桌面安装包、移动端 APK/IPA、Web 应用</li>
+</ul>
+</div>
+<div id="原理-5" class="section level3 hasAnchor" number="13.6.3">
+<h3><span class="header-section-number">13.6.3</span> 原理<a href="#%E5%8E%9F%E7%90%86-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Toga 定义了一套跨平台 API</li>
+<li>每个平台使用本地的原生控件来渲染界面</li>
+<li>BeeWare 的 Briefcase 会把 Python 应用打包成原生可执行文件</li>
+<li>最终用户使用时，界面和体验与本地应用一致</li>
+</ul>
+</div>
+<div id="应用-5" class="section level3 hasAnchor" number="13.6.4">
+<h3><span class="header-section-number">13.6.4</span> 应用<a href="#%E5%BA%94%E7%94%A8-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>跨平台桌面应用</li>
+<li>移动应用（Android、iOS）</li>
+<li>Web 应用（实验性支持）</li>
+<li>用 Python 开发并部署到多平台的工具</li>
+</ul>
+</div>
+<div id="举例-5" class="section level3 hasAnchor" number="13.6.5">
+<h3><span class="header-section-number">13.6.5</span> 举例<a href="#%E4%B8%BE%E4%BE%8B-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>最简单的应用</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb185-1"><a href="GUI.html#cb185-1" tabindex="-1"></a><span class="im">import</span> toga</span>
+<span id="cb185-2"><a href="GUI.html#cb185-2" tabindex="-1"></a></span>
+<span id="cb185-3"><a href="GUI.html#cb185-3" tabindex="-1"></a><span class="kw">def</span> on_press(widget):</span>
+<span id="cb185-4"><a href="GUI.html#cb185-4" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;按钮被点击&quot;</span>)</span>
+<span id="cb185-5"><a href="GUI.html#cb185-5" tabindex="-1"></a></span>
+<span id="cb185-6"><a href="GUI.html#cb185-6" tabindex="-1"></a><span class="kw">def</span> build(app):</span>
+<span id="cb185-7"><a href="GUI.html#cb185-7" tabindex="-1"></a>    button <span class="op">=</span> toga.Button(<span class="st">&quot;点我&quot;</span>, on_press<span class="op">=</span>on_press)</span>
+<span id="cb185-8"><a href="GUI.html#cb185-8" tabindex="-1"></a>    <span class="cf">return</span> toga.Box(children<span class="op">=</span>[button])</span>
+<span id="cb185-9"><a href="GUI.html#cb185-9" tabindex="-1"></a></span>
+<span id="cb185-10"><a href="GUI.html#cb185-10" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb185-11"><a href="GUI.html#cb185-11" tabindex="-1"></a>    <span class="cf">return</span> toga.App(<span class="st">&quot;我的应用&quot;</span>, <span class="st">&quot;org.example.myapp&quot;</span>, startup<span class="op">=</span>build)</span>
+<span id="cb185-12"><a href="GUI.html#cb185-12" tabindex="-1"></a></span>
+<span id="cb185-13"><a href="GUI.html#cb185-13" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb185-14"><a href="GUI.html#cb185-14" tabindex="-1"></a>    main().main_loop()</span></code></pre></div>
+<p>带窗口和标签</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb186-1"><a href="GUI.html#cb186-1" tabindex="-1"></a><span class="im">import</span> toga</span>
+<span id="cb186-2"><a href="GUI.html#cb186-2" tabindex="-1"></a></span>
+<span id="cb186-3"><a href="GUI.html#cb186-3" tabindex="-1"></a><span class="kw">def</span> build(app):</span>
+<span id="cb186-4"><a href="GUI.html#cb186-4" tabindex="-1"></a>    box <span class="op">=</span> toga.Box()</span>
+<span id="cb186-5"><a href="GUI.html#cb186-5" tabindex="-1"></a>    label <span class="op">=</span> toga.Label(<span class="st">&quot;你好，BeeWare Toga&quot;</span>)</span>
+<span id="cb186-6"><a href="GUI.html#cb186-6" tabindex="-1"></a>    box.add(label)</span>
+<span id="cb186-7"><a href="GUI.html#cb186-7" tabindex="-1"></a>    <span class="cf">return</span> box</span>
+<span id="cb186-8"><a href="GUI.html#cb186-8" tabindex="-1"></a></span>
+<span id="cb186-9"><a href="GUI.html#cb186-9" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb186-10"><a href="GUI.html#cb186-10" tabindex="-1"></a>    <span class="cf">return</span> toga.App(<span class="st">&quot;Hello Toga&quot;</span>, <span class="st">&quot;org.example.hellotoga&quot;</span>, startup<span class="op">=</span>build)</span>
+<span id="cb186-11"><a href="GUI.html#cb186-11" tabindex="-1"></a></span>
+<span id="cb186-12"><a href="GUI.html#cb186-12" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb186-13"><a href="GUI.html#cb186-13" tabindex="-1"></a>    main().main_loop()</span></code></pre></div>
+</div>
+<div id="辨析-5" class="section level3 hasAnchor" number="13.6.6">
+<h3><span class="header-section-number">13.6.6</span> 辨析<a href="#%E8%BE%A8%E6%9E%90-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>1 误解 BeeWare 只是另一个 GUI 库
+实际 BeeWare 是一整套跨平台开发和打包工具，Toga 是其中的 GUI 部分</p>
+<p>2 误解 Toga 的界面是模拟的
+实际 Toga 使用系统原生控件，外观和体验与本地应用一致</p>
+<p>3 误解 BeeWare 已经很成熟
+实际 BeeWare 还在积极开发中，生态和文档不如 PyQt 等成熟框架完善</p>
+</div>
+<div id="总结-5" class="section level3 hasAnchor" number="13.6.7">
+<h3><span class="header-section-number">13.6.7</span> 总结<a href="#%E6%80%BB%E7%BB%93-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>BeeWare/Toga 优点：写一次代码，多平台运行，界面原生，未来潜力大</li>
+<li>缺点：生态还在发展中，控件种类和资料有限</li>
+<li>适合：想用 Python 写跨平台应用，尤其是需要同时支持桌面和移动端的场景</li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="C12.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="project.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/12-GUI.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
